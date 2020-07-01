@@ -30,17 +30,14 @@ parentesis1 = [Open,Open,Open,Open,Open,Open,Open,Open,Open,Open,Open,Open,Open,
 parentesis2 = [Open,Open,Open,Open,Open,Open,Open,Open,Open,Open,Open,Open,Open,Close,Close,Close,Close,Close,Close,Close,Close,Close,Close,Close,Close]
 parentesis3 = [Open,Open,Open,Open,Open,Open,Open,Open,Open,Open,Open,Open,Open,Close,Close,Close,Close,Close,Close,Close,Close,Close,Close,Close,Close,Close,Close]
 
--- -- Ejercicio 6
-
--- multiplos seqParen = reduceS (+) 0 
---                                 (tabulateS
---                                   (\i -> let subSeq = dropS seqParen i 
---                                          in reduceS (+) 0 (map (k (nthS subSeq 0) xs) (dropS subSeq 1))
---                                   ) 
---                                     l
---                                 ) seqParen
---                  where 
---                    l = (length seqParen) - 1
+-- Ejercicio 6
+multiplos :: Seq s => s Int -> Int
+multiplos seqInt = reduceS (+) 0 (tabulateS (\i -> let subSeq = dropS seqInt i
+                                                   in 
+                                                     reduceS (+) 0 (mapS (k (nthS subSeq 0)) (dropS subSeq 1))
+                                            ) l)
+                 where 
+                   l = (lengthS seqInt) - 1
                 
--- k :: Int -> Int -> Int
--- k x y = if mod x y == 0 then 1 else 0
+k :: Int -> Int -> Int
+k x y = if mod x y == 0 then 1 else 0
