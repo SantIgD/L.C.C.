@@ -32,12 +32,21 @@ parentesis3 = [Open,Open,Open,Open,Open,Open,Open,Open,Open,Open,Open,Open,Open,
 
 -- Ejercicio 6
 multiplos :: Seq s => s Int -> Int
-multiplos seqInt = reduceS (+) 0 (tabulateS (\i -> let subSeq = dropS seqInt i
-                                                   in 
-                                                     reduceS (+) 0 (mapS (k (nthS subSeq 0)) (dropS subSeq 1))
-                                            ) l)
-                 where 
-                   l = (lengthS seqInt) - 1
+multiplos seqInt = reduceS (+) 0 (seqCantidadMultiplos seqInt)
+                 
                 
+seqCantidadMultiplos :: Seq s => s Int -> s Int
+seqCantidadMultiplos seqInt = tabulateS (\i -> multiplosDeElemento (dropS seqInt i)) l
+                             where 
+                               l = (lengthS seqInt) - 1
+
+multiplosDeElemento :: Seq s => s Int -> Int
+multiplosDeElemento seqInt = reduceS (+) 0 (mapS (k (nthS seqInt 0)) (dropS seqInt 1))
+
+
 k :: Int -> Int -> Int
 k x y = if mod x y == 0 then 1 else 0
+
+
+
+
