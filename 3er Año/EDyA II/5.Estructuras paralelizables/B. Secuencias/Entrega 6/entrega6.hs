@@ -41,11 +41,14 @@ seqCantidadMultiplos seqInt = tabulateS (\i -> multiplosDeElemento (dropS seqInt
                                l = (lengthS seqInt) - 1
 
 multiplosDeElemento :: Seq s => s Int -> Int
-multiplosDeElemento seqInt = reduceS (+) 0 (mapS (k (nthS seqInt 0)) (dropS seqInt 1))
+multiplosDeElemento seqInt = reduceS (+) 0 (mapS (isMultiplo head) tail)
+                           where
+                             isMultiplo x y = if mod x y == 0 then 1 else 0
+                             head = (nthS seqInt 0)
+                             tail = (dropS seqInt 1)
+                             
 
 
-k :: Int -> Int -> Int
-k x y = if mod x y == 0 then 1 else 0
 
 
 
