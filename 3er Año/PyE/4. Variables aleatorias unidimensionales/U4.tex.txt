@@ -1,0 +1,584 @@
+\documentclass{report}
+\usepackage[utf8]{inputenc}
+\usepackage{vmargin}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{titlesec}
+\titleformat{\chapter}
+  {\normalfont\LARGE\bfseries}{\thechapter}{1em}{}
+\titlespacing*{\chapter}{0pt}{3.5ex plus 1ex minus .2ex}{2.3ex plus .2ex}
+\graphicspath{ {images/} }
+\setpapersize{A4}
+\setmargins{2.5cm}       % margen izquierdo
+{1.5cm}                        % margen superior
+{16.5cm}                      % anchura del texto
+{23.42cm}                    % altura del texto
+{10pt}                           % altura de los encabezados
+{1cm}                           % espacio entre el texto y los encabezados
+{0pt}                             % altura del pie de página
+{2cm}           
+\begin{document}
+
+
+\tableofcontents
+
+
+
+\begin{titlepage}
+\centering
+{\bfseries\LARGE Universidad Nacional de Rosario \par}
+\vspace{0,5cm}
+{\scshape\Large Facultad de Ciencias Exactas, Ingeniería y Agrimensura \par}
+\vspace{2cm}
+{\scshape\Huge Probabilidad y Estadística\par}
+\vspace{3cm}
+{\itshape\Huge Unidad 4 \par}
+\vfill
+{\Large Autor del resumen:\par}
+\vspace{1 cm}
+{\Large DEMAGISTRIS, Santiago Ignacio \par}
+\vfill
+{\Large Julio 2020 \par}
+\end{titlepage}
+
+\newpage
+
+\chapter{Variables aleatorias unidimensionales} 
+\vspace{1cm}
+\section{Noción general de una variable aleatoria}
+\vspace{0,5cm}
+
+{En muchas situaciones experimentales deseamos asignar un número real x a cada uno de los elementos S del espacio muestra1 S. Esto es:}
+\vspace{0,3cm}
+
+{\begin{center}
+    $X(s) : S \rightarrow \Re$
+\end{center}}
+\vspace{0,3cm}
+
+{\bf Definición.} {Sea $\epsilon$ un experimento y S el espacio muestral asociado con él. Una función X que asgina a cada uno de los elementos $s\in S$, un numero real X(s), se llama \bf{variable aleatoria}.}
+\vspace{0,5cm}
+
+{El espacio $R_x$, es decir, el conjunto de todos los valores posibles de X, algunas veces se le llama recorrido. En cierto sentido podemos considerar a R, como otro espacio muestral. El espacio muestral (original) S corresponde a los resultados no numéricos (posiblemente) del experimento, mientras que $R_x$, es el espacio muestral asociado con la variable aleatoria X, que representa la característica numérica que puede ser de interés. Si X(s) = S, tenemos S = $R_x$. }
+\vspace{1cm}
+
+{Una variable aleatoria X puede ser concebida de dos formas:}
+\vspace{0,3cm}
+
+\begin{itemize}
+    \item Realizamos el experimento $\epsilon$ que tiene como resultado $s\in S$. Luego evaluamos el número X(s).
+    \item Efectuamos $\epsilon$, obteniendo el resultado s, e (inmediatamente) calculamos X(s). El número X(s) se considera entonces como el resultado obtenido en el experimento y $R_x$ se convierte en el espacio muestral del experimento.
+    
+\end{itemize}
+\vspace{0,3cm}
+
+{En el primer caso, el experimento termina, de hecho, con la observación de s. La evaluación de X(s) se estima como algo que se hace posteriormente y que no se afecta por la aleatoriedad de $\epsilon$. En el segundo caso, se considiera que el experimento no está terminado hasta que el número X(s) se ha calculado y se tiene así el espacio muestral $R_x$, como resultado. Al estudiar variables aleatorias estamos más interesados respecto a los valores que toma X que a su forma funcional. Por lo tanto, en muchos casos ignoraremos por completo el espacio muestral sobre el cual se puede definir X. }
+\vspace{0,5cm}
+
+\begin{center}
+    \bf{Ejemplos págs 71-72}
+\end{center}
+\vspace{1cm}
+
+{En general nos referiremos a las variables aleatorias con letras mayúsculas (X,Y,Z) y a sus valores con letras minúsculas (x,y,z).}
+\vspace{0,5cm}
+\newpage
+{\bf Definición.} {Sea $\epsilon$ un experimento y S su espacio muestral. Sea X una variable aleatoria definida en S y sea $R_x$ su recorrido. Sea B un evento respecto a $R_x$; esto es, $B\subset R_x$ y sea A un evento respecto a S definido como:}
+\vspace{0,3cm}
+
+\begin{center}
+    $A=\{s\in S|X(s) \in B\}$
+\end{center}
+\vspace{0,3cm}
+
+{En palabras, A consta de todos los resultados en S para los cuales X(s) $\in B$. En este caso decimos que A y B son {\bf eventos equivalentes.} }
+\vspace{0,5cm}
+
+{De manera más informal, A y B son eventos equivalentes siempre que ocurran juntos. Es importante destacar que en nuestra definición de eventos equivalentes, A y B están asociados con espacios muestrales diferentes.}
+\vspace{0,5cm}
+
+\begin{center}
+    \bf{Ejemplo pág. 74}
+\end{center}
+\vspace{0,5cm}
+
+{\bf Definición.} {Sea B un evento en el recorrido $R_x$, entonces definimos P(B) como:}
+\vspace{0,3cm}
+
+\begin{center}
+    $P(B) = P(A)$, donde $A=\{s\in S|X(s) \in B\}$
+\end{center}
+\vspace{0,3cm}
+
+{En palabras, definimos P(B) igual a la probabilidad del evento $A\subset S$. Por tanto, la definición anterior hace posible asignar probabilidades a eventos asociados con $R_x$ en términos de las probabilidades definidas en S.}
+\vspace{1cm}
+\begin{center}
+    \bf{Ejemplo pág. 75}
+\end{center}
+
+\vspace{2cm}
+
+
+
+{\Large\bf Tips para entender mejor} \\\\\\\
+{Puesto que en la formulación de la ecuación los eventos A y B se refieren a espacios muestrales diferentes, en realidad deberíamos usar una notación diferente cuando nos referimos a las probabilidades definidas en S y para las definidas en $R_x$, por ejemplo, algo como P(A) y $P_x$(B). Sin embargo,
+no haremos esto sino que continuaremos escribiendo simplemente P(A) y P(B). El contexto dentro del cual aparezcan estas expresiones hará evidente la interpretación}
+\vspace{1cm}
+
+{ Las probabilidades asociadas con eventos en el espacio muestra1 S (original) están en un sentido, determinadas por “fuerzas que escapan a nuestro control” o, como se dice algunas veces “por naturaleza”. Cuando introducimos una variable aleatoria X y su recorrido asociado $R_x$, {\bf inducimos} probabilidades sobre los eventos asociados con Rx que se determinan estrictamente si las posibilidades asociadas con los eventos en S están especificadas. }
+\vspace{0,3cm}
+
+\newpage
+
+\section{Variables aleatorias discretas}
+\vspace{0,5cm}
+{\bf Ojo... hay que entender los conceptos, los nombres no son intuitivos.}
+\vspace{0,3cm}
+
+{\bf Definición.} {Sea X una variable aleatoria. Si el número de valores posibles de X (esto es, $R_x$, el recorrido) es finito o infinito numerable, llamamos a X una variable aleatoria discreta.}
+\vspace{0,3cm}
+\begin{center}
+    \bf{Ejemplo pág. 76}
+\end{center}
+\vspace{0,5cm}
+
+{\bf Definición} {Sea X una variable aleatoria discreta. Con cada resultado posible $x_i$ asociamos un número p($x_i$) = P(X = $x_i$), llamado probabilidad de $x_i$. Los números p($x_i$), i = 1,2,. . . deben satisfacer las condiciones
+siguientes: }
+
+\begin{itemize}
+    \item $p(x_i) > 0 \ \forall_i $
+    \item $\sum_i^\infty p(x_i) = 1$.
+\end{itemize}
+\vspace{0,5cm}
+
+{La función p que antes se definió, se llama {\bf función de  probabilidad} (o función de probabilidad puntual) de la variable aleatoria X. La colección de pares ($x_i$,p($x_i$)), i = 1,2,. . . , se la llama {\bf distribución de probabilidad de X}}.
+\vspace{0,5cm}
+
+{Sea B un evento asociado con la variable aleatoria X. Esto es, B $\subset R_x$. Específicamente, supongamos que B = \{$x_{i_1},x_{i_2},...$\}. Por lo
+tanto,}
+\vspace{0,3cm}
+
+\begin{center}
+    $P(B) = P[s\in S|X(s) \in B] = P[s\in S|X(s) = x_{i_j}, j = 1,2,...] = \sum_j^\infty p(x_{i_j})$
+\end{center}
+\vspace{0,2cm}
+
+{En palabras, la probabilidad de un evento B es igual a la suma de las probabilidades de los resultados individuales asociados con B. }
+\vspace{1cm}
+
+{\bf Observaciones.}
+\vspace{0,5cm}
+
+{ Si X toma un número infinito numerable de valores, entonces es imposible tener todos los resultados igualmente probables, porque quizá no podamos satisfacer la condición si hemos de tener p($x_i$) = c para toda i. \\\\
+En cada intervalo finito habrá cuando mucho un número finito de valores posibles de X. Si uno de esos intervalos no contiene ninguno de los valores posibles, le asignamos probabilidad cero. Esto es, si $R_x$ = \{$x_1,x_2,...,x_n$\} y si
+ningún $x_i\in [a,b]$ entonces P[a $\leq$ X $\leq$ b] = 0. }
+\vspace{2cm}
+\begin{center}
+    \bf{Ejemplo pág. 78-79}
+\end{center}
+\vspace{0,5cm}
+
+\newpage
+
+\section{Características de las variables aleatorias}
+\vspace{0,5cm}
+
+\subsection{El valor esperado de una variable aleatoria}
+\vspace{0,5cm}
+
+{En los modelos matemáticos no deterministas o aleatorios que hemos considerado, los parámetros pueden usarse para señalar la distribuci6n de probabilidades. Con cada distribución de probabilidades podemos asociar ciertos parámetros que dan información valiosa acerca de la distribución (tal como la pendiente de una recta proporciona una
+información útil acerca de la relación lineal que representa).}
+\vspace{0,3cm}
+
+\begin{center}
+    \bf Ejemplo 7.3 pág. 155
+\end{center}
+\vspace{0,3cm}
+
+{\bf Definición.} {Sea X una variable aleatoria discreta con valores posibles $x_1,x_2,...,x_n,...$ y sea $p(x_i) = P(X = x_i), i = 1,2,...,n,...$. Entonces el {\bf valor esperado} de X (o esperanza matemática de X), que se denota con E(X), se define como }
+\vspace{0,3cm}
+
+\begin{center}
+    $E(X) = \sum_{i=1}^\infty x_ip(x_i) $,
+\end{center}
+\vspace{0,3cm}
+
+{si la serie converge absolutamente, es decir, si $\sum_{i=1}^\infty |x_i|p(x_i) \ < \ \infty$. Este número se designa como {\bf valor promedio} de X. }
+\vspace{0,3cm}
+
+{Cabe destacar que E(x) es un número (parámetro) asociado con una distribución de probabilidades teórica (recomendado leer observaciones pág 156).}
+\vspace{0,3cm}
+
+\begin{center}
+    \bf Ejemplo 7.4 pág. 157
+\end{center}
+\vspace{0,3cm}
+
+\vspace{0,5cm}
+
+\subsection{Propiedades del valor esperado}
+\vspace{0,5cm}
+
+{\bf Propiedades}
+\begin{itemize}
+    \item  Si X = C, donde C es una constante, entonces E(X) = C.
+    \item Supongamos que C es una constante y X es una variable aleatoria. Entonces, E(CX) = CE(X).
+    \item Sea (X, Y) una variable aleatoria bidimensional con una distribución de probabilidades conjunta. Sean Z = Hl(X, Y)
+y T.V = Hz(X, Y). Entonces, E(Z + W) == E(2) + E(W). PARA UNIDAD 6.
+    \item Sean X y Y dos variables aleatorias cualesquiera. Entonces, E(X + Y) = E(X) + E(Y). 
+    \item Sean $X_1,X_2,...,X_n$ n variables aleatorias. \\\\  Entonces, $E(X1+X_2+...+X_n) = E(X_1) + E(X_2) + ... + E(X_n)$ 
+    \item Sea (X,Y) una variable aleatoria bidimensional y supongamos que X e Y son independientes. Entonces, E(XY) = E(X)E(Y). PARA UNIDAD 6.
+    
+\end{itemize}
+\vspace{0,3cm}
+
+{Todas las demostraciones se encuentran entre las págs 169 y 171.}
+\vspace{0,3cm}
+
+{Supongamos que para una variable aleatoria X encontramos que E(X) es igual a 2. Es preciso que no se atribuya más importancia a esta información que la justificada. Significa sencillamente, que si consideramos un gran número de valores de X, 
+digamos $x_1,x_2,...,x_n$, y los promediamos, este resultado estará cercano a 2 si n es grande}
+
+\newpage
+
+\subsection{La varianza de una variable aleatoria}
+\vspace{0,3cm}
+
+{Supóngase que X representa la duración de una bombilla que se recibe de un fabricante, y que E(X) = 1000 horas. Esto podría significar una de varias posibilidades. Podría significar que se espera que la mayor parte de las bombillas dure entre 900 y 1100 horas. También podría significar que las bombillas que se entregan son de dos tipos diferentes: alrededor de la mitad son de muy alta calidad y con duración de casi 1300 horas, mientras que la otra mitad son de muy mala calidad y tienen una duración de cerca de 700
+horas.}
+\vspace{0,3cm}
+
+{Hay una necesidad obvia de presentar una medida cuantitativa que distinga entre estas situaciones.}
+\vspace{0,3cm}
+
+{\bf Definición} {Sea X una variable aleatoria. Definamos la {\bf varianza} de X, que se denota con V(X) o $\sigma^2_X$ como sigue: }
+\begin{center}
+    $V(X) = E [X - E(X)]^2$
+\end{center}
+\vspace{0,3cm}
+
+{La raíz cuadrada positiva de V(X) se llama {\bf desviación estándar} de X y se designa con $\sigma_X$. }
+\vspace{1cm}
+
+{El cálculo de  V(X) se simplifica con la ayuda del resultado siguiente:}
+\vspace{2cm}
+
+{\bf Teorema.} {$V(X) = E(X^2) - [E(X)]^2 $.}
+\vspace{0,5cm}
+
+{\bf Demostración.}
+\vspace{1cm}
+\begin{center}
+    $V(X) =  E[X - E(X)]^2$
+    
+\begin{itemize}
+    \item [$\iff$ ]
+\end{itemize}
+    $E\{X^2 - 2XE(X) + E(X)^2\}$
+    
+\begin{itemize}
+    \item [$\iff$ ]
+\end{itemize}
+    
+    $E(X^2) - E(2XE(X)) + E(E(X)^2)$
+    
+\begin{itemize}
+    \item [$\iff$ ]
+\end{itemize}
+
+    $E(X^2) - 2 E(X) E(X) + E(X)^2  $
+
+\begin{itemize}
+    \item [$\iff$ ]
+\end{itemize}
+
+    $E(X^2) - E(X)^2 $
+\end{center}
+\vspace{2cm}
+\begin{center}
+    \bf Ejemplos págs 177-179
+\end{center}
+\vspace{0,5cm}
+
+\newpage
+
+\subsection{Propiedades de la varianza de una variable aleatoria}
+\vspace{2cm}
+
+{\bf Propiedades}
+\vspace{0,3cm}
+\begin{itemize}
+    \item Si C es una constante, $V(X+C) = V(X)$
+    \item Si C es una constante, $V(XC) = C^2V(X)$
+    \item Sea (X, Y) es una variable aleatoria bidimensional, y si X y Y son independientes.\\\\ Entonces V(X + Y) = V(X) + V(Y). PARA UNIDAD 6
+    \item Sean $X_1,X_2,...,X_n$, n variables aleatorias independientes.\\\\  
+    Entonces, $V(X_1+X_2+...+X_n) = V(X_1) + ... + V(X_n)$
+    
+\end{itemize}
+\vspace{3cm}
+\begin{center}
+    \bf Demostracioens y ejemplos págs 179-182
+\end{center}
+\vspace{6cm}
+
+{Tal como en los modelos deterministas, en los cuales ciertas relaciones funcionales desempeñan un papel importante (tales como lineales, cuadráticas, exponenciales, trigonométricas, etc..), al elaborar modelos no deterministas para fenómenos observables, también encontramos que ciertas distribuciones de probabilidades aparecen más a menudo que otras. Una razón de esto es que, como en el caso determinista, algunos modelos matemáticos relativamente simples parecen ser capaces de describir un gran número de fenómenos.}
+\vspace{0,5cm}
+
+{Es por esto que estudiaremos alguna de ellas en los siguientes apartados ...}
+
+\newpage
+
+\section{La distribución binomial}
+\vspace{1,5cm}
+\begin{center}
+    \bf Ejemplo ilustrador pág 80
+\end{center}
+\vspace{1,5cm}
+
+{\bf Definición.} {Consideremos un experimento $\epsilon$ y sea A un evento asociado con $\epsilon$. Supongamos que P(A) = p y, por lo tanto, P($A^C$) = 1 - p. Consideremos n repeticiones independientes de $\epsilon$. Por lo tanto, el espacio muestral consiste en todas las sucesiones posibles \{$a_1,a_2,...,a_n$\}, donde cada $a_i$ es A o $A^C$, según A o $A^C$ ocurra en la i-ésima repetición de $\epsilon$. (Hay $2^n$ de tales sucesiones). Aún más, supongamos que P(A) = p es el mismo para todas las repeticiones. Definamos la variable aleatoria X como sigue:
+X = número de veces que ocurrió el evento A. Llamamos a X una variable aleatoria binomial con los parámetros n y p. Sus valores posibles obviamente son 0,1,2,. . . , n. (Decimos en forma equivalente que X tiene una distribución bminomial-$X\sim Bi(n,p)$-.) Las repeticiones individuales de $\epsilon$ se llamaran ensayos de Bernoulli.}
+
+\vspace{1,5cm}
+
+{\bf Teorema.} {Sea X una variable binomial con base en n repeticiones. Entonces}
+\vspace{0,3cm}
+
+\begin{center}
+    P(X = k) = $(_k^n)p^k(1-p)^(n-k)$, k = 0,1,...,n.
+\end{center}
+\vspace{0,3cm}
+
+{\bf Demostración pág 82 -recomendable de leer-}
+\vspace{0,3cm}
+
+{\bf Teorema.} {Sea X una variable aleatoria distribuida binomialmente con parámetro p, con base en n repeticilones de un experimento.
+Entonces }
+\begin{center}
+    $E(x) =np$
+\end{center}
+\vspace{0,3cm}
+
+{\bf Demostración pág. 157}
+\vspace{1cm}
+
+{\bf Análisis de varianza pág. 181}
+\vspace{0,5cm}
+
+{\bf Varianza:} {V(X) = np (1-p)}
+
+\newpage
+
+\section{La distribución de Poisson}
+\vspace{1cm}
+
+{\bf Definición.} {Sea X una variable aleatoria que toma los valores posibles: $0,1,...,n,...$, Si}
+\begin{center}
+    $P(X=k) = \frac{e^{-\alpha}\alpha^k}{k!},$\ \ \ k = $0,1,...,n,...$,
+\end{center}
+{decimos que X tiene una {\bf distribución} de Poisson con parámetro $\alpha >0$}
+
+\vspace{0,5cm}
+
+{\bf Teorema} {Si X tiene una distribución de Posson con parámetro $\alpha,$ entonces $E(X) = \alpha \ y \ V(X) = \alpha$}
+\vspace{0,5cm}
+{\bf Demostración pág. 210}
+
+\vspace{0,5cm}
+
+\subsection{La distribución de Poisson como aproximación de la distribución Binomial.}
+\vspace{1cm}
+
+
+{\bf Análisis detallado págs 211-213}
+\vspace{0,5cm}
+
+{\bf Teorema.} {Sea X una variable aleatoria distribuida binomialmente con parámetro p (con base en $n$ repeticiones del experimento). Esto es,}
+\begin{center}
+    $P(X=k) = (^n_k)p^k(1-p)^{n-k}$
+\end{center}
+\vspace{0,3cm}
+
+{Supóngase que cuando $n ->\infty,np=\alpha$, o equivalentemente, cuando $n->\infty,p->0/np->\alpha$. En estas condiciones tenemos}
+\begin{center}
+    \[ \lim_{n->\infty} P(X=k) = \frac{e^{-\alpha}\alpha^k}{k!}\] 
+\end{center}
+\vspace{0,3cm}
+{la distribución de Poisson con parámetro $\alpha $}
+\vspace{1cm}
+
+{\bf Observaciones.} 
+\begin{itemize}
+    \item {El teorema anterior esencialmente dice que podemos aproximar la probabilidades binomiales con las probabilidades de la distribución de Poisson siempre que n sea grande y p pequeña.}
+    
+    \item {La distribución binomial se caracteriza por dos parfimetros, n y p, mientras que la distribución de Poisson se caracteriza por un solo parámetro, $\alpha$ = np, que {\bf representa al número esperado de éxitos por unidad de tiempo (o por unidad (le espacio en algún otro caso)}. Este parámetro también se designa como {\bf intensidad de la distribución}. Es importante distinguir entre el número esperado de ocurrencias por unidad de tiempo y el número esperado de ocurrencias en el tiempo especificado.}
+\end{itemize}
+\vspace{0,5cm}
+\begin{center}
+    \bf Ejemplos págs 214-217
+\end{center}
+\vspace{0,5cm}
+
+\newpage 
+
+\section{La distribución Geométrica}
+\vspace{1cm}
+
+{Supóngase que efectuamos un experimento $\epsilon$ y que estamos interesados sólo en la ocurrencia o no ocurrencia de algún evento A. Supóngase, como en la presentación de la distribución binomial, que repetidamente efectuamos $\epsilon$, que las repeticiones son independientes y que en cada una de ellas P(A) = p y P($A^c$) = 1 - p = q permanecen constantes. Supóngase que repetimos el experimento hasta que A ocurre por primera vez. (Aquí nos apartamos de las hipótesis que conducen a la distribución binomial. Allí el número de repeticiones era predeterminado,
+mientras que aquí es una variable aleatoria.) \\ \\
+Definamos la variable aleatoria X como el número de repeticiones necesarias hasta incluir la primera ocurrencia de A. Así X toma los valores    1,2,...; puesto que X=k si y sólo si  las primeras (k - 1) repeticiones de $\epsilon$ producen $A^c$, mientras que la k-ésima da por resultado A, tenemos }
+
+\begin{center}
+    \[P(X=k) = q^{k-1}p, \ \ k=1,2,...\]
+\end{center}
+\vspace{0,3cm}
+
+{Se dice que una variable aleatoria con una distribución de probabilidades de esta forma tiene una {\bf distribución geométrica}. }
+\vspace{1.5cm}
+
+{\bf Teorema} {Si X tiene una distribución geométrica, entonces}
+\begin{center}
+    $E(X)=\frac{1}{p}$ y $V(X)= \frac{q}{p^2}$
+\end{center}
+\vspace{0,3cm}
+
+{El hecho de que E(X) sea el recíproco de p es interesante intuitivamente, puesto que dice que con valores pequeños de p = P(A) se necesitan muchas repeticiones para que ocurra A (valor E(X) muy grande). }
+
+\begin{center}
+    \bf Análisis pág 225
+\end{center}
+\vspace{0,5cm}
+
+\begin{center}
+    \bf Ejemplos págs 225-226
+\end{center}
+\vspace{1,5cm}
+
+{\bf Teorema.} {Supóngase que X tiene una distribución geométrica. Entonces para dos enteros positivos cualesquiera s y t, }
+\begin{center}
+    $P(X\geq s+t| X > s) = P(X\geq t)$
+\end{center}
+\vspace{0,5cm}
+
+{El teorema anterior indica que la distribución geométrica “no tiene memoria” en el sentido siguiente. Supongamos que el evento A no ha ocurrido durante las primeras repeticiones de $\epsilon$. Entonces, la probabilidad
+de que no ocurra durante las póximas t repeticiones es la misma que la probabilidad de que no ocurra durante las primeras t repeticiones. En otras palabras, la información de ningún éxito es “olvidada” en lo que se refiere a cálculos
+subsecuentes. \\\\}
+
+\begin{center}
+    \bf Ejemplo pág 227
+\end{center}
+\vspace{0,5cm}
+
+
+\newpage
+
+\section{La distribución Pascal}
+\vspace{1,5cm}
+
+{Si planteamos la siguiente cuestión, surge una generalización obvia de la distribución geométrica. Supongamos que un experimento se continúa hasta que un evento particular A ocurre por r-ésima vez. Si}
+\begin{center}
+    P(A) = p, P($A^c$)= q = 1-p
+\end{center}
+\vspace{0,3cm}
+
+{en cada una de las repeticiones, definimos la variable aleatoria Y como
+sigue. \\
+
+Y es el número de repeticiones necesarias para que A ocurra exactamente r veces. Necesitamos la distribución de probabilidades de Y. Debe ser evidente que si r = 1, Y tiene una distribución geometrica.}
+\vspace{0,2cm}
+
+{Ahora Y = k si y sólo si A ocurre en la k-ésima repetición y precisamente A ocurrió (r - 1) veces en las (k - 1) repeticiones previas. La probabilidad de este evento es simplemente $p(^{k-1}_{r-1})p^{r-1}q^{k-r}$, puesto que lo que sucede en las primeras (k - 1) repeticiones es independiente de lo que sucede en la k-ésima repetición. Luego}
+
+\begin{center}
+    $P(Y=k) = (^{k-1}_{r-1}) p^r q^{k-r}$
+\end{center}
+\vspace{0,3cm}
+
+{Una variable aleatoria que tenga la distribución de probabilidades descripta anteriormente se la conoce como que tiene una {\bf distribución Pascal}}.
+\vspace{1,5cm}
+
+{\bf Teorema.} {Si Y tiene una distribución de Pascal, entonces}
+\begin{center}
+    $E(Y)=\frac{r}{p}$ y $V(Y)=\frac{rq}{p^2}$ 
+\end{center}
+\vspace{0,3cm}
+
+{De esta demostración podemos observar que si X es una distribución geométrica, y sea Y = X ocurre r veces, entonces Y es una distribución pascal}
+
+\vspace{1,5cm}
+\begin{center}
+    \bf Ejemplo pág 229
+\end{center}
+\vspace{0,5cm}
+
+\newpage
+
+\section{Relación entre las distribuciones Binomial y Pascal}
+\vspace{1,5cm}
+
+{Sea X una distribución binomial con parámetros n y p (es decir, X = número de éxitos en n ensayos de Bernoulli con P(éxito) = p). Sea Y una distribución de Pascal con parámetros r y p (es decir, Y = número de ensayos de Bernoulli necesarios para obtener r éxitos con P(éxito) = p).
+Por tanto, se establece la siguiente relación: }
+\vspace{0,3cm}
+
+\begin{center}
+    \item [a)] $P(Y \leq n) = P(X \geq r)$
+    \item [b)] $P(Y > n) = P(X < r)$
+\end{center}
+\vspace{0,3cm}
+
+\begin{enumerate}
+    \item Si hay r o más éxitos en los primeros n ensayos, entonces es necesario n o menos ensayos para obtener los primeros r éxitos. 
+    \item Si hay menos que r éxitos en los primeros n ensayos, entonces se necesitan más de n ensayos para obtener r éxitos. 
+\end{enumerate}
+\vspace{1,5cm}
+
+{\bf Observación.} { las propiedades anteriores hacen posible el empleo de la distribución binomial tabulada para evaluar probabilidades asociadas con la distribución de Pascal}
+\vspace{1cm}
+
+\begin{center}
+    \bf Ejemplo observación a) pág 230
+\end{center}
+\newpage
+
+\section{La distribución Hipergeométrica}
+\vspace{1,5cm}
+
+{Supóngase que tenemos un lote de N artículos, de los cuales r son defectuosos y (N - r) son no defectuosos. Supóngase que escogemos al azar n artículos del lote (n $\leq$ N), sin reposición. Sea X el número de artículos defectuosos encontrados. Puesto que X = k si y sólo si
+obtenemos exactamente k artículos defectuosos (de los r defectuosos del lote) y exactamente (n - k) no defectuosos [de los (N - T) no defectuosos
+del lote], tenemos}
+\vspace{0,5cm}
+\begin{center}
+    $P(X=k) = \frac{(^r_k) (^{N-r}_{n-k})}{(^N_n)}$,  k = 0,1,2,...
+\end{center}
+\vspace{0,5cm}
+
+{Se dice que una variable aleatoria discreta que tiene esta distribución de probabilidades tiene una {\bf distribución hipergeométrica}.}
+
+\begin{center}
+    \bf Ejemplo pág. 231
+\end{center}
+\vspace{1,5cm}
+
+{\bf Teorema.} {Sean X una distribución hipergeométrica y p = $\frac{r}{N}$, q = 1-p. Entonces tenemos }
+\vspace{0,5cm}
+
+\begin{itemize}
+    
+    \item [a)] $E(X)$ = np;
+    \item [b)] $V(X) = npq\frac{N-n}{N-1}$;
+    \item [c)] $P(X=k) \simeq (^n_k)p^k(1-p)^{n-k} $ = np;
+\end{itemize}
+\vspace{1cm}
+
+{\bf Observación} {La propiedad c) del teorema establece que si el tamaño N del lote es suficientemente grande, la distribución de X puede ser aproximada por la distribución binomial. Esto es razonablemente intuitivo. La distribución binomial se aplica cuando muestreamos con sustitución (puesto que en ese caso la probabilidad de obtener un artículo defectuoso permanece constante), mientras que la distribución hipergeométrica se aplica cuando muestreamos sin sustitución. Si el tamaño del lote es grande, no hay gran diferencia si un articulo en particular se devuelve o no al lote antes de escoger el siguiente. La propiedades simplemente una expresión mntemática de ese hecho. Nótese también que el valor esperado de una variable aleatoria hipergeométrica ,Y, es el mismo que el de la variable aleatoria correspondiente distribuida binomialmente, mientras que la varianza de X es un poco más pequeña que la correspondiente en el caso binomial. El “término de corrección” (N - n)/(N - 1) es aproximadamente igual a 1, para un N grande. }
+\vspace{0,3cm}
+\begin{center}
+    \bf Ejemplo observación c) pág. 232
+\end{center}
+\vspace{1,5cm}
+
+\newpage
+
+\section{La distribución Multinomial}
+\vspace{1,5cm}
+
+
+\end{document}
