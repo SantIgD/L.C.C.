@@ -343,7 +343,7 @@ X = número de veces que ocurrió el evento A. Llamamos a X una variable aleator
 \vspace{0,3cm}
 
 \begin{center}
-    P(X = k) = $(_k^n)p^k(1-p)^(n-k)$, k = 0,1,...,n.
+    P(X = k) = $(_k^n)p^k(1-p)^{(n-k)}$, k = 0,1,...,n.
 \end{center}
 \vspace{0,3cm}
 
@@ -397,9 +397,9 @@ Entonces }
 \end{center}
 \vspace{0,3cm}
 
-{Supóngase que cuando $n ->\infty,np=\alpha$, o equivalentemente, cuando $n->\infty,p->0/np->\alpha$. En estas condiciones tenemos}
+{Supóngase que cuando $n \rightarrow\infty,np=\alpha$, o equivalentemente, cuando $n\rightarrow\infty,p\rightarrow0/np\rightarrow\alpha$. En estas condiciones tenemos}
 \begin{center}
-    \[ \lim_{n->\infty} P(X=k) = \frac{e^{-\alpha}\alpha^k}{k!}\] 
+    \[ \lim_{n\rightarrow\infty} P(X=k) = \frac{e^{-\alpha}\alpha^k}{k!}\] 
 \end{center}
 \vspace{0,3cm}
 {la distribución de Poisson con parámetro $\alpha $}
@@ -564,7 +564,7 @@ del lote], tenemos}
     
     \item [a)] $E(X)$ = np;
     \item [b)] $V(X) = npq\frac{N-n}{N-1}$;
-    \item [c)] $P(X=k) \simeq (^n_k)p^k(1-p)^{n-k} $ = np;
+    \item [c)] $P(X=k) \simeq (^n_k)p^k(1-p)^{n-k} $
 \end{itemize}
 \vspace{1cm}
 
