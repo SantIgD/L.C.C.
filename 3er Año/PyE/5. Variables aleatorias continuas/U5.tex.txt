@@ -52,9 +52,9 @@
 \vspace{1,5cm}
 \section{Variable aleatoria continua}
 
-{Supongamos que el recorrido de Xestá formado por un gran número finito de valores, por ejemplo, todos los valores x en el intervalo $ 0 \leq 1$, de la forma 0,0.01,0.02,...,0.98,0.99,1. Con cada uno de estos valores asociados a un número no negativo p($x_i$) = P(X=$x_i$), i = 1,2,..., cuya suma es igual a 1. \\ 
+{Supongamos que el recorrido de Xestá formado por un gran número finito de valores, por ejemplo, todos los valores x en el intervalo $[0,1]$, de la forma 0,0.01,0.02,...,0.98,0.99,1. Con cada uno de estos valores asociados a un número no negativo p($x_i$) = P(X=$x_i$), i = 1,2,..., cuya suma es igual a 1. \\ 
 
-Matemáticamente podría ser más sencillo idealizar la anterior descripción probabilística de X al suponer que X puede tomar todos los valores posbiles, $0\leq 1$. Si hacemos esto, ¿Qué le sucede a las probabilidades puntuales $p(x_i)$? Puesto que los valores posibles de X no son contables, en realidad no se puede hablar de un i-ésimo valor de X, y por tanto, p($x_i$) pierde significado.  \\ 
+Matemáticamente podría ser más sencillo idealizar la anterior descripción probabilística de X al suponer que X puede tomar todos los valores posbiles, $[0,1]$. Si hacemos esto, ¿Qué le sucede a las probabilidades puntuales $p(x_i)$? Puesto que los valores posibles de X no son contables, en realidad no se puede hablar de un i-ésimo valor de X, y por tanto, p($x_i$) pierde significado.  \\ 
 
 Lo que haremos es sustituir la función p, definida sólo para $X_1,X_2,...,$ por una función $f$ definida (en el contexto presente) para todos los valores de x, $0 \leq x \leq 1$. Procederemos formalmente
 como sigue.}
@@ -84,7 +84,7 @@ como sigue.}
 \end{center}
 
 \begin{itemize}
-    \item [d] Si una función $f^*$ satisface que $\forall_x \ f^* \geq 0$, y $\int _{-\infty}^{+\infty}f(x)dx = K$, $f^*$ no es una fdp pero   
+    \item [d)] Si una función $f^*$ satisface que $\forall_x \ f^* \geq 0$, y $\int _{-\infty}^{+\infty}f(x)dx = K$, $f^*$ no es una fdp pero   
 \end{itemize}
 
 \begin{center}
@@ -151,8 +151,7 @@ como sigue.}
 
 \vspace{0,5cm}
 
-{La función de distribución acumulativa es importante por varias razones. Esto es particularmente cierto cuando tratamos con una variable aleatoria continua, porque en este caso no podemos estudiar la conducta probabilística de X al calcular P(X = x). Esa probabilidad siempre es igual a cero en el caso continuo. Sin embargo, podemos inquirir acerca
-de P(X < z) y, corno lo demostramos en el próximo teorema, obtener la fdp de X. }
+{La función de distribución acumulativa es importante por varias razones. Esto es particularmente cierto cuando tratamos con una variable aleatoria continua, porque en este caso no podemos estudiar la conducta probabilística de X al calcular P(X = x). Esa probabilidad siempre es igual a cero en el caso continuo. Sin embargo, podemos inquirir acerca de P(X $<$ z) y, como lo demostramos en el próximo teorema, obtener la fdp de X. }
 \vspace{1cm}
 
 {\bf Teorema}
@@ -233,7 +232,7 @@ de P(X < z) y, corno lo demostramos en el próximo teorema, obtener la fdp de X.
 \section{La distribución exponencial}
 \vspace{1,5cm}
 
-{\bf Definición.} {Se dice que una variable aleatoria continua X que toma todos los valores no negativos tiene una distribucidn exponencial con parámetro $\alpha > 0$ si su fdp está dada por} 
+{\bf Definición.} {Se dice que una variable aleatoria continua X que toma todos los valores no negativos tiene una distribucion exponencial con parámetro $\alpha > 0$ si su fdp está dada por} 
 \vspace{0,3cm}
 \begin{center}
     $f(x)= \left\{ \begin{array}{lcc}
@@ -251,7 +250,7 @@ descripción de una gran clase de fenómenos, especialmente en el área de la te
 {\bf Propiedades de la distribución exponencial}
 \vspace{0,5cm}
 \begin{itemize}
-    \item [a)] La fda F de la distribucicin exponencial está dada por
+    \item [a)] La fda F de la distribucion exponencial está dada por
 \end{itemize}
 
 \begin{center}
@@ -307,10 +306,10 @@ descripción de una gran clase de fenómenos, especialmente en el área de la te
 {\bf Definición.} {La variable aleatoria X, que toma todos los valores reales, $-\infty < x < \infty$, tiene una distribución normal (o gaussiana) si su fdp es de la forma}
 \vspace{0,5cm}
 
-\[f(x) = \frac{1}{\sqrt{2\phi}\sigma}exp\left( -\frac{1}{2}\left[\frac{x-\mu}{\sigma}\right]^2\right), \ \ -\infty < x < \infty\]
+\[f(x) = \frac{1}{\sqrt{2\pi}\sigma}exp\left( -\frac{1}{2}\left[\frac{x-\mu}{\sigma}\right]^2\right), \ \ -\infty < x < \infty\]
 \vspace{0,5cm}
 
-{Los parámetros $\sigma \ y \ \mu$ deben satisfacer las condiciones $-\infty < \mu < \infty, \ \sigma > 0$. Si una variable aleatoria continua X tiene una fdp de la forma descripta anteriormente, decimos que X es una distribución $X\sim N(\mu,\sigma^2)$. [Con fkecuencia usamos la notación exp (t) para representar $e^t$.] }
+{Los parámetros $\sigma \ y \ \mu$ deben satisfacer las condiciones $-\infty < \mu < \infty, \ \sigma > 0$. Si una variable aleatoria continua X tiene una fdp de la forma descripta anteriormente, decimos que X es una distribución $X\sim N(\mu,\sigma^2)$. [Con frecuencia usamos la notación exp (t) para representar $e^t$.] }
 \vspace{0,5cm}
 
 {La distribución normal sirve como una aproximación excelente a una gran cantidad de distribuciones que tienen importancia práctica. Aún más, esta distribución tiene varias propiedades matemáticas apreciables que hacen posible deducir resultados teóricos notables.}
@@ -360,12 +359,12 @@ La fda de la distribución normal estandarizada se denotara consistentemente con
 {Podemos usar ahora la tabulacion de la funcion $\Phi$ con el objeto de evaluar $P(a \leq X \leq b)$, donde X tiene la distribucion estandarizada N(0,1), puesto que}
 \vspace{0,1cm}
 
-\[P(a \leq x \leq b) = \Phi(b) - \Phi(a).\]
+\[P(a \leq X \leq b) = \Phi(b) - \Phi(a).\]
 
 {De esta definicion es evidente que $\Phi(-x) = 1-\Phi(x)$.\\ \\}
 {La importancia particular de la tabulación anterior se debe al hecho de que si X tiene cualquier distribución normal $N(\mu,\sigma^2)$, la función tabulada $\Phi$ puede usarse para evaluar probabilidades asociadas con X. \\
 
-Simplemente usamos el teorema anterior para observar que si $x\sim N(\mu,\sigma^2)$, entonces $ Y = \frac{X-\mu}{\sigma}$ tiene distribucion N(0,1). Por lo tanto }
+Simplemente usamos el teorema anterior para observar que si $X\sim N(\mu,\sigma^2)$, entonces $ Y = \frac{X-\mu}{\sigma}$ tiene distribucion N(0,1). Por lo tanto }
 \vspace{0,5cm}
 
 \[P(a\leq X \leq b) = P\left(\frac{a-\mu}{\sigma}\leq Y \leq \frac{b-\mu}{\sigma}\right)\]
@@ -390,7 +389,7 @@ Simplemente usamos el teorema anterior para observar que si $x\sim N(\mu,\sigma^
 \section{\bf Funcion de una variable aleatoria}
 \vspace{0.5cm}
 
-{Supongamos que el radio X de la entrada de un tubo muy bien calibrado se considera como una variable aleatoria continua con fdp f. Sea A = $\piX^2$ el área de la sección de la entrada; entonces es evidente que, puesto que el valor de X es el resultado de un experimento aleatorio, también lo es el valor de A. Es decir, A es una variable aleatoria (continua), y
+{Supongamos que el radio X de la entrada de un tubo muy bien calibrado se considera como una variable aleatoria continua con fdp f. Sea A = $\pi X^2$ el área de la sección de la entrada; entonces es evidente que, puesto que el valor de X es el resultado de un experimento aleatorio, también lo es el valor de A. Es decir, A es una variable aleatoria (continua), y
 podríamos obtener su fdp, digamos g. Esperaríamos que, puesto que A es una función de X, la fdp g se puede derivar de alguna manera conociendo la fdp f. En este capítulo trataremos problemas de esta naturaleza. Antes de familiarizarnos con algunas técnicas específicas necesarias, formularemos los conceptos anteriores con mayor precisión.}
 
 \subsection{Eventos equivalentes}
@@ -418,11 +417,11 @@ podríamos obtener su fdp, digamos g. Esperaríamos que, puesto que A es una fun
 
 \newpage
 
-{\bf Definicion.} {Sean X una variable aleatoria definida en el espacio muestral S, $R_x$, el recorrido de X y H una función real, y consideremos la variable aleatoria Y = H(X) con recorrido $R_y$. Para cualquier evento $C \subset R_y$, deJinirnos P(C) como sigue: }
+{\bf Definicion.} {Sean X una variable aleatoria definida en el espacio muestral S, $R_x$, el recorrido de X y H una función real, y consideremos la variable aleatoria Y = H(X) con recorrido $R_y$. Para cualquier evento $C \subset R_y$, definimos P(C) como sigue: }
 
 \[P(C) = P[{x\in R_x : H(x) \in C}] = P[\{s\in S : H(X(s)) \in C\}] \]
 
-{En palabras, la probabilidad de un evento asociado con el recorrido de Y está definida como la probabilidad del evento equivalente (en terminos de X). ) La definición anterior hará posible calcular las probabilidades relacionadas con eventos con Y si conocemos la distribución de probabilidades de X y podemos determinar el evento equivalente en cuestión.}
+{En palabras, la probabilidad de un evento asociado con el recorrido de Y está definida como la probabilidad del evento equivalente (en terminos de X). La definición anterior hará posible calcular las probabilidades relacionadas con eventos con Y si conocemos la distribución de probabilidades de X y podemos determinar el evento equivalente en cuestión.}
 
 \begin{center}
     \bf Ejemplo p 107-108
@@ -513,7 +512,7 @@ obtener E(Y) sólo a partir del conocimiento de la distribución de probabilidad
     \[E(Y) = E(H(X)) = \sum_{i=1}^\infty H(x_i)p(x_i)\]
     
     \item [b)] Si X es una variable aleatoria continua con fdp f, tenemos
-    \[E(Y) = E(H(X)) = \int_{-\infty}^\infty H(x)p(x)dx\]
+    \[E(Y) = E(H(X)) = \int_{-\infty}^\infty H(x)f(x)dx\]
     
     \item [c)] Si X una variable aleatoria continua con fdp f y Y es discreta tenemos:
     \[E(Y) = \sum_{y\in R_y} yP_y(y)= \sum_{B\in im(H^{-1})} \int_B H(X)f_x(X)dx \]
