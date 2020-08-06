@@ -633,10 +633,57 @@ distribución binomial con parámetros n y p y si }
 
 \newpage
 
+\section{El teorema del límite central}
+\vspace{0,5cm}
+
+{Recordemos que la variable aleatoria X distribuida binomialmente se puede representar como la suma de las siguientes variables aleatorias independientes:}
+\vspace{1cm}
+
+$X_i= \left\{ \begin{array}{lcc}
+             1 &   si  & Ocurre \ exito \ en \ la \ i-esima \ repeticion \\
+             \\ 0 &  si & no\\
+             \end{array}
+   \right.$
+\vspace{1cm}
+
+{Por lo tanto, $X = X_1 + X_2 + .. . + X_n$. Para esta variable aleatoria hemos demostrado quc E(X) = np, V(X) = np(1 - p) y, además, que para una n grande, $(X - np)/\sqrt{np(1-p)}$ tiene la distribución aproximada N(0,1).}
+\vspace{0,5cm}
+
+{Si una variable aleatoria X se puede representar como una suma
+de n variables aleatorias independientes cualesquiera (satisfaciendo ciertas condiciones que son válidas en la mayor parte de las aplicaciones que veremos mas adelante), entonces esta suma, para una n suficientemente grande, está distribuida en forma aproximadamente normal. Este resultado notable se conoce como {\bf el teorema del límite central}. Una forma de este teorema se puede establecer como sigue}
+\vspace{0,5cm}
+
+{\bf Teorema del limite central.} {Sea $X_1, X_2, . . . ,X_n, . . .$ una sucesión de variables aleatorias independientes con $E(X_i) = \mu_i$ y $V(X_i) = \sigma_i^2, i = 1,2,. . .$ Sea $X = X_1 + X_2 + .. . + X_n$ entonces, en ciertas condiciones generales (que no se indicarán explícitamente aquí),}
+\vspace{0,5cm}
+
+\[Z_n = \frac{X-\sum_{i=1}^n\mu_i}{\sqrt{\sum_{i=1}^n\sigma^2_i}}\]
 
 
+{tiene aproximadamente la distribución N(0,1). Es decir, si $G_n$ es
+la fda de la variable aleatoria $Z_n$, tenemos $lim_{n\rightarrow\infty}\ G_n(z) = \Phi (z)$.}
 
+\vspace{0.5cm}
+{\bf Observaciones}
+\begin{itemize}
+    \item [a)] Este teorema representa una generalizacion obvia de la aproximación de DeMoivre-Laplace. Las variables aleatorias independientes $X_i$ que toman sólo los valores 1 y 0 han sido sustituidas por variables aleatorias que poseen cualquier clase de distribución (mientras tengan esperanza y varianza finitas). El hecho de que las $X_i$ pueden tener (esencialmente) cualquier clase de distribución y aun así la suma $X = X_1 + . . . + X_n$, puede ser aproximada por una variable aleatoria distribuida normalmente, representa la razón basica de la importancia de la distribucion normal en la teoría de probabilidad. En muchos problemas, la variable aleatoria que se considera se puede representar con la suma de n variables aleatorias independientes y, por tanto, su distribución puede aproximarse con la distribución normal.
+    
+    \item [b)] En otras palabras, los términos individuales en la suma contribuyen con una cantidad despreciable a la variacion de la suma y es muy improbable que cualquier tamaño individual haga una gran contribucion a la suma. (Parece que los errores de medida tienen esta característica. El error final puede ser representado como una suma de varias pequeñas contribuciones, ninguna de las cuales contribuye mucho al error completo.)
+    
+    \item [c)]  El teorema del límite central establece que los sumandos no necesitan ser distribuidos normalmente para aproximarse a la suma con una distribuci6n normal. 
+\end{itemize}
+\newpage
+
+{\bf Teorema.} {Sean $X_1, . . . , X_n$ n variables aleatorias independientes que tienen la misma distribución. Sean $\mu = E(X_i)$ y $\sigma^2 = V(X_i)$, la esperanza y la varianza común. Seal $S =\sum_{i=1}^n X_i$. Entonces, $E(S) = n\mu$ y $V(S) = n\sigma^2$ , y para una gran $n$ tenemos que $T_n = (S-n\mu)/\sqrt{n}\sigma$ tiene aproximadamente la distribución $N(0,1)$ considerando que $lim_{n\rightarrow \infty} \ P(T_n\leq t)= \Phi (t)$.} {\bf (D/p.334)}
+
+\vspace{0,5cm}
+\begin{center}
+    \bf Ejemplos p.335-338
+\end{center}
 
 
 \end{document}
+
+
+
+
 
