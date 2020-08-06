@@ -36,7 +36,7 @@
 \vfill
 {\Large Autor del resumen:\par}
 \vspace{1 cm}
-{\Large DEMAGISTRIS, Santiago Ignacio \par}
+{\Large Charles Chaplin \par}
 \vfill
 {\Large Julio 2020 \par}
 \end{titlepage}
