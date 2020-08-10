@@ -48,7 +48,7 @@
 \section{Noción general de una variable aleatoria}
 \vspace{0,5cm}
 
-{En muchas situaciones experimentales deseamos asignar un número real x a cada uno de los elementos S del espacio muestra1 S. Esto es:}
+{En muchas situaciones experimentales deseamos asignar un número real x a cada uno de los elementos s del espacio muestra1 S. Esto es:}
 \vspace{0,3cm}
 
 {\begin{center}
@@ -186,7 +186,7 @@ ningún $x_i\in [a,b]$ entonces P[a $\leq$ X $\leq$ b] = 0. }
 \subsection{El valor esperado de una variable aleatoria}
 \vspace{0,5cm}
 
-{En los modelos matemáticos no deterministas o aleatorios que hemos considerado, los parámetros pueden usarse para señalar la distribuci6n de probabilidades. Con cada distribución de probabilidades podemos asociar ciertos parámetros que dan información valiosa acerca de la distribución (tal como la pendiente de una recta proporciona una
+{En los modelos matemáticos no deterministas o aleatorios que hemos considerado, los parámetros pueden usarse para señalar la distribucion de probabilidades. Con cada distribución de probabilidades podemos asociar ciertos parámetros que dan información valiosa acerca de la distribución (tal como la pendiente de una recta proporciona una
 información útil acerca de la relación lineal que representa).}
 \vspace{0,3cm}
 
@@ -206,7 +206,7 @@ información útil acerca de la relación lineal que representa).}
 {si la serie converge absolutamente, es decir, si $\sum_{i=1}^\infty |x_i|p(x_i) \ < \ \infty$. Este número se designa como {\bf valor promedio} de X. }
 \vspace{0,3cm}
 
-{Cabe destacar que E(x) es un número (parámetro) asociado con una distribución de probabilidades teórica (recomendado leer observaciones pág 156).}
+{Cabe destacar que E(X) es un número (parámetro) asociado con una distribución de probabilidades teórica (recomendado leer observaciones pág 156).}
 \vspace{0,3cm}
 
 \begin{center}
@@ -316,7 +316,7 @@ horas.}
 \end{itemize}
 \vspace{3cm}
 \begin{center}
-    \bf Demostracioens y ejemplos págs 179-182
+    \bf Demostraciones y ejemplos págs 179-182
 \end{center}
 \vspace{6cm}
 
@@ -409,7 +409,7 @@ Entonces }
 \begin{itemize}
     \item {El teorema anterior esencialmente dice que podemos aproximar la probabilidades binomiales con las probabilidades de la distribución de Poisson siempre que n sea grande y p pequeña.}
     
-    \item {La distribución binomial se caracteriza por dos parfimetros, n y p, mientras que la distribución de Poisson se caracteriza por un solo parámetro, $\alpha$ = np, que {\bf representa al número esperado de éxitos por unidad de tiempo (o por unidad (le espacio en algún otro caso)}. Este parámetro también se designa como {\bf intensidad de la distribución}. Es importante distinguir entre el número esperado de ocurrencias por unidad de tiempo y el número esperado de ocurrencias en el tiempo especificado.}
+    \item {La distribución binomial se caracteriza por dos parametros, n y p, mientras que la distribución de Poisson se caracteriza por un solo parámetro, $\alpha$ = np, que {\bf representa al número esperado de éxitos por unidad de tiempo (o por unidad de espacio en algún otro caso)}. Este parámetro también se designa como {\bf intensidad de la distribución}. Es importante distinguir entre el número esperado de ocurrencias por unidad de tiempo y el número esperado de ocurrencias en el tiempo especificado.}
 \end{itemize}
 \vspace{0,5cm}
 \begin{center}
@@ -637,7 +637,7 @@ ser una función cuadrática de t. Lo importante es por supuesto que si debemos 
 
 \begin{itemize}
     \item [$A_1$] El número de partículas emitidas durante intervalos de tiempo {\bf no sobrepuestos} son variables aleatorias {\bf independientes}.
-    \item [$A_2$] Si $X_t$ se define como antes y si $Y_t$ es igual al número de partículas emitidas durante $[t_l, t_l + t]$, para cualquier $t_1 > 0$, las variables aleatorias $X_t$ y $Y_t$ tienen la misma distribución de probabilidndes. (En otras palabras, la {\bf distribución} del número de partículas emitidas durante cualquier intervalo {\bf depende sólo de la longitud del intervalo} y no de los puntos extremos.) 
+    \item [$A_2$] Si $X_t$ se define como antes y si $Y_t$ es igual al número de partículas emitidas durante $[t_1, t_1 + t]$, para cualquier $t_1 > 0$, las variables aleatorias $X_t$ y $Y_t$ tienen la misma distribución de probabilidndes. (En otras palabras, la {\bf distribución} del número de partículas emitidas durante cualquier intervalo {\bf depende sólo de la longitud del intervalo} y no de los puntos extremos.) 
     \item [$A_3$] $p_1(\Delta t)$ es igual aproximadamente a $\lambda \Delta t$, si $\Delta t$ es suficientemente pequeña, donde $\lambda$ es una constante positiva. Esto lo escribimos como $p_1(\Delta t) \sim \lambda \Delta t$ (Esta hipótesis expresa que si el intervalo es suficientemente pequeño, la probabilidad de obtener exactamente una emisión durante ese intervalo es directamente proporcional a la longitud del intervalo.). 
     \item [$A_4$] $\sum_{k=2}^\infty p_k(\Delta t) \sim 0$ (Esto implica que $p_k(\Delta t)\rightarrow 0, k \geq 2$). Esto significa que la probabilidad de obtener dos o más emisiones en un intervalo suficientemente pequeño es despreciable.
     \item [$A_5$] $A_0 = 0$, o de manera equivalente $P_0(0) = 1$. Esto equivale a una condición inicial para el modelo que estamos describiendo. 
@@ -666,10 +666,10 @@ ser una función cuadrática de t. Lo importante es por supuesto que si debemos 
 \end{center}
 \vspace{0,3cm}
 
-{Haciendo $\Delta t \rightarrow 0$, y observando que el lado izquierdo representa el cociente de la diferencia de la función $p_0$ y, por tanto, tiende a $p_0^'(t)$ (más precisamente, a la derivada por la derecha, puesto que $\Delta t$ > 0), tenemos.}
+{Haciendo $\Delta t \rightarrow 0$, y observando que el lado izquierdo representa el cociente de la diferencia de la función $p_0$ y, por tanto, tiende a $p_0'(t)$ (más precisamente, a la derivada por la derecha, puesto que $\Delta t$ > 0), tenemos.}
 
 \begin{center}
-   { $p_0^'(t) = -\lambda p_0(t)$ o equivalentemente, $\frac{p_0^'(t)}{p_0(t)} = -\lambda$}
+   { $p_0'(t) = -\lambda p_0(t)$ o equivalentemente, $\frac{p_0'(t)}{p_0(t)} = -\lambda$}
 \end{center}
 
 \vspace{0,3cm}
@@ -710,7 +710,7 @@ ser una función cuadrática de t. Lo importante es por supuesto que si debemos 
 \end{center}
 \vspace{0,3cm}
 \newpage
-{Está representa un sistema infinito de ecuaciones lineales diferenciales
+{Esta  representa un sistema infinito de ecuaciones lineales diferenciales
 de diferencias. El lector interesado puede verificar que si definimos
 la función $q_n$ por la relación $q_n(t) = e^{\lambda t}p_n(t)$, el sistema anterior se transforma en $q'_n(t) = \lambda q_{n-1}(t),$ n = 1,2,3...; puesto que $p_0(t) = e^{-\lambda t}$, encontramos que $q_0 (t) = 1$. [Nótese también que $q_n(0) = 0$ para n > 0.]
 Así obtenemos, recursivamente, }
@@ -741,9 +741,9 @@ Poisson con parametros ($\lambda$ t).}
 \begin{itemize}
     \item [a)]  Es importante darse cuenta de que la distribución de Poisson
 apareció como una consecuencia de ciertas suposiciones que hicimos. Esto significa que cada vez que dichas suposiciones sean válidas (o al menos lo sean aproximadamente) la distribución de Poisson debe usarse como un modelo apropiado. Resulta que hay una gran cantidad de fenómenos para los cuales es adecuado el modelo de Poisson. {\bf Ejemplos pág 222 i,...,iv}
-    \item [b)] La constante X apareció originalmente como una constante de proporcionalidad en la hipótesis A3. Vale la pena mencionar las siguientes interpretaciones de $\lambda$: si $X_t$ representa el número de ocurrencias de un evento durante un intervalo de tiempo de longitud t, entonces, $E(X_t) = \lambda t$ y, por tanto, $\lambda = [E(X_t)/t]$ representa la razón esperada con la cual se emiten las partículas. Si X, representa el número de ocurrencias de algún evento dentro de un volumen especificado V, entonces $E(X_V) = \lambda V$ y, por lo tanto, $\lambda = [E(X_V)/V]$ representa la densidad esperada con la cual aparecen las estrellas. 
+    \item [b)] La constante $\lambda$ apareció originalmente como una constante de proporcionalidad en la hipótesis A3. Vale la pena mencionar las siguientes interpretaciones de $\lambda$: si $X_t$ representa el número de ocurrencias de un evento durante un intervalo de tiempo de longitud t, entonces, $E(X_t) = \lambda t$ y, por tanto, $\lambda = [E(X_t)/t]$ representa la razón esperada con la cual se emiten las partículas. Si X, representa el número de ocurrencias de algún evento dentro de un volumen especificado V, entonces $E(X_V) = \lambda V$ y, por lo tanto, $\lambda = [E(X_V)/V]$ representa la densidad esperada con la cual aparecen las estrellas. 
     
-    \item [c)] Es importante seiíalar que nuestra exposición en esta sección  no se refirió sólo a una variable aleatoria X que posee una distribución de Poisson, sino que para cada t > O, encontramos que Xt tenía una distribución de Poisson con un parámetro dependiente de t. Tal colección (infinita) de variables aleatorias también se conoce como proceso de Poisson. (De igual forma, se genera un proceso de Poisson cada vez que ocurre un evento en algún intervalo de tiempo de modo que se satisfagan las hipótesis $A_1$ hasta $A_5$.) De manera
+    \item [c)] Es importante señalar que nuestra exposición en esta sección  no se refirió sólo a una variable aleatoria X que posee una distribución de Poisson, sino que para cada $t > 0$, encontramos que Xt tenía una distribución de Poisson con un parámetro dependiente de t. Tal colección (infinita) de variables aleatorias también se conoce como proceso de Poisson. (De igual forma, se genera un proceso de Poisson cada vez que ocurre un evento en algún intervalo de tiempo de modo que se satisfagan las hipótesis $A_1$ hasta $A_5$.) De manera
 análoga podemos definir un proceso de Bernoulli: si $X_1,X_2,...,X_n,...$, son
 los números de ocurrencias de eventos en 1,2,. . . n, ensayos de Bernoulli, entonces la colección de variables aleatorias $X_1,X_2,...,X_n,...$ se llaman proceso de Bernoulli.
 \vspace{3cm}
