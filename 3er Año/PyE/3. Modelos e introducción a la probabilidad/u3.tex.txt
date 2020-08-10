@@ -560,7 +560,7 @@ Dado A y B, podemos hacer una afirmación general de la magnitud relativa de P($
     $P(A\cap B) = P(A)\times P(B)$,\\
     $P(A\cap C) = P(A)\times P(C)$,\\
     $P(B\cap C) = P(B)\times P(C)$,\\
-    $P(A\cap B\cap C) = P(A)\times P(B)\times P(c)$.
+    $P(A\cap B\cap C) = P(A)\times P(B)\times P(C)$.
 \end{center}
 \vspace{0,3cm}
 
