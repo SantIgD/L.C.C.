@@ -36,7 +36,7 @@
 \vfill
 {\Large Autor del resumen:\par}
 \vspace{1 cm}
-{\Large Charles Chaplin \par}
+{\Large Charles Chaplin\par}
 \vfill
 {\Large Julio 2020 \par}
 \end{titlepage}
@@ -52,11 +52,11 @@
 \vspace{1,5cm}
 \section{Variable aleatoria continua}
 
-{Supongamos que el recorrido de Xestá formado por un gran número finito de valores, por ejemplo, todos los valores x en el intervalo $[0,1]$, de la forma 0,0.01,0.02,...,0.98,0.99,1. Con cada uno de estos valores asociados a un número no negativo p($x_i$) = P(X=$x_i$), i = 1,2,..., cuya suma es igual a 1. \\ 
+{Supongamos que el recorrido de X está formado por un gran número finito de valores, por ejemplo, todos los valores x en el intervalo $[0,1]$, de la forma 0,0.01,0.02,...,0.98,0.99,1. Con cada uno de estos valores asociados a un número no negativo p($x_i$) = P(X=$x_i$), i = 1,2,..., cuya suma es igual a 1. \\ 
 
 Matemáticamente podría ser más sencillo idealizar la anterior descripción probabilística de X al suponer que X puede tomar todos los valores posbiles, $[0,1]$. Si hacemos esto, ¿Qué le sucede a las probabilidades puntuales $p(x_i)$? Puesto que los valores posibles de X no son contables, en realidad no se puede hablar de un i-ésimo valor de X, y por tanto, p($x_i$) pierde significado.  \\ 
 
-Lo que haremos es sustituir la función p, definida sólo para $X_1,X_2,...,$ por una función $f$ definida (en el contexto presente) para todos los valores de x, $0 \leq x \leq 1$. Procederemos formalmente
+Lo que haremos es sustituir la función p, definida sólo para $x_1,x_2,...,$ por una función $f$ definida (en el contexto presente) para todos los valores de x, $0 \leq x \leq 1$. Procederemos formalmente
 como sigue.}
 
 \vspace{1cm}
@@ -84,7 +84,7 @@ como sigue.}
 \end{center}
 
 \begin{itemize}
-    \item [d)] Si una función $f^*$ satisface que $\forall_x \ f^* \geq 0$, y $\int _{-\infty}^{+\infty}f(x)dx = K$, $f^*$ no es una fdp pero   
+    \item [d)] Si una función $f^*(x)$ satisface que $\forall_x \ f^*(x) \geq 0$, y $\int _{-\infty}^{+\infty}f^*(x)dx = K$, $f^*$ no es una fdp pero   
 \end{itemize}
 
 \begin{center}
@@ -160,7 +160,7 @@ como sigue.}
     \item [a)] Sea F la fda de una variable aleatoria continua con fdp f. Luego,
         \subitem \[f(x) = \frac{d}{dx} F(X),\]
         \subitem para toda x en la cual F es diferenciable.
-    \item [b)] Sea X una variable aleatoria discrcta con valores posibles $x_1,x_2,...,$ y supongamos que es posible rotular esos valorcs de modo que $x_1<x_2<...,$ Sea F la fda de X. Entonces,
+    \item [b)] Sea X una variable aleatoria discreta con valores posibles $x_1,x_2,...,$ y supongamos que es posible rotular esos valores de modo que $x_1<x_2<...$. Sea F la fda de X. Entonces,
         \subitem \[p(x_j) = P(X=x_j) = F(x_j) - F(x_{j-1})\]
         \subitem \bf Demostración pág 93-94 (recomendado leer)
 \end{itemize}
@@ -319,10 +319,10 @@ descripción de una gran clase de fenómenos, especialmente en el área de la te
 {\bf Propiedades de la distribución normal.}
 \vspace{0,5cm}
 \begin{itemize}
-    \item [a)] $\forall_x,f(x) > 0 \ y \int_{-\infty}^\infty f(x) dx = 1 $, es decir es una fdp legítima (demostración pág 240)
+    \item [a)] $\forall_x \ f(x) > 0 \ y \int_{-\infty}^\infty f(x) dx = 1 $, es decir es una fdp legítima (demostración pág 240)
     \item [b)] La gráfica de esta f es {\bf simétrica} respecto a $\mu$. El parámetro $\sigma$ puede interpretarse en forma geométrica. Observemos que para $x = \mu$ la gráfica de f es cónciava hacia abajo. Cuando $x\rightarrow \pm \infty, f(x) \rightarrow 0$, asintóticamente. Puesto que $\forall_x, f(x) \geq 0$, esto significa que para grandes valores (en absoluto) de x, la gráfica de f es cóncava hacia arriba. El punto en el cual cambia la concavidad se llama {\bfpunto de inflexión} y se determina al resolver la ecuación f”(x) = 0. Cuando hacemos esto, encontramos que los puntos de inflexión ocurren en $x = \mu\pm\sigma $. Esto es, $\sigma$ unidades a la derecha y a la izquierda de $\mu$, la gráfica de f cambia de concavidad. Así, si $\sigma$ es relativamente grande, la gráfica de f tiende a ser “achatada”, mientras que si $\sigma$  es pequeña la gráfica de f tiende a ser muy “aguzada”. 
     
-    \item [c)] $E(X) = \mu$ y $V(X) = \sigma ^2$. Así encontramos que los dos parámetros  $\mu$ y $\sigma^2$, que caracterizan la distribución normal son la esperanza y la varianza de X, respectivamente. Para decirlo con otras palabras si sabemos que X está distribuido normalmente, sólo sabemos que su distribución de probabilidades es de cierto tipo (o pcrtenece a cierta familia). Si además conocemos E(X) y V(X), la distribución de X está especificada por completo.
+    \item [c)] $E(X) = \mu$ y $V(X) = \sigma ^2$. Así encontramos que los dos parámetros  $\mu$ y $\sigma^2$, que caracterizan la distribución normal son la esperanza y la varianza de X, respectivamente. Para decirlo con otras palabras si sabemos que X está distribuido normalmente, sólo sabemos que su distribución de probabilidades es de cierto tipo (o pertenece a cierta familia). Si además conocemos E(X) y V(X), la distribución de X está especificada por completo.
     
     \item [d)]  Si X tiene una distribución $N(0,1)$ decimos que X tiene una distribución normal estandarizada. Esto es, la fdp de X puede escribirse como \\ \[\varphi (x) = \frac{1}{\sqrt{2\phi}}e^{-\frac{x^2}{2}}\] 
 
@@ -336,7 +336,7 @@ La importancia de la distribución normal estandarizada se debe al hecho de que 
 {\bf Teorema.}{ Si X tiene la distribución N($\mu,\sigma^2$) y si Y = aX + b, entonces Y tiene la distribución N(a $\mu$ + b, $a^2\sigma^2$).} {\bf Dem. p. 244}
 \vspace{1cm}
 
-{\bf Corolario} {Si X tiene una distribución N($\mu,\sigma^2$) y si y = $\frac{X-\mu}{\sigma}$, entonces Y tiene una distribución N(0,1).} {\bf Se aplica teorema anterior.}
+{\bf Corolario} {Si X tiene una distribución N($\mu,\sigma^2$) y si Y = $\frac{X-\mu}{\sigma}$, entonces Y tiene una distribución N(0,1).} {\bf Se aplica teorema anterior.}
 \vspace{1cm}
 
 \subsection{\bf Tabulacion de la distribución Normal}
