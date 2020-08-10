@@ -36,7 +36,7 @@
 \vfill
 {\Large Autor del resumen:\par}
 \vspace{1 cm}
-{\Large DEMAGISTRIS, Santiago Ignacio \par}
+{\Large Charles Chaplin \par}
 \vfill
 {\Large Julio 2020 \par}
 \end{titlepage}
@@ -80,7 +80,7 @@ medido las dos características numéricas X y Y. }
         
         \[  \sum_{j=1}^\infty \sum_{i=1}^\infty p(x_i,y_j)  = 1\]
     
-    La función p definida para toda (xi, yj) en el recorrido de (X,Y) se llama {\bf funcion de probabilidad} de (X,Y). El conjunto de ternas $(x_i,y_j,p(x_i,y_j)), i,j = 1,2, .. .$, en algunos casos se denomina {\bf distribución de probabilidades} de (X, Y).\\
+    La función p definida para toda $(x_i, y_j)$ en el recorrido de (X,Y) se llama {\bf funcion de probabilidad} de (X,Y). El conjunto de ternas $(x_i,y_j,p(x_i,y_j)), i,j = 1,2, .. .$, en algunos casos se denomina {\bf distribución de probabilidades} de (X, Y).\\
     
     \item [b)] Sea (X,Y) una variable aleatoria bidimensional continua que toma todos los valores en una región R del plano euclidiano. La {\bf  función de densidad de probabilidades conjuntas} f es una función que satisface las siguientes condiciones:
     
@@ -448,7 +448,7 @@ V(X) con la distribucion de variables aleatorias unidimensionales. Estos paramet
 \section{Desigualdad de Chebyshev}
 \vspace{1cm}
 
-{Si conocemos la distribución de probabilidades de una variable aleatoria X (la fdp en el caso continuo o la probabilidad puntual en el caso discrcto), podemos calcular E(X) y V(X), si existen. Sin embargo, lo recíproco no es verdadero. Esto es, conociendo E(X) y V(X) no podemos reconstruir la distribución de probabilidades de X y, por tanto, no podemos calcular cantidades talcs como $P[|X - E(X)| \leq C]$. Sin embargo, resulta que aunque no podemos evaluar tales probabilidades [a partir de un conocimiento de E(X) y V(X)], es posible dar una cota superior (o inferior) muy útil para tales probabilidades. {\bf  Este resultado está contenido en lo que se conoce como la desigualdad de Chebyshev}}
+{Si conocemos la distribución de probabilidades de una variable aleatoria X (la fdp en el caso continuo o la probabilidad puntual en el caso discreto), podemos calcular E(X) y V(X), si existen. Sin embargo, lo recíproco no es verdadero. Esto es, conociendo E(X) y V(X) no podemos reconstruir la distribución de probabilidades de X y, por tanto, no podemos calcular cantidades talcs como $P[|X - E(X)| \leq C]$. Sin embargo, resulta que aunque no podemos evaluar tales probabilidades [a partir de un conocimiento de E(X) y V(X)], es posible dar una cota superior (o inferior) muy útil para tales probabilidades. {\bf  Este resultado está contenido en lo que se conoce como la desigualdad de Chebyshev}}
 \vspace{1cm}
 
 {\bf Desigualdad de Chebyshev.} {Sea X una variable aleatoria con
@@ -466,7 +466,7 @@ $E(X) = \mu$ y sea c un numero real cualquiera. Entonces, si $E(X - c)^2$ es fin
     
     \[P[|X-\mu|\geq\varepsilon]\leq \frac{Var X}{\varepsilon^2}\]
     
-    \item [c)] Al elegir $c = \mu y \varepsilon = k\sigma$, donde $\sigma^2 = Var X > 0$, obtenemos
+    \item [c)] Al elegir $c = \mu \ y \ \varepsilon = k\sigma$, donde $\sigma^2 = Var X > 0$, obtenemos
     
     \[P[|X-\mu|\geq k\sigma]\leq k^{-2}\]
     
@@ -553,11 +553,11 @@ o, en forma equivalente
     \[\forall_{\epsilon>0} \ lim_{n\rightarrow\infty} P[|f_A-p|<\epsilon] = 1\]
     En este sentido decimos que la frecuencia relativa “converge” a P(A)
     
-    \item [b)] Es importante observar la diferencia entre la convergencia antes mencionada (llamada {\bf convergencia en probabilidad}) y el tipo de convergencia citada a menudo en cálculo. Cuando decimos que $2^{-n}$ converge a cero cuando $n\rightarrow \infty$ significa que para una n suficientemente grande, $2^{-n}$ se transforma y permanece arbitrariamente cercana a cero. Cuando decimos que $fA = nA/n$ converge a P(A) indicamos que la pobabilzdad del evento 
+    \item [b)] Es importante observar la diferencia entre la convergencia antes mencionada (llamada {\bf convergencia en probabilidad}) y el tipo de convergencia citada a menudo en cálculo. Cuando decimos que $2^{-n}$ converge a cero cuando $n\rightarrow \infty$ significa que para una n suficientemente grande, $2^{-n}$ se transforma y permanece arbitrariamente cercana a cero. Cuando decimos que $fA = nA/n$ converge a P(A) indicamos que la pobabilidad del evento 
     
     \[\{|n_A/n-P(A)|<\epsilon\}\]
     
-    puede hacerse arbitrariamente cercana uno para cualquier $\epsilon$>0 tomando una n suficientemente grande. 
+    puede hacerse arbitrariamente cercana uno para cualquier $\epsilon>0$ tomando una n suficientemente grande. 
     \newpage
     \item [c)] Otra forma de la ley de los grandes numeros se obtiene cuando formulamos la siguiente pregunta. ¿Cuántas repeticiones de $\varepsilon$ deberían hacerse para tener una probabilidad, digamos de 0.95, de que la frecuencia relativa difiera de p = P(A) en menos de 0.01? Es decir,para $\epsilon = 0.01$ deseamos escoger n, de modo que $1-\frac{p(1-p)}{n(0.01)^2}  = 0.95$. Resolviendo para n obtenemos $n = \frac{p(1 - p)}{(0.01)^2(0.05)}$. Sustituyendo los valores específicos de 0.05 y 0.01 por $\delta \ y \ \epsilon$, respectivamente, tenemos 
     
@@ -669,11 +669,11 @@ la fda de la variable aleatoria $Z_n$, tenemos $lim_{n\rightarrow\infty}\ G_n(z)
     
     \item [b)] En otras palabras, los términos individuales en la suma contribuyen con una cantidad despreciable a la variacion de la suma y es muy improbable que cualquier tamaño individual haga una gran contribucion a la suma. (Parece que los errores de medida tienen esta característica. El error final puede ser representado como una suma de varias pequeñas contribuciones, ninguna de las cuales contribuye mucho al error completo.)
     
-    \item [c)]  El teorema del límite central establece que los sumandos no necesitan ser distribuidos normalmente para aproximarse a la suma con una distribuci6n normal. 
+    \item [c)]  El teorema del límite central establece que los sumandos no necesitan ser distribuidos normalmente para aproximarse a la suma con una distribucion normal. 
 \end{itemize}
 \newpage
 
-{\bf Teorema.} {Sean $X_1, . . . , X_n$ n variables aleatorias independientes que tienen la misma distribución. Sean $\mu = E(X_i)$ y $\sigma^2 = V(X_i)$, la esperanza y la varianza común. Seal $S =\sum_{i=1}^n X_i$. Entonces, $E(S) = n\mu$ y $V(S) = n\sigma^2$ , y para una gran $n$ tenemos que $T_n = (S-n\mu)/\sqrt{n}\sigma$ tiene aproximadamente la distribución $N(0,1)$ considerando que $lim_{n\rightarrow \infty} \ P(T_n\leq t)= \Phi (t)$.} {\bf (D/p.334)}
+{\bf Teorema.} {Sean $X_1, . . . , X_n$ n variables aleatorias independientes que tienen la misma distribución. Sean $\mu = E(X_i)$ y $\sigma^2 = V(X_i)$, la esperanza y la varianza común. Sea $S =\sum_{i=1}^n X_i$. Entonces, $E(S) = n\mu$ y $V(S) = n\sigma^2$ , y para una gran $n$ tenemos que $T_n = (S-n\mu)/\sqrt{n}\sigma$ tiene aproximadamente la distribución $N(0,1)$ considerando que $lim_{n\rightarrow \infty} \ P(T_n\leq t)= \Phi (t)$.} {\bf (D/p.334)}
 
 \vspace{0,5cm}
 \begin{center}
@@ -682,7 +682,6 @@ la fda de la variable aleatoria $Z_n$, tenemos $lim_{n\rightarrow\infty}\ G_n(z)
 
 
 \end{document}
-
 
 
 
