@@ -1,0 +1,229 @@
+\documentclass{report}
+\usepackage[utf8]{inputenc}
+\usepackage{vmargin}
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+\setpapersize{A4}
+\setmargins{2.5cm}       % margen izquierdo
+{1.5cm}                        % margen superior
+{16.5cm}                      % anchura del texto
+{23.42cm}                    % altura del texto
+{10pt}                           % altura de los encabezados
+{1cm}                           % espacio entre el texto y los encabezados
+{0pt}                             % altura del pie de página
+{2cm}           
+\begin{document}
+\begin{titlepage}
+\centering
+{\bfseries\LARGE Universidad Nacional de Rosario \par}
+\vspace{0,5cm}
+{\scshape\Large Facultad de Ciencias Exactas, Ingeniería y Agrimensura \par}
+\vspace{2cm}
+{\scshape\Huge Probabilidad y Estadística\par}
+\vspace{3cm}
+{\itshape\Huge Unidad 7 \par}
+\vfill
+{\Large Autor del resumen:\par}
+\vspace{1 cm}
+{\Large Charles Chaplin \par}
+\vfill
+{\Large Julio 2020 \par}
+\end{titlepage}
+
+\newpage
+
+
+\chapter{Cadenas de Markov : Primeros pasos}
+
+
+\vspace{1cm}
+
+\section{Introduccion}
+
+\vspace{1cm}
+
+{Consideren un juego con un tablero que se base en 10 casillas cuadradas (numeradas 1-10) dispuestas en circulo. (Un Monopoly en miniatura.) Un jugador empieza en la casilla 1. A cada turno, el jugador tira un dado y se mueve alrededor del tablero las cantidad casillas que aparezca en la cara del dado. El jugador se sigue moviendo alrededor de las casillas de acuerdo a la tirada de dado (Esta garantizado que este no es un juego muy exitante...)
+
+Ahora bien, sea $X_k$ el numero de la casilla en el cual el jugador se encuentra luego de k movimientos, con $X_0 = 1$. Supongamos que el jugador obtiene las siguientes tiradas 2,1 y 4. Las primeras cuatro posiciones son:}
+
+\[(X_0,X_1,X_2,X_3) = (1,3,4,8).\]
+
+{Dada esta informacion, que podemos decir acerca de el proximo casillero ($X_4$) que ocupara el jugador? A pesar de que sabemos el historial completo de tiradas del jugador, la unica informacion relevante para predecir su posicion en el futuro es la ubicacion mas reciente (en este caso $X_3$). Ya que $X_3 = 8$ entonces necesariamente $X_4 \in A=\{9,10,1,2,3,4\}$ y cada resultable posible tiene la misma probabilidad. Formalmente}
+
+\[\ \forall_{j \in A} \  P(X_4=j|X_0=1,X_1=3,X_2=4,X_3=8)= P(X_4=j|X_3=8) = \frac{1}{6}.\]
+
+{Dada la posicion mas actual del jugador $X_3$, su futura posicion $X_4$ es independiente del pasado de la historia $X_0,X_1,X_2$. \\ \\
+
+La secuencia de posiciones del jugador $X_0,X_1,X_2,...$ es un proceso estocastico llamado {\bf Cadena de Markov}. Este juego ilustra una muy importante propiedad de la cadena de Markov: {\bf El futuro, dado el presente, es independiente del pasado} }
+\vspace{0,5cm}
+
+{\bf Cadena de Markov.} {Sea S un conjunto discreto. Una cadena de Markov es una secuencia  de variables aleatorias $X_0,X_1,...$, cuyos espacios muestrales son S con la siguiente propiedad: Dado $n\geq 0$}
+
+\[\forall_{i,j \in S} \ P(X_{n+1}=j|X_0=x_0,...,X_{n-1} = x_{n-1},X_n = i) = P(X_{n+1} = j | X_n =i)\]
+
+{El conjunto S es el {\bf Espacio de Estados} de la cadena de Markov. Generalmente nos referimos a $X_n = i$ como que la cadena visito la posicion i en n tiempos.}
+
+\newpage
+
+{Una cadena de Markov es {\bf homogenea en el tiempo} si las probabilidades mencionadas anteriormente no dependen de n. Esto es}
+
+\[\forall_{n\geq0} \ P(X_{n+1} = j | X_{n} = i) = P(X_1 = j|X_0 = i)\]
+
+{Dado que las probabilidades anteriores dependen solamente de i y j, pueden ser almacenadas en una matriz {\bf P} cuya ij-esima entrada corresponde a $P_{ij} = P(X_1 = j | X_0 = i)$. A esta matriz se la llama {\bf matriz de transicion} o {\bf matriz de Markov}, que contiene las probabilidades de moverse de un estado actual a cualquier otro (lo que se conoce como "probabilidad de un paso"). Si el espacio de estados tiene k elementos, entonces la matriz de transicion tiene $k\times k$. Si el espacio de estados es infinito contable, la matriz de transicion es infinita.}
+\vspace{0,5cm}
+
+{Las entradas de todas las matrices de transicion de Markov son no-negativas y cada fila suma 1,}
+
+\[\forall_{fila \  i}\ \sum_jP_{ij} = \sum_j P(X_1 = j | X_0 = i) = \sum_j \frac{P(X_1=j,X_0=i)}{P(X_0=i)}=\frac{P(X_0=i)}{P(X_0=i)} = 1\]
+
+\begin{center}
+    \bf Ejemplo p.42 Dobrow
+\end{center}
+\vspace{0,5cm}
+
+{\bf Matriz Estocastica} {Una matriz estocastica es una matriz cuadrada, que satisface:}
+
+\begin{itemize}
+    \item [1.] $\forall_{ij}\ P_{ij} \geq 0 $
+    \item [2.] Para cada fila i, $\sum_j Pij=1.$
+\end{itemize}
+\vspace{0,5cm}
+
+\begin{center}
+    \bf Ejemplos p.42-52
+\end{center}
+\vspace{1cm}
+\section{Calculos basicos}
+\vspace{2cm}
+
+{Una poderosa caracteristica de las Cadenas de Markov es la habilidad de usar matrices para computar probabilidades. Para usar los metodos de matriz, consideramos a las distribuciones de probabilidades como vectores. Un vector de probabilidad es un vector de numeros no-negativos cuya suma es igual a 1. Generalmente se denotan con letras griegas en negrita, como por ejemplo {\bf $\alpha, \ \lambda, y \ \pi$}. \\
+
+Supongamos que X es una variable aleatoria discreta con P(X=j) = $\alpha_j$, para j = 1,2,... .Luego {\bf $\alpha$}=$(\alpha_1,\alpha_2,...)$ es un vector de probabilidad. Decimos que la distribucion de X es $\alpha$. \\
+
+Para el calculo matricial identificaremos distribucion de probabilidades discretas como vectores fila.\\
+
+Para una cadena de Markov $X_0,X_1,...,$ la distribucion de $X_0$ es llamada {\bf distribucion inicial de la cadena de Markov}. Si $\alpha$ es la distribucion inicial, entonces P($X_0$=j)=$\alpha_j$, para toda j.}
+
+\newpage
+
+\subsection{Probabilidad de transición en n pasos}
+\vspace{1cm}
+
+{Para los estados i y j, con n$\geq$1, $P(X_n=j|X_0=i)$ es la probabilidad de que la cadena que comenzo en i llegue a j en n pasos. La probabilidad de transición en n pasos puede ser acomodada en una matriz. La matriz cuya ij-esima entrada es $P(X_n=j|X_0=i)$ es la matriz de transicion en n pasos de la cadena de Markov. Por supuesto, para n=1 es la usual matriz de transicion P. Para $n\geq1$, uno de los resultados centrales del calculo de cadenas de Markov es que la matriz de transicion en n pasos es precisamente $P^n$, la enesima potencia de P.}
+\vspace{0,5cm}
+\begin{center}
+    \bf D/ p.53
+\end{center}
+\vspace{1cm}
+
+{\bf Matriz de transicion en n pasos.}
+{Sea $X_0,X_1,...$, una cadena de Markov con una matriz de transicion {\bf P}. La matriz $P^n$ es la matriz de transicion en n pasos de la cadena. Para $n\geq0$,}
+
+\[\forall_{ij} \ P_{ij}^n = P(X_n = j | X_0=i)\]
+
+{\bf Observacion.} {Note que $P^n_{ij}=(P^n)_{ij}$. No hay que confundirse con $(P_ij)^n$. Tambien note que $P^0$ es la matriz identidad. Esto es}
+\vspace{0,3cm}
+
+\[P_{ij}^0=P(X_0=j|X_0=i) = \left\{ \begin{array}{lcc}
+             1 &   si  & i = j \\
+             \\ 0 &  si  & i \not= j
+             \end{array}
+   \right.\]
+\vspace{0,5cm}
+\begin{center}
+    \bf Ejemplos p.54-55
+\end{center}   
+\vspace{0,5cm}
+  
+\subsection{Chapman–Kolmogorov Relationship}
+\vspace{2cm}
+
+{Para m,n $\geq$0, la identidad matricial $P^{n+m}= P^m P^n$ nos da como resultado que }
+
+\[\forall_{i,j} \ P^{n+m}_{ij}=\sum_k P^m_{ik}P^n_{kj}\]
+
+\begin{center}
+    \bf D. p.55
+\end{center}
+\vspace{0,5cm}
+
+{La interpretacion probabilistica es que realizando una transicion desde i hacia j en m+n pasos es equivalente a transicionar desde i a algun estado k en m pasos y despues transicionar desde este ultimo estado a j en los restantes n pasos. Esto es conocido como {\bf la relacion Chapman-Kolmogorov} }
+
+\newpage
+
+\subsection{Distribucion de $X_n$}
+\vspace{1cm}
+
+{En general, una cadena de Markov $X_0,X_1,...,$ no es una secuencia de variables aleatorias igualmente distribuidas. Para n $\geq$ 1, la distribucion marginal de $X_n$ depende en el n-esimo paso con su matriz de transicion $P^n$, asi como de la distribucion inicial $\alpha$. Para obtener la funcion de probabilidad de $X_n$, dado que ocurre $X_0$,}
+
+\[\forall_j \ P(X_n=j)=\sum_iP(X_n=j|X_0=i)P(X_0=i)=\sum_iP^n_{ij}\alpha_i.\]
+
+{La suma anterior puede ser interpretada como el producto punto del vector de probabilidad inicial $\alpha$ con la j-esima columna de $p^n$. Es decir, es el j-esimo componente del vector-matriz resultante del producto $\alpha P^n$}
+
+\vspace{0,4cm}
+
+\begin{center}
+    \bf Ejemplo p.56
+\end{center}
+\vspace{1cm}
+
+\subsection{Presente, futuro y pasado mas reciente}
+\vspace{1cm}
+
+{La propiedad de Markov dice que el pasado y el futuro son independientes dado el presente. Tambien es verdad que el pasado y el futuro son independientes, dado el pasado mas reciente}
+\vspace{0,5cm}
+
+{\bf Propiedad de Markov}
+\vspace{0,3cm}
+
+{Sea $X_0,X_1,...$ una cadena de Markov. Luego, para toda $m<n$,}
+\[P(X_{n+1}=j|X_0=i_0,...,X_{n-m-1}=i_{n-m-1},X_{n-m}=i)\]
+\[= P(X_{n+1}=j|X_{n-m}=i)= P(X_{m+1}=j|X_{0}=i) = P^{m+1}_{ij}\]
+
+{Para toda $i,j,i_0,...,i_{m-n-1}, n\geq 0$}
+\vspace{0,3cm}
+\begin{center}
+    \bf D. p.57
+\end{center}
+\vspace{1cm}
+
+\subsection{Distribucion conjunta}
+\vspace{1cm}
+{La distribucion marginal de una cadena de Markov esta determinada por la distribucion inicial $\alpha$ y la matriz de transicion P. De hecho, $\alpha$ y P determinan todas las distribuciones conjuntas de una cadena de Markov, esto es, la probabiludad conjunta de cualquier subconjunto finito de $X_0,X_1,...$. En ese sentido, la distribucion inicail y la matriz de transicion dan una completa descripcion probabilistica de una cadena de Markov} 
+\vspace{0,3cm}
+
+{Para ilustrar consideremos una probabilidad conjunta arbitraria como:}
+
+\[P(X_5=i,X_6=j,X_9=k,X_{17}=l), \ para \ algunos \ estados \ i,j,k,l. \]
+
+\newpage
+
+{Para el evento previamente mencionado, la cadena se mueve a i en 5 pasos, luego a j en un paso, luego a k en tres pasos y luego a l en 8 pasos. Con una distribucion inicial $\alpha$, la intuicion nos dice que}
+
+\[P(X_5=i,X_6=j,X_9=k,X_{17}=l)= (\alpha P^5)_iP_{ij}P^3_{jk}P^8_{kl}. \]
+
+{Y de hecho, la probabilidad condicional, la propiedad de Markov y la homogeniedad del tiempo nos dan}
+\begin{itemize}
+    \item []
+    \item [ ] $P(X_5=i,X_6=j,X_9=k,X_17=l)$
+    \item []
+    \item [=] $P(X_{17}=l|X_5=i,X_6=j,X_9=k) P(X_9=k|X_5=i,X_6=j) P(X_6=j|X_5=i) P(X_5=i)$ 
+    \item []
+    \item [=] $P(X_{17}=l|X_9=k) P(X_9=k|X_6=j) P(X_6=j|X_5=i) P(X_5=i)$ 
+    \item []
+    \item [=]  $P(X_{8}=l|X_0=k) P(X_3=k|X_0=j) P(X_1=j|X_0=i) P(X_5=i)$ 
+    \item []
+    
+    \item [=] $P^8_{kl}P^3_{jk}P_{ij}(\alpha P^5)_i$
+\end{itemize}
+\vspace{0,5cm}
+
+{La probabilidad conjunta es obtenida apartir de la distribucion inicial $\alpha$ y la matriz de transicion P. Para completitud, aqui dejamos la formula general }
+\vspace{0,5cm}
+
+{\bf Probabilidad conjunta}
+{Sea $X_0,X_1,...,$ una cadena de Markov con matriz de transicion P y distribucion inicial $\alpha$. Para todo $0\leq n_1 \leq n_2 \leq ... \leq n_{k-1} \leq n_k$ y estados $i_1,i_2,...,i_{k=1},i_k$,}
+
+\[P(X_{n1}=i_i,X_{n2}=i_2,...,X_k=i_k) = (\alpha P^{n_1})_{i_1} (P^{n_2-n_1})_{i_1i_2} ... (P^{n_k-n_{k-1}})_{i_{k-1}i_k}\]
+
+\end{document}
