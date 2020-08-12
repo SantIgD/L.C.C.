@@ -225,5 +225,147 @@ Para una cadena de Markov $X_0,X_1,...,$ la distribucion de $X_0$ es llamada {\b
 {Sea $X_0,X_1,...,$ una cadena de Markov con matriz de transicion P y distribucion inicial $\alpha$. Para todo $0\leq n_1 \leq n_2 \leq ... \leq n_{k-1} \leq n_k$ y estados $i_1,i_2,...,i_{k=1},i_k$,}
 
 \[P(X_{n1}=i_i,X_{n2}=i_2,...,X_k=i_k) = (\alpha P^{n_1})_{i_1} (P^{n_2-n_1})_{i_1i_2} ... (P^{n_k-n_{k-1}})_{i_{k-1}i_k}\]
+\vspace{0,5cm}
+\begin{center}
+    \bf Ejemplo p.59
+\end{center}
+\vspace{0,5cm}
 
+\subsection{Comportamiento a largo plazo, la evidencia numerica}
+\vspace{1cm}
+
+{En cualquier proceso estocastico o determinista, el comportamiento a largo plazo del sistema es, muchas veces, de interes. Evidencia numerica sugiere que la potencia de una matriz converge a un limite. Lo que es mas, las filas de esta matriz llevada al limite son iguales. El hecho de que las filas de una cierta matriz $p^n, n->\infty$ son iguales significa que la probabilidad de una potencia k en particular (para un k en el cual ya se puede observar esta propiedad), no depende del estado actual. Despues de cierto tiempo, el estado inicial se diluye y no afecta a la distribucion de la potencia de la matriz. }
+\vspace{0,5cm}
+
+\begin{center}
+    \bf Ejemplos. p59-65 y Simulaciones p.65-68
+\end{center}
+
+\newpage
+
+\chapter{Cadenas de Markov a largo plazo}
+\vspace{1cm}
+
+\section{Limitacion de la distribucion}
+\vspace{1cm}
+
+{En muchos casos, una cadena de Markov presenta un comportamiento limitante a largos plazos. La cadena se decanta a una distribucion equilibrada, la cual es independiente de su estado inicial.}
+\vspace{0,3cm}
+
+{\bf Limitacion de la distribucion.\\}
+{Sea $X_0,X_1,...$ una cadena de Markov con una matriz de transicion P. Una limitacion para la distribucion de la cadena de Markov es una distribucion de probabilidad $\lambda$ con la propiedad que}
+
+\[\forall_{i,j} \ lim_{n\rightarrow \infty}P(X_n=j)= \lambda_j\]
+
+{En otras palabras:}
+\begin{itemize}
+    \item [(i)] Para cualquier distribucion inicial y para todo j
+    
+        \[lim_{n\rightarrow \infty}P(X_n=j)=\lambda_j\]
+        
+    \item [(ii)] Para cualquier distribucion inicial $\lambda$ 
+        \[lim_{n\rightarrow \infty}\alpha P^n= \lambda\]
+        
+    \item [(iii)] Sea $\Lambda$ la matriz estocastica cuyas filas son iguales a $\lambda$.
+    
+    \[lim_{n\rightarrow \infty} P^n= \Lambda\]
+    
+\end{itemize}
+\vspace{1cm}
+
+{Interpretaremos $\lambda_j$ como la probabilidad a largo plazo de que la cadena se encuentre en el estado j. Por la unicidad del limite, si una cadena de Markov tiene una limitacion de la distribucion, entonces esta distribucion es unica. Un metodo rapido y sucio de verificar de que una limitacion a la distribucion existe es aplicar grandes potencias a la matriz inicial hasta que de una de ellas se obtenga una matriz limitada con filas iguales. }
+
+\vspace{0,3cm}
+\begin{center}
+    \bf Ejemplo p.77-78
+\end{center}
+
+\newpage
+
+\section{Proporcion del tiempo en cada estado}
+\vspace{1cm}
+
+{La limitacion de la distribucion nos da la probabilidad de que la probabilidad a plazos largos de una cadena de Markov se encuentre en cada estado. Tambien puede ser interpretada como la probabilidad de que la proporcion del tiempo, a plazos largos, de la cadena visitando cada estado.}
+\vspace{0,3cm}
+\begin{center}
+    \bf Planteo y ejemplos p.78-80
+\end{center}
+\vspace{1cm}
+
+\section{Distribucion estacionaria}
+\vspace{1cm}
+
+{Es interesante considerar que pasa si asignamos la matriz limitada de una cadena de Markov a ser la distribucion inicial de la cadena. {\bf Planteo p. 80-81}}
+\vspace{0,5cm}
+
+{\bf Distribucion estacionaria.\\}
+{Sea $X_0,X_1,...$ una cadena de Markov con una matriz de transicion P. Una distribucion estacionaria es una distribucion de probabilidades $\pi$, que satisface}
+
+\[\pi = \pi P.\]
+
+Esto es
+
+\[\forall_j \ \pi_j = \sum_i \pi_iP_{ij}\]
+
+{Si asumimos que una distribucion estacionaria $\pi$, es la distribucion inicial, entonces todas las $X_n$ tienen la misma distribucion:}
+
+\[\pi P^n =(\pi P)P^{n-1} = \pi P^{n-1} ...= \pi P = \pi\]
+\vspace{0,5cm}
+
+{Si la distribucion inicial es una distribucion estacionaria, entonces $X_0,X_1,...$ es una secuencia de variables aleatorias identicamente distribuidas. Esto no implica que las variables aleatorias son independientes. Al contrario, la estructura dependiente entre las variables aleatorias sucesivas en la cadena de Markov esta gobernada por la matriz de transicion independientemente de la distribucion inicial.\\
+
+Nos referimos a la cadena de Markov estacionaria o a la cadena de Markov en estado estacionario cuando la cadena alcanzo su distribucion estacionaria. Si una cadena de Markov tiene una limitacion en la distribucion entonces esa distribucion es una distribucion estacionaria.\\
+
+Hay que tener en cuenta que hay cadenas de Markov con mas de una distribucion estacionaria, tambien aquellas que no tienen distribuciones limitantes y aquellas que tienen una unica distribucion estacionaria que no son distribuciones limitantes.}
+
+\newpage
+
+\section{Matrices de transicion regulares}
+\vspace{1cm}
+
+{Una matriz de transicion P es llamada regular si alguna potencia de P es positiva. Esto es, $P^n >0$, para algun $n\geq1$}
+\vspace{0,3cm}
+
+\begin{center}
+    \bf Ejemplo p.83
+\end{center}
+
+{Si una matriz de transicion de una cadena de Markov es regular, entonces la cadena tiene una distribucion limitante, la cual es la unica distribucion estacionaria de la cadena.}
+\vspace{0,3cm}
+
+{\bf Teorema del limite para cadenas de Markov regulares.\\}
+
+{Una cadena de Markov cuya matriz de transicion P es regular tiene una distribucion limitante, la cual es unica, positiva y distribucion estacionaria de la cadena. Esto es, edxiste un vector de probabilidad unico $\pi>0$, tal que}
+
+\[lim_{n\rightarrow \infty}P^n_{ij}=\pi_j\]
+para todo i,j donde
+
+\[\sum_i\pi_iP_ij=\pi_j\]
+
+Equivalentemente, existe una matriz estocastica positiva $\Pi$ tal que
+
+\[lim_{n\rightarrow \infty}P^n=\Pi\]
+
+Donde $\Pi$ tiene todas las filas iguales a $\pi$ y $\pi$ es el unico vector de probabilidad que satisface
+
+\[\pi P=\pi\]
+\vspace{0,5cm}
+
+\begin{center}
+    \bf Ejemplo p.84
+\end{center}
+\vspace{0,5cm}
+
+{Una forma de decir si una matriz estocastica no es regular es que si para alguna potencia n, todos los 0s en $P^n$ aparecen en los mismo lugares que todos los 0s en $P^{n+1}$, luego estos apareceran en los mismos lugares para todas las potencias mayores, y la matriz no es regular.}
+\vspace{1cm}
+
+\begin{center}
+    \bf Ejemplo p.85
+\end{center}
+
+\vspace{0,5cm}
+
+
+\newpage
+\section{Buscando la distribucion estacionaria.}
 \end{document}
