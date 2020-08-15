@@ -418,7 +418,7 @@ Si la cadena original tenia una única distribucion estacionaria, entonces el si
 
 \newpage
 
-\section{Puedes encontrar el camino a el estado a?}
+\section{Clases de comunicación}
 \vspace{1cm}
 
 {El comportamiento a largo plazo de una cadena de Markov esta relacionada a cuan frecuentemente los estados son visitados. Aqui observaremos de cerca a la relación entre estados y cuan alcanzables, o accesibles, grupos de estados son entre sí.}
@@ -451,12 +451,106 @@ Si la cadena original tenia una única distribucion estacionaria, entonces el si
 \end{center}
 \vspace{0,5cm}
 
-{\bf Irreductibilidad.} {Cuando una cadena de Markov tiene una sola clase de comunicación, esta es {\bf irreducible.}}
+{\bf Irreducibilidad.} {Cuando una cadena de Markov tiene una sola clase de comunicación, esta es {\bf irreducible.}}
 \vspace{0,5cm}
 
 \begin{center}
     \bf Ejemplo p.95
 \end{center}
+\vspace{1cm}
+\newpage
 
+\section{Recurrencia y transitoriedad}
+\vspace{1cm}
 
+\begin{center}
+    \bf Ejemplo ilustrador p.95-96
+\end{center}
+\vspace{0,3cm}
+
+{Dada una cadena de Markov $X_0,X_1,...,$ y sea $T_j=min{n>0:X_n=j}$ la primera vez que la cadena se situa en el estado j. Si $X_n \not= j,$ para toda $n>0$, el conjunto $T_j = \infty$. Sea}
+
+\[f_j=P(T_j<\infty|X_0=j)\]
+
+{la probabilidad de que la cadena que comienza en j eventualmente retorne a j}
+\vspace{0,5cm}
+
+{\bf Estados de recurrencia y de transicion.} {Un estado j es llamado recurrente si la cadena de Markov iniciada en j revisita j. Esto es, $f_j=1$.
+Un estado k es llamado de transicion si hay una probabilidad positiva de que la cadena de Markov iniciada en k nunca retorne a k. Esto es, $f_k<1$.}
+\vspace{0,5cm}
+
+{Si un estado es eventualmente revisitado o no está estrechamente relacionado con cuan seguido ese estado es visitado. Para la cadena que inicia en i, sea}
+
+\[I_n = \left\{ \begin{array}{lcc}
+             1 &   si  & X_n=j, \\
+             \\ 0 &  si & X_n\not=j \\
+             \end{array}
+   \right.,\]
+   
+  {para $n\geq0$. Luego, $\sum_{n=0}^\infty I_n$ es el número de visitas a j. El número esperado de visitas a j es}
+  
+  \[E\left(\sum_{n=0}^\infty I_n\right)=\sum_{n=0}^\infty E(I_n) =\sum_{n=0}^\infty P(X_n=j|X_0=i)= \sum_{n=0}^\infty P^n_{ij}\]
+  \vspace{0,3cm}
+  
+ {donde la suma infinita puede divergir a $\infty$. Para la cadena iniciada en i, el  número esperado de visitas a j es la ij-esima entrada de la matriz $\sum_{n=0}^\infty P^n$.}
+ \vspace{0,5cm}
+ 
+ {Supongamos que j es recurrente. La cadena que inicia en j volvera eventualmente a visitar j con probabilidad 1. Una vez que alcance 1, la cadena comienza denuevo y se comporta como una nueva version de la cadena que comienza en j. Decimos que la cadena de Markov se {\bf regenera} asi misma. (Este comportamiento intuitivo se conoce como la propiedad fuerte de Markov.) Desde j, la cadena re-visitara j denuevo, con probabilidad 1, y asi sucesivamente. A esto le sigueq ue j sera revisitada una cantidad infinita de veces y}
+ \[\sum_{n=0}^\infty P^n_{jj} = \infty.\]
+ 
+ \vspace{0,5cm}
+ 
+ {Por otro lado, supongamos que j es de transicion. Comenzando en j, la probabilidad de eventualmente alcanzar j denuevo es $f_j$, y la probabilidad de nunca alcanzar j es 1-$f_j$. Si la cadena alcanza j, el evento que volvera eventualmente a visitar j es independiente de la historia pasada. A esto le sigue que la secuencia de visitas sucesivas a j se comporta como una secuencia de tiradas de moneda independientes e igualmente distribuidas donde cara ocurre si se llege eventualmente a j y cruz ocurre si j nunca es alcanzada denuevo. El numero de veces que j es alcanszada es el numero de tiradas de moneda hasta que cruz ocurra, el cual tiene una distribucion geometrica con parametro 1-$f_j$. Asi, el numero esperado de visitas a j es  $\frac{1}{1-f_j}$ y }
+ 
+  \[\sum_{n=0}^\infty P^n_{jj} = \frac{1}{1-f_j} <\infty.\]
+ 
+ {En particular un estado de transicion sera visitado solo un numero finito de veces.}
+
+\newpage
+ 
+ {\bf Recurrencia y transitividad}
+ \begin{itemize}
+     \item [(i)] El estado j es recurrente si y solo si
+     
+    \[\sum_{n=0}^\infty P^n_{jj} = \infty.\]
+    
+    \item [(ii)] El estado j es de transicion si y solo si
+    
+    \[\sum_{n=0}^\infty P^n_{jj} <\infty.\]
+ \end{itemize}
+  \vspace{0,5cm}
+  
+ {Supongamos que j es recurrente y accesible desde i. Como la cadena empezo en i hay una probabilidad positiva de alcanzar j. Y desde j, el numero esperado de visitas a j es infinito. A esto le sigue que el numero esperado de visitas a j para la cadena iniciada en i es tambien infinito y asi}
+  
+    \[\sum_{n=0}^\infty P^n_{ij} = \infty.\]
+    \vspace{0,5cm}
+    
+{Supongamos que j es de transicion y accesible desde i. Por un argumento similar el numero de visitas a j para la cadena iniciada en i es finita y asi}
+   \[\sum_{n=0}^\infty P^n_{ij} <\infty.\]
+   
+desde el cual le sigue que
+
+\[lim{n\rightarrow \infty}P^n_{ij} =0.\]
+
+{\bf La probabilidad a largo plazo de que una cadena de Markov eventualmente se pose sobre un estado de transicion es 0. }
+\vspace{0,5cm}
+
+{\bf Recurrencia y transitoriedad son propiedades de clase}
+{Los estados de una clase de comunicacion son todos recurrentes o todos de transicion.}
+\begin{center}
+    \bf D/p.99
+\end{center}
+\vspace{0,5cm}
+
+{\bf Corolario.} {Para una cadena de Markov finite e irreducible, todos los estados son recurrentes.}
+\begin{center}
+    \bf D/p.99
+\end{center}
+\vspace{0,5cm}
+
+\begin{center}
+    \bf Ejemplo p.100-101
+\end{center}
+
+\newpage
 \end{document}
