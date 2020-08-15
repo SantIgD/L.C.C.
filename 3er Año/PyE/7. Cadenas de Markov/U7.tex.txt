@@ -1,4 +1,5 @@
 \documentclass{report}
+\usepackage{amsmath}
 \usepackage[utf8]{inputenc}
 \usepackage{vmargin}
 \usepackage{graphicx}
@@ -48,31 +49,31 @@ Ahora bien, sea $X_k$ el numero de la casilla en el cual el jugador se encuentra
 
 \[(X_0,X_1,X_2,X_3) = (1,3,4,8).\]
 
-{Dada esta informacion, que podemos decir acerca de el proximo casillero ($X_4$) que ocupara el jugador? A pesar de que sabemos el historial completo de tiradas del jugador, la unica informacion relevante para predecir su posicion en el futuro es la ubicacion mas reciente (en este caso $X_3$). Ya que $X_3 = 8$ entonces necesariamente $X_4 \in A=\{9,10,1,2,3,4\}$ y cada resultable posible tiene la misma probabilidad. Formalmente}
+{Dada esta informacion, ¿Qué podemos decir acerca de el próximo casillero ($X_4$) que ocupara el jugador? A pesar de que sabemos el historial completo de tiradas del jugador, la única información relevante para predecir su posición en el futuro es la ubicación más reciente (en este caso $X_3$). Ya que $X_3 = 8$ entonces necesariamente $X_4 \in A=\{9,10,1,2,3,4\}$ y cada resultado posible tiene la misma probabilidad. Formalmente}
 
 \[\ \forall_{j \in A} \  P(X_4=j|X_0=1,X_1=3,X_2=4,X_3=8)= P(X_4=j|X_3=8) = \frac{1}{6}.\]
 
-{Dada la posicion mas actual del jugador $X_3$, su futura posicion $X_4$ es independiente del pasado de la historia $X_0,X_1,X_2$. \\ \\
+{Dada la posición más actual del jugador $X_3$, su futura posición $X_4$ es independiente del pasado de la historia $X_0,X_1,X_2$. \\ \\
 
-La secuencia de posiciones del jugador $X_0,X_1,X_2,...$ es un proceso estocastico llamado {\bf Cadena de Markov}. Este juego ilustra una muy importante propiedad de la cadena de Markov: {\bf El futuro, dado el presente, es independiente del pasado} }
+La secuencia de posiciones del jugador $X_0,X_1,X_2,...$ es un proceso estocástico llamado {\bf Cadena de Markov}. Este juego ilustra una muy importante propiedad de la cadena de Markov: {\bf El futuro, dado el presente, es independiente del pasado} }
 \vspace{0,5cm}
 
 {\bf Cadena de Markov.} {Sea S un conjunto discreto. Una cadena de Markov es una secuencia  de variables aleatorias $X_0,X_1,...$, cuyos espacios muestrales son S con la siguiente propiedad: Dado $n\geq 0$}
 
 \[\forall_{i,j \in S} \ P(X_{n+1}=j|X_0=x_0,...,X_{n-1} = x_{n-1},X_n = i) = P(X_{n+1} = j | X_n =i)\]
 
-{El conjunto S es el {\bf Espacio de Estados} de la cadena de Markov. Generalmente nos referimos a $X_n = i$ como que la cadena visito la posicion i en n tiempos.}
+{El conjunto S es el {\bf Espacio de estados} de la cadena de Markov. Generalmente nos referimos a $X_n = i$ como que la cadena visitó la posición i en n pasos.}
 
 \newpage
 
-{Una cadena de Markov es {\bf homogenea en el tiempo} si las probabilidades mencionadas anteriormente no dependen de n. Esto es}
+{Una cadena de Markov es {\bf homogénea en el tiempo} si las probabilidades mencionadas anteriormente no dependen de n. Esto es}
 
 \[\forall_{n\geq0} \ P(X_{n+1} = j | X_{n} = i) = P(X_1 = j|X_0 = i)\]
 
-{Dado que las probabilidades anteriores dependen solamente de i y j, pueden ser almacenadas en una matriz {\bf P} cuya ij-esima entrada corresponde a $P_{ij} = P(X_1 = j | X_0 = i)$. A esta matriz se la llama {\bf matriz de transicion} o {\bf matriz de Markov}, que contiene las probabilidades de moverse de un estado actual a cualquier otro (lo que se conoce como "probabilidad de un paso"). Si el espacio de estados tiene k elementos, entonces la matriz de transicion tiene $k\times k$. Si el espacio de estados es infinito contable, la matriz de transicion es infinita.}
+{Dado que las probabilidades anteriores dependen solamente de i y j, pueden ser almacenadas en una matriz {\bf P} cuya ij-ésima entrada corresponde a $P_{ij} = P(X_1 = j | X_0 = i)$. A esta matriz se la llama {\bf matriz de transición} o {\bf matriz de Markov}, que contiene las probabilidades de moverse de un estado actual a cualquier otro (lo que se conoce como "probabilidad de un paso"). Si el espacio de estados tiene k elementos, entonces la matriz de transición tiene $k\times k$. Si el espacio de estados es infinito numerable, la matriz de transición es infinita.}
 \vspace{0,5cm}
 
-{Las entradas de todas las matrices de transicion de Markov son no-negativas y cada fila suma 1,}
+{Las entradas de todas las matrices de transición de Markov son no-negativas y cada fila suma 1,}
 
 \[\forall_{fila \  i}\ \sum_jP_{ij} = \sum_j P(X_1 = j | X_0 = i) = \sum_j \frac{P(X_1=j,X_0=i)}{P(X_0=i)}=\frac{P(X_0=i)}{P(X_0=i)} = 1\]
 
@@ -81,7 +82,7 @@ La secuencia de posiciones del jugador $X_0,X_1,X_2,...$ es un proceso estocasti
 \end{center}
 \vspace{0,5cm}
 
-{\bf Matriz Estocastica} {Una matriz estocastica es una matriz cuadrada, que satisface:}
+{\bf Matriz Estocástica.} {Una matriz estocástica es una matriz cuadrada, que satisface:}
 
 \begin{itemize}
     \item [1.] $\forall_{ij}\ P_{ij} \geq 0 $
@@ -93,35 +94,35 @@ La secuencia de posiciones del jugador $X_0,X_1,X_2,...$ es un proceso estocasti
     \bf Ejemplos p.42-52
 \end{center}
 \vspace{1cm}
-\section{Calculos basicos}
+\section{Cálculos basicos}
 \vspace{2cm}
 
-{Una poderosa caracteristica de las Cadenas de Markov es la habilidad de usar matrices para computar probabilidades. Para usar los metodos de matriz, consideramos a las distribuciones de probabilidades como vectores. Un vector de probabilidad es un vector de numeros no-negativos cuya suma es igual a 1. Generalmente se denotan con letras griegas en negrita, como por ejemplo {\bf $\alpha, \ \lambda, y \ \pi$}. \\
+{Una poderosa característica de las Cadenas de Markov es la habilidad de usar matrices para computar probabilidades. Para usar los métodos de matriz, consideramos a las distribuciones de probabilidades como vectores. Un vector de probabilidad es un vector de números no-negativos cuya suma es igual a 1. Generalmente se denotan con letras griegas en negrita, como por ejemplo {\bf $\alpha, \ \lambda, y \ \pi$}. \\
 
-Supongamos que X es una variable aleatoria discreta con P(X=j) = $\alpha_j$, para j = 1,2,... .Luego {\bf $\alpha$}=$(\alpha_1,\alpha_2,...)$ es un vector de probabilidad. Decimos que la distribucion de X es $\alpha$. \\
+Supongamos que X es una variable aleatoria discreta con P(X=j) = $\alpha_j$, para j = 1,2,... . Luego {\bf $\alpha$}=$(\alpha_1,\alpha_2,...)$ es un vector de probabilidad. Decimos que la distribución de X es $\alpha$. \\
 
-Para el calculo matricial identificaremos distribucion de probabilidades discretas como vectores fila.\\
+Para el cálculo matricial identificaremos distribución de probabilidades discretas como vectores fila.\\
 
-Para una cadena de Markov $X_0,X_1,...,$ la distribucion de $X_0$ es llamada {\bf distribucion inicial de la cadena de Markov}. Si $\alpha$ es la distribucion inicial, entonces P($X_0$=j)=$\alpha_j$, para toda j.}
+Para una cadena de Markov $X_0,X_1,...,$ la distribución de $X_0$ es llamada {\bf distribución inicial de la cadena de Markov}. Si $\alpha$ es la distribución inicial, entonces P($X_0$=j)=$\alpha_j$, para toda j.}
 
 \newpage
 
 \subsection{Probabilidad de transición en n pasos}
 \vspace{1cm}
 
-{Para los estados i y j, con n$\geq$1, $P(X_n=j|X_0=i)$ es la probabilidad de que la cadena que comenzo en i llegue a j en n pasos. La probabilidad de transición en n pasos puede ser acomodada en una matriz. La matriz cuya ij-esima entrada es $P(X_n=j|X_0=i)$ es la matriz de transicion en n pasos de la cadena de Markov. Por supuesto, para n=1 es la usual matriz de transicion P. Para $n\geq1$, uno de los resultados centrales del calculo de cadenas de Markov es que la matriz de transicion en n pasos es precisamente $P^n$, la enesima potencia de P.}
+{Para los estados i y j, con n$\geq$1, $P(X_n=j|X_0=i)$ es la probabilidad de que la cadena que comenzó en i llegue a j en n pasos. La probabilidad de transición en n pasos puede ser acomodada en una matriz. La matriz cuya ij-ésima entrada es $P(X_n=j|X_0=i)$ es la matriz de transición en n pasos de la cadena de Markov. Por supuesto, para n=1 es la usual matriz de transicion P. Para $n\geq1$, uno de los resultados centrales del cálculo de cadenas de Markov es que la matriz de transicion en n pasos es precisamente $P^n$, la enésima potencia de P.}
 \vspace{0,5cm}
 \begin{center}
     \bf D/ p.53
 \end{center}
 \vspace{1cm}
 
-{\bf Matriz de transicion en n pasos.}
-{Sea $X_0,X_1,...$, una cadena de Markov con una matriz de transicion {\bf P}. La matriz $P^n$ es la matriz de transicion en n pasos de la cadena. Para $n\geq0$,}
+{\bf Matriz de transición en n pasos.}
+{Sea $X_0,X_1,...$, una cadena de Markov con una matriz de transicion {\bf P}. La matriz $P^n$ es la matriz de transición en n pasos de la cadena. Para $n\geq0$,}
 
 \[\forall_{ij} \ P_{ij}^n = P(X_n = j | X_0=i)\]
 
-{\bf Observacion.} {Note que $P^n_{ij}=(P^n)_{ij}$. No hay que confundirse con $(P_ij)^n$. Tambien note que $P^0$ es la matriz identidad. Esto es}
+{\bf Observacion.} {Note que $P^n_{ij}=(P^n)_{ij}$. No hay que confundirse con $(P_{ij})^n$. También note que $P^0$ es la matriz identidad. Esto es}
 \vspace{0,3cm}
 
 \[P_{ij}^0=P(X_0=j|X_0=i) = \left\{ \begin{array}{lcc}
@@ -135,7 +136,7 @@ Para una cadena de Markov $X_0,X_1,...,$ la distribucion de $X_0$ es llamada {\b
 \end{center}   
 \vspace{0,5cm}
   
-\subsection{Chapman–Kolmogorov Relationship}
+\subsection{Relación Chapman–Kolmogorov}
 \vspace{2cm}
 
 {Para m,n $\geq$0, la identidad matricial $P^{n+m}= P^m P^n$ nos da como resultado que }
@@ -147,18 +148,18 @@ Para una cadena de Markov $X_0,X_1,...,$ la distribucion de $X_0$ es llamada {\b
 \end{center}
 \vspace{0,5cm}
 
-{La interpretacion probabilistica es que realizando una transicion desde i hacia j en m+n pasos es equivalente a transicionar desde i a algun estado k en m pasos y despues transicionar desde este ultimo estado a j en los restantes n pasos. Esto es conocido como {\bf la relacion Chapman-Kolmogorov} }
+{La interpretación probabilística es que realizando una transición desde i hacia j en m+n pasos es equivalente a transicionar desde i a algún estado k en m pasos y después transicionar desde este último estado a j en los restantes n pasos. Esto es conocido como {\bf la relación Chapman-Kolmogorov} }
 
 \newpage
 
-\subsection{Distribucion de $X_n$}
+\subsection{Distribución de $X_n$}
 \vspace{1cm}
 
-{En general, una cadena de Markov $X_0,X_1,...,$ no es una secuencia de variables aleatorias igualmente distribuidas. Para n $\geq$ 1, la distribucion marginal de $X_n$ depende en el n-esimo paso con su matriz de transicion $P^n$, asi como de la distribucion inicial $\alpha$. Para obtener la funcion de probabilidad de $X_n$, dado que ocurre $X_0$,}
+{En general, una cadena de Markov $X_0,X_1,...,$ no es una secuencia de variables aleatorias igualmente distribuidas. Para n $\geq$ 1, la distribución marginal de $X_n$ depende en el n-ésimo paso con su matriz de transición $P^n$, asi como de la distribución inicial $\alpha$. Para obtener la función de probabilidad de $X_n$, dado que ocurre $X_0$,}
 
 \[\forall_j \ P(X_n=j)=\sum_iP(X_n=j|X_0=i)P(X_0=i)=\sum_iP^n_{ij}\alpha_i.\]
 
-{La suma anterior puede ser interpretada como el producto punto del vector de probabilidad inicial $\alpha$ con la j-esima columna de $p^n$. Es decir, es el j-esimo componente del vector-matriz resultante del producto $\alpha P^n$}
+{La suma anterior puede ser interpretada como el producto punto del vector de probabilidad inicial $\alpha$ con la j-ésima columna de $p^n$. Es decir, es el j-ésimo componente del vector-matriz resultante del producto $\alpha P^n$}
 
 \vspace{0,4cm}
 
@@ -167,10 +168,10 @@ Para una cadena de Markov $X_0,X_1,...,$ la distribucion de $X_0$ es llamada {\b
 \end{center}
 \vspace{1cm}
 
-\subsection{Presente, futuro y pasado mas reciente}
+\subsection{Presente, futuro y pasado más reciente}
 \vspace{1cm}
 
-{La propiedad de Markov dice que el pasado y el futuro son independientes dado el presente. Tambien es verdad que el pasado y el futuro son independientes, dado el pasado mas reciente}
+{La propiedad de Markov dice que el pasado y el futuro son independientes dado el presente. También es verdad que el pasado y el futuro son independientes, dado el pasado más reciente}
 \vspace{0,5cm}
 
 {\bf Propiedad de Markov}
@@ -187,9 +188,9 @@ Para una cadena de Markov $X_0,X_1,...,$ la distribucion de $X_0$ es llamada {\b
 \end{center}
 \vspace{1cm}
 
-\subsection{Distribucion conjunta}
+\subsection{Distribución conjunta}
 \vspace{1cm}
-{La distribucion marginal de una cadena de Markov esta determinada por la distribucion inicial $\alpha$ y la matriz de transicion P. De hecho, $\alpha$ y P determinan todas las distribuciones conjuntas de una cadena de Markov, esto es, la probabiludad conjunta de cualquier subconjunto finito de $X_0,X_1,...$. En ese sentido, la distribucion inicail y la matriz de transicion dan una completa descripcion probabilistica de una cadena de Markov} 
+{La distribución marginal de una cadena de Markov está determinada por la distribución inicial $\alpha$ y la matriz de transición P. De hecho, $\alpha$ y P determinan todas las distribuciones conjuntas de una cadena de Markov, esto es, la probabiludad conjunta de cualquier subconjunto finito de $X_0,X_1,...$. En ese sentido, la distribución inicial y la matriz de transición dan una completa descripción probabilística de una cadena de Markov.} 
 \vspace{0,3cm}
 
 {Para ilustrar consideremos una probabilidad conjunta arbitraria como:}
@@ -198,14 +199,14 @@ Para una cadena de Markov $X_0,X_1,...,$ la distribucion de $X_0$ es llamada {\b
 
 \newpage
 
-{Para el evento previamente mencionado, la cadena se mueve a i en 5 pasos, luego a j en un paso, luego a k en tres pasos y luego a l en 8 pasos. Con una distribucion inicial $\alpha$, la intuicion nos dice que}
+{Para el evento previamente mencionado, la cadena se mueve a i en 5 pasos, luego a j en un paso, luego a k en tres pasos y luego a l en 8 pasos. Con una distribución inicial $\alpha$, la intuición nos dice que}
 
 \[P(X_5=i,X_6=j,X_9=k,X_{17}=l)= (\alpha P^5)_iP_{ij}P^3_{jk}P^8_{kl}. \]
 
-{Y de hecho, la probabilidad condicional, la propiedad de Markov y la homogeniedad del tiempo nos dan}
+{Y de hecho, la probabilidad condicional, la propiedad de Markov y la homogeneidad del tiempo nos dan}
 \begin{itemize}
     \item []
-    \item [ ] $P(X_5=i,X_6=j,X_9=k,X_17=l)$
+    \item [ ] $P(X_5=i,X_6=j,X_9=k,X_{17}=l)$
     \item []
     \item [=] $P(X_{17}=l|X_5=i,X_6=j,X_9=k) P(X_9=k|X_5=i,X_6=j) P(X_6=j|X_5=i) P(X_5=i)$ 
     \item []
@@ -218,11 +219,11 @@ Para una cadena de Markov $X_0,X_1,...,$ la distribucion de $X_0$ es llamada {\b
 \end{itemize}
 \vspace{0,5cm}
 
-{La probabilidad conjunta es obtenida apartir de la distribucion inicial $\alpha$ y la matriz de transicion P. Para completitud, aqui dejamos la formula general }
+{La probabilidad conjunta es obtenida apartir de la distribución inicial $\alpha$ y la matriz de transición P. Para completitud, aquí dejamos la formula general }
 \vspace{0,5cm}
 
 {\bf Probabilidad conjunta}
-{Sea $X_0,X_1,...,$ una cadena de Markov con matriz de transicion P y distribucion inicial $\alpha$. Para todo $0\leq n_1 \leq n_2 \leq ... \leq n_{k-1} \leq n_k$ y estados $i_1,i_2,...,i_{k=1},i_k$,}
+{Sea $X_0,X_1,...,$ una cadena de Markov con matriz de transición P y distribución inicial $\alpha$. Para todo $0\leq n_1 \leq n_2 \leq ... \leq n_{k-1} \leq n_k$ y estados $i_1,i_2,...,i_{k=1},i_k$,}
 
 \[P(X_{n1}=i_i,X_{n2}=i_2,...,X_k=i_k) = (\alpha P^{n_1})_{i_1} (P^{n_2-n_1})_{i_1i_2} ... (P^{n_k-n_{k-1}})_{i_{k-1}i_k}\]
 \vspace{0,5cm}
@@ -231,10 +232,10 @@ Para una cadena de Markov $X_0,X_1,...,$ la distribucion de $X_0$ es llamada {\b
 \end{center}
 \vspace{0,5cm}
 
-\subsection{Comportamiento a largo plazo, la evidencia numerica}
+\subsection{Comportamiento a largo plazo, la evidencia numérica}
 \vspace{1cm}
 
-{En cualquier proceso estocastico o determinista, el comportamiento a largo plazo del sistema es, muchas veces, de interes. Evidencia numerica sugiere que la potencia de una matriz converge a un limite. Lo que es mas, las filas de esta matriz llevada al limite son iguales. El hecho de que las filas de una cierta matriz $p^n, n->\infty$ son iguales significa que la probabilidad de una potencia k en particular (para un k en el cual ya se puede observar esta propiedad), no depende del estado actual. Despues de cierto tiempo, el estado inicial se diluye y no afecta a la distribucion de la potencia de la matriz. }
+{En cualquier proceso estocástico o determinista, el comportamiento a largo plazo del sistema es, muchas veces, de interés. Evidencia numérica sugiere que la potencia de una matriz converge a un límite. Lo que es más, las filas de esta matriz llevada al límite son iguales. El hecho de que las filas de una cierta matriz $p^n, n->\infty$ son iguales significa que la probabilidad de una potencia k en particular (para un k en el cual ya se puede observar esta propiedad), no depende del estado actual. Después de cierto tiempo, el estado inicial se diluye y no afecta a la distribución de la potencia de la matriz. }
 \vspace{0,5cm}
 
 \begin{center}
@@ -246,14 +247,14 @@ Para una cadena de Markov $X_0,X_1,...,$ la distribucion de $X_0$ es llamada {\b
 \chapter{Cadenas de Markov a largo plazo}
 \vspace{1cm}
 
-\section{Limitacion de la distribucion}
+\section{Limitacion de la distribución}
 \vspace{1cm}
 
-{En muchos casos, una cadena de Markov presenta un comportamiento limitante a largos plazos. La cadena se decanta a una distribucion equilibrada, la cual es independiente de su estado inicial.}
+{En muchos casos, una cadena de Markov presenta un comportamiento limitante a largos plazos. La cadena se decanta a una distribución equilibrada, la cual es independiente de su estado inicial.}
 \vspace{0,3cm}
 
-{\bf Limitacion de la distribucion.\\}
-{Sea $X_0,X_1,...$ una cadena de Markov con una matriz de transicion P. Una limitacion para la distribucion de la cadena de Markov es una distribucion de probabilidad $\lambda$ con la propiedad que}
+{\bf Distribución límite.\\}
+{Sea $X_0,X_1,...$ una cadena de Markov con una matriz de transición P. Una distribución límite de la cadena de Markov es una distribución de probabilidad $\lambda$ con la propiedad que}
 
 \[\forall_{i,j} \ lim_{n\rightarrow \infty}P(X_n=j)= \lambda_j\]
 
@@ -273,7 +274,7 @@ Para una cadena de Markov $X_0,X_1,...,$ la distribucion de $X_0$ es llamada {\b
 \end{itemize}
 \vspace{1cm}
 
-{Interpretaremos $\lambda_j$ como la probabilidad a largo plazo de que la cadena se encuentre en el estado j. Por la unicidad del limite, si una cadena de Markov tiene una limitacion de la distribucion, entonces esta distribucion es unica. Un metodo rapido y sucio de verificar de que una limitacion a la distribucion existe es aplicar grandes potencias a la matriz inicial hasta que de una de ellas se obtenga una matriz limitada con filas iguales. }
+{Interpretaremos $\lambda_j$ como la probabilidad a largo plazo de que la cadena se encuentre en el estado j. Por la unicidad del límite, si una cadena de Markov tiene una distribución límite, entonces esta distribución es única. Un método rapido y sucio de verificar de que una distribución límite existe es aplicar grandes potencias a la matriz inicial hasta que de una de ellas se obtenga una matriz límite con filas iguales. }
 
 \vspace{0,3cm}
 \begin{center}
@@ -282,24 +283,24 @@ Para una cadena de Markov $X_0,X_1,...,$ la distribucion de $X_0$ es llamada {\b
 
 \newpage
 
-\section{Proporcion del tiempo en cada estado}
+\section{Proporción del tiempo en cada estado}
 \vspace{1cm}
 
-{La limitacion de la distribucion nos da la probabilidad de que la probabilidad a plazos largos de una cadena de Markov se encuentre en cada estado. Tambien puede ser interpretada como la probabilidad de que la proporcion del tiempo, a plazos largos, de la cadena visitando cada estado.}
+{La distribución límite nos presenta la probabilidad a plazos largos de que una cadena de Markov se encuentre en cada estado. También puede ser interpretada como la proporción del tiempo, a plazos largos, de la cadena visitando cada estado.}
 \vspace{0,3cm}
 \begin{center}
     \bf Planteo y ejemplos p.78-80
 \end{center}
 \vspace{1cm}
 
-\section{Distribucion estacionaria}
+\section{Distribución estacionaria}
 \vspace{1cm}
 
-{Es interesante considerar que pasa si asignamos la matriz limitada de una cadena de Markov a ser la distribucion inicial de la cadena. {\bf Planteo p. 80-81}}
+{Es interesante considerar qué pasa si asignamos la matriz límite de una cadena de Markov a ser la distribucion inicial de la cadena. {\bf Planteo p. 80-81}}
 \vspace{0,5cm}
 
-{\bf Distribucion estacionaria.\\}
-{Sea $X_0,X_1,...$ una cadena de Markov con una matriz de transicion P. Una distribucion estacionaria es una distribucion de probabilidades $\pi$, que satisface}
+{\bf Distribución estacionaria.\\}
+{Sea $X_0,X_1,...$ una cadena de Markov con una matriz de transición P. Una distribución estacionaria es una distribución de probabilidades $\pi$ que satisface}
 
 \[\pi = \pi P.\]
 
@@ -307,35 +308,35 @@ Esto es
 
 \[\forall_j \ \pi_j = \sum_i \pi_iP_{ij}\]
 
-{Si asumimos que una distribucion estacionaria $\pi$, es la distribucion inicial, entonces todas las $X_n$ tienen la misma distribucion:}
+{Si asumimos que una distribución estacionaria $\pi$, es la distribución inicial, entonces todas las $X_n$ tienen la misma distribución:}
 
 \[\pi P^n =(\pi P)P^{n-1} = \pi P^{n-1} ...= \pi P = \pi\]
 \vspace{0,5cm}
 
-{Si la distribucion inicial es una distribucion estacionaria, entonces $X_0,X_1,...$ es una secuencia de variables aleatorias identicamente distribuidas. Esto no implica que las variables aleatorias son independientes. Al contrario, la estructura dependiente entre las variables aleatorias sucesivas en la cadena de Markov esta gobernada por la matriz de transicion independientemente de la distribucion inicial.\\
+{Si la distribución inicial es una distribución estacionaria, entonces $X_0,X_1,...$ es una secuencia de variables aleatorias idénticamente distribuidas. Esto no implica que las variables aleatorias son independientes. Al contrario, la estructura dependiente entre las variables aleatorias sucesivas en la cadena de Markov está gobernada por la matriz de transición independientemente de la distribución inicial.\\
 
-Nos referimos a la cadena de Markov estacionaria o a la cadena de Markov en estado estacionario cuando la cadena alcanzo su distribucion estacionaria. Si una cadena de Markov tiene una limitacion en la distribucion entonces esa distribucion es una distribucion estacionaria.\\
+Nos referimos a la cadena de Markov estacionaria o a la cadena de Markov en estado estacionario cuando la cadena alcanzó su distribución estacionaria. Si una cadena de Markov tiene una distribución límite entonces esa distribución es una distribución estacionaria.\\
 
-Hay que tener en cuenta que hay cadenas de Markov con mas de una distribucion estacionaria, tambien aquellas que no tienen distribuciones limitantes y aquellas que tienen una unica distribucion estacionaria que no son distribuciones limitantes.}
+Hay que tener en cuenta que hay cadenas de Markov con más de una distribución estacionaria, también aquellas que no tienen distribuciones límites y aquellas que tienen una única distribución estacionaria que no son distribuciones límites.}
 
 \newpage
 
-\section{Matrices de transicion regulares}
+\section{Matrices de transición regulares}
 \vspace{1cm}
 
-{Una matriz de transicion P es llamada regular si alguna potencia de P es positiva. Esto es, $P^n >0$, para algun $n\geq1$}
+{Una matriz de transición P es llamada regular si alguna potencia de P es positiva. Esto es, $P^n >0$, para algún $n\geq1$}
 \vspace{0,3cm}
 
 \begin{center}
     \bf Ejemplo p.83
 \end{center}
 
-{Si una matriz de transicion de una cadena de Markov es regular, entonces la cadena tiene una distribucion limitante, la cual es la unica distribucion estacionaria de la cadena.}
+{Si una matriz de transición de una cadena de Markov es regular, entonces la cadena tiene una distribución límite, la cual es la única distribución estacionaria de la cadena.}
 \vspace{0,3cm}
 
-{\bf Teorema del limite para cadenas de Markov regulares.\\}
+{\bf Teorema del límite para cadenas de Markov regulares.\\}
 
-{Una cadena de Markov cuya matriz de transicion P es regular tiene una distribucion limitante, la cual es unica, positiva y distribucion estacionaria de la cadena. Esto es, edxiste un vector de probabilidad unico $\pi>0$, tal que}
+{Una cadena de Markov cuya matriz de transición P es regular tiene una distribución límite, la cual es única, positiva y distribución estacionaria de la cadena. Esto es, existe un vector de probabilidad unico $\pi>0$, tal que}
 
 \[lim_{n\rightarrow \infty}P^n_{ij}=\pi_j\]
 para todo i,j donde
@@ -356,7 +357,7 @@ Donde $\Pi$ tiene todas las filas iguales a $\pi$ y $\pi$ es el unico vector de 
 \end{center}
 \vspace{0,5cm}
 
-{Una forma de decir si una matriz estocastica no es regular es que si para alguna potencia n, todos los 0s en $P^n$ aparecen en los mismo lugares que todos los 0s en $P^{n+1}$, luego estos apareceran en los mismos lugares para todas las potencias mayores, y la matriz no es regular.}
+{Una forma de decir si una matriz estocástica no es regular es que si para alguna potencia n, todos los 0s en $P^n$ aparecen en los mismo lugares que todos los 0s en $P^{n+1}$, luego estos apareceran en los mismos lugares para todas las potencias mayores, y la matriz no es regular.}
 \vspace{1cm}
 
 \begin{center}
@@ -367,5 +368,95 @@ Donde $\Pi$ tiene todas las filas iguales a $\pi$ y $\pi$ es el unico vector de 
 
 
 \newpage
-\section{Buscando la distribucion estacionaria.}
+
+
+
+\section{Buscando la distribución estacionaria.}
+\vspace{1cm}
+{Supongamos que $\pi$ es una distribución estacionaria para una cadena de Markov con una matriz de transición P. Entonces,}
+
+\[\sum_i \pi_iP_{ij}=\pi_j, \ para \ todos \ los \ estados \ j \]
+
+{Lo que nos da un sistema de ecuaciones lineales. Si P es una matriz $kxk$, el sistema tiene k ecuaciones y k incógnitas. Ya que las filas de P suman 1, el sistema $k xk $ contendrá una ecuación redundante.\\}
+
+{Para la cadena de dos estados general, con}
+
+\begin{equation}
+   P= \begin{pmatrix}
+    {1-p} & p \\
+    q     & {1-q} 
+    \end{pmatrix}
+\end{equation}
+
+{Las ecuaciones son}
+
+\begin{itemize}
+    \item [] \[(1-p)\pi_1+q\pi_2=\pi_1\]
+    \item [] \[p\pi_1+(1-q)\pi_2=\pi_2\]
+\end{itemize}
+
+{Las ecuaciones son redundantes y conducen a $\pi_1p=\pi_2q$. Si p y q son distintos a cero, entonces junto a la condicion $\pi_1+\pi_2=1$, la única solución es }
+
+\[\pi=\left(\frac{q}{p+q},\frac{p}{p+q}\right)\]
+\vspace{0,5cm}
+\begin{center}
+    \bf Ejemplo p.86
+\end{center}
+
+{Una técnica útil para encontrar distribuciones estacionarias, la cual reduce el número de ecuaciones a resolver en uno. Esta técnica usa el hecho de que si x es una vector, no necesariamente un vector de probabilidad, que satisfaga xP=x, entonces (cx)P=cx para todas las constasntes c. Si uno puede encontrar un vector x no negativo, que satisfaga xP=x, entonces un único vector de probabilidad $\pi=cx$ puede ser obtenido a partir de una decisión apropiada de c de tal forma que las filas de cx sumen 1. En particular, sea c=$\frac{1}{\sum_jx_j}$, el recíproco de la suma de los componentes de x\\}
+
+{El sistema lineal $\sum_i \pi_iP_{ij}=\pi_j$ sin la restricción $\sum_i \pi_i=1$, tiene una ecuación redundante. Nuestro método de solución consiste en (i) eliminar la ecuación redundante y (ii) resolver el sistema resultante para $x=(1,x_2,x_3,...)$, donde la primer componente (o cualquier otra) es reemplazada por 1. Para una cadena de Markov con k estados, este metodo reduce el problema a resolver un sistema lineal $(k-1)x(k-1)$.\\
+
+Si la cadena original tenia una única distribucion estacionaria, entonces el sistema lineal reducido tendrá una única solución, pero una la cual no es necesariamente un vector de probabilidad. Para hacerla vector de probabilidad cuyos componentes sumen 1, hay que dividir por la suma de los componentes. En otras palabras, la única distribución estacionaria es }
+
+\[\pi = \frac{1}{1+x_2+x_3+...+x_k}(1,x_2,...,x_k)\]
+\vspace{0,3cm}
+
+\begin{center}
+    \bf Ilustración y ejemplos p.87-90
+\end{center}
+
+\newpage
+
+\section{Puedes encontrar el camino a el estado a?}
+\vspace{1cm}
+
+{El comportamiento a largo plazo de una cadena de Markov esta relacionada a cuan frecuentemente los estados son visitados. Aqui observaremos de cerca a la relación entre estados y cuan alcanzables, o accesibles, grupos de estados son entre sí.}
+\vspace{0,5cm}
+
+
+
+{Digamos que el estado j es {\bf accesible} desde el estado i si  $P^n_{ij}>0$, para algún $ngeq0$. Esto es, hay una probabilidad positiva de alcanzar j desde i en una cantidad finita de pasos. Los estados i y j se {\bf comunican} si i ees accesible desde j y j es accesible desde i.  La {\bf comunicación} es una relación de equivalencia, lo que significa que satisface las siguientes tres propiedades:}
+
+\begin{itemize}
+    \item [a)] {\bf Reflexiva.} Todos los estados se comunican con si mismos
+    \item [b)] {\bf Simetrica.} Si i se comunica con j entonces j se comunica con i
+    
+    \item [c)] {\bf Transitiva.} Si i se comunica con j y j se comunica con k entonces i se comunica con k
+\end{itemize} 
+
+
+{\bf Observaciones.} {La propiedad a) se debe a que $P_0_{ii} = P(X_0=i|X_0=i)=1.$ La propiedad b) se debe a que la definición de comunicación es simétrica. Para la propiedad c), supongamos que i se comunica con j y que j se comunica con k. Entonces, existen $n \geq 0$ y $m\geq 0$ tal que $P^n_{ij}>0$ y $P^m_{jk}>0$. Por lo tanto }
+
+    \[P^{n+m}_{ik} = \sum_t P^n{it}P^m_{tk} \geq P^n_{ij}P^m_jk > 0 \]
+
+{Lo que nos da como resultado que k es accesible desde i e i es accesible desde k}
+\vspace{0,5cm}
+
+{Dado que la comunicación es una relación de equivalencia el espacio de estados puede ser particionado en clases de equivalencias, llamadas {\bf clases de comunicación}. Esto es, el espacio puede ser dividido entre subconjuntos disjuntos, en los cuales todos los estados pertenecientes a una clase estan intercomunicados pero no se comunican con ningún estado fuera de la misma. Un grafo de transición modificado es una herramienta útil para encontrar las clases de comunicacion de una cadena de Markov. Los vértices del grtafo son los estados de la cadena. Una arista direccionada es dibujada entre i y j si $P_{ij} >0$.}
+\vspace{0,5cm}
+
+\begin{center}
+    \bf Ejemplo p.95
+\end{center}
+\vspace{0,5cm}
+
+{\bf Irreductibilidad.} {Cuando una cadena de Markov tiene una sola clase de comunicación, esta es {\bf irreducible.}}
+\vspace{0,5cm}
+
+\begin{center}
+    \bf Ejemplo p.95
+\end{center}
+
+
 \end{document}
