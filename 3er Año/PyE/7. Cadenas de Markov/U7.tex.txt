@@ -3,6 +3,9 @@
 \usepackage[utf8]{inputenc}
 \usepackage{vmargin}
 \usepackage{graphicx}
+
+\usepackage{etoolbox}
+
 \graphicspath{ {images/} }
 \setpapersize{A4}
 \setmargins{2.5cm}       % margen izquierdo
@@ -14,6 +17,7 @@
 {0pt}                             % altura del pie de página
 {2cm}           
 \begin{document}
+
 \begin{titlepage}
 \centering
 {\bfseries\LARGE Universidad Nacional de Rosario \par}
@@ -247,10 +251,10 @@ Para una cadena de Markov $X_0,X_1,...,$ la distribución de $X_0$ es llamada {\
 \chapter{Cadenas de Markov a largo plazo}
 \vspace{1cm}
 
-\section{Limitacion de la distribución}
+\section{Distribucion limite}
 \vspace{1cm}
 
-{En muchos casos, una cadena de Markov presenta un comportamiento limitante a largos plazos. La cadena se decanta a una distribución equilibrada, la cual es independiente de su estado inicial.}
+{En muchos casos, una cadena de Markov presenta un comportamiento limite a largos plazos. La cadena se decanta a una distribución equilibrada, la cual es independiente de su estado inicial.}
 \vspace{0,3cm}
 
 {\bf Distribución límite.\\}
@@ -436,7 +440,8 @@ Si la cadena original tenia una única distribucion estacionaria, entonces el si
 \end{itemize} 
 
 
-{\bf Observaciones.} {La propiedad a) se debe a que $P_0_{ii} = P(X_0=i|X_0=i)=1.$ La propiedad b) se debe a que la definición de comunicación es simétrica. Para la propiedad c), supongamos que i se comunica con j y que j se comunica con k. Entonces, existen $n \geq 0$ y $m\geq 0$ tal que $P^n_{ij}>0$ y $P^m_{jk}>0$. Por lo tanto }
+{\bf Observaciones.}
+{La propiedad $a)$ se debe a que $P^0_{ii} = P(X_0=i|X_0=i)=1.$ La propiedad}{ $b)$ se debe a que la definición de comunicación es simétrica. Para la propiedad }{$c)$, supongamos que i se comunica con j y que j se comunica con k. Entonces, existen $n \geq 0$ y $m\geq 0$ tal que $P^n_{ij} >0$ y $P^m_{jk} >0$. Por lo tanto }
 
     \[P^{n+m}_{ik} = \sum_t P^n{it}P^m_{tk} \geq P^n_{ij}P^m_jk > 0 \]
 
@@ -468,7 +473,7 @@ Si la cadena original tenia una única distribucion estacionaria, entonces el si
 \end{center}
 \vspace{0,3cm}
 
-{Dada una cadena de Markov $X_0,X_1,...,$ y sea $T_j=min{n>0:X_n=j}$ la primera vez que la cadena se situa en el estado j. Si $X_n \not= j,$ para toda $n>0$, el conjunto $T_j = \infty$. Sea}
+{Dada una cadena de Markov $X_0,X_1,...,$ y sea $T_j=min\{n>0:X_n=j\}$ la primera vez que la cadena se situa en el estado j. Si $X_n \not= j,$ para toda $n>0$, el conjunto $T_j = \infty$. Sea}
 
 \[f_j=P(T_j<\infty|X_0=j)\]
 
@@ -495,12 +500,12 @@ Un estado k es llamado de transicion si hay una probabilidad positiva de que la 
  {donde la suma infinita puede divergir a $\infty$. Para la cadena iniciada en i, el  número esperado de visitas a j es la ij-esima entrada de la matriz $\sum_{n=0}^\infty P^n$.}
  \vspace{0,5cm}
  
- {Supongamos que j es recurrente. La cadena que inicia en j volvera eventualmente a visitar j con probabilidad 1. Una vez que alcance 1, la cadena comienza denuevo y se comporta como una nueva version de la cadena que comienza en j. Decimos que la cadena de Markov se {\bf regenera} asi misma. (Este comportamiento intuitivo se conoce como la propiedad fuerte de Markov.) Desde j, la cadena re-visitara j denuevo, con probabilidad 1, y asi sucesivamente. A esto le sigueq ue j sera revisitada una cantidad infinita de veces y}
+ {Supongamos que j es recurrente. La cadena que inicia en j volvera eventualmente a visitar j con probabilidad 1. Una vez que alcance 1, la cadena comienza denuevo y se comporta como una nueva version de la cadena que comienza en j. Decimos que la cadena de Markov se {\bf regenera} asi misma. (Este comportamiento intuitivo se conoce como la propiedad fuerte de Markov.) Desde j, la cadena re-visitara j denuevo, con probabilidad 1, y asi sucesivamente. A esto le sigue que j sera revisitada una cantidad infinita de veces y}
  \[\sum_{n=0}^\infty P^n_{jj} = \infty.\]
  
  \vspace{0,5cm}
  
- {Por otro lado, supongamos que j es de transicion. Comenzando en j, la probabilidad de eventualmente alcanzar j denuevo es $f_j$, y la probabilidad de nunca alcanzar j es 1-$f_j$. Si la cadena alcanza j, el evento que volvera eventualmente a visitar j es independiente de la historia pasada. A esto le sigue que la secuencia de visitas sucesivas a j se comporta como una secuencia de tiradas de moneda independientes e igualmente distribuidas donde cara ocurre si se llege eventualmente a j y cruz ocurre si j nunca es alcanzada denuevo. El numero de veces que j es alcanszada es el numero de tiradas de moneda hasta que cruz ocurra, el cual tiene una distribucion geometrica con parametro 1-$f_j$. Asi, el numero esperado de visitas a j es  $\frac{1}{1-f_j}$ y }
+ {Por otro lado, supongamos que j es de transicion. Comenzando en j, la probabilidad de eventualmente alcanzar j denuevo es $f_j$, y la probabilidad de nunca alcanzar j es 1-$f_j$. Si la cadena alcanza j, el evento que volvera eventualmente a visitar j es independiente de la historia pasada. A esto le sigue que la secuencia de visitas sucesivas a j se comporta como una secuencia de tiradas de moneda independientes e igualmente distribuidas donde cara ocurre si se llege eventualmente a j y cruz ocurre si j nunca es alcanzada denuevo. El numero de veces que j es alcanzada es el numero de tiradas de moneda hasta que cruz ocurra, el cual tiene una distribucion geometrica con parametro 1-$f_j$. Asi, el numero esperado de visitas a j es  $\frac{1}{1-f_j}$ y }
  
   \[\sum_{n=0}^\infty P^n_{jj} = \frac{1}{1-f_j} <\infty.\]
  
@@ -508,7 +513,7 @@ Un estado k es llamado de transicion si hay una probabilidad positiva de que la 
 
 \newpage
  
- {\bf Recurrencia y transitividad}
+ {\bf Recurrencia y transitoriedad}
  \begin{itemize}
      \item [(i)] El estado j es recurrente si y solo si
      
@@ -530,19 +535,19 @@ Un estado k es llamado de transicion si hay una probabilidad positiva de que la 
    
 desde el cual le sigue que
 
-\[lim{n\rightarrow \infty}P^n_{ij} =0.\]
+\[lim_{n\rightarrow \infty}P^n_{ij} =0.\]
 
 {\bf La probabilidad a largo plazo de que una cadena de Markov eventualmente se pose sobre un estado de transicion es 0. }
 \vspace{0,5cm}
 
-{\bf Recurrencia y transitoriedad son propiedades de clase}
+{\bf Recurrencia y transitoriedad son propiedades de clase.}
 {Los estados de una clase de comunicacion son todos recurrentes o todos de transicion.}
 \begin{center}
     \bf D/p.99
 \end{center}
 \vspace{0,5cm}
 
-{\bf Corolario.} {Para una cadena de Markov finite e irreducible, todos los estados son recurrentes.}
+{\bf Corolario.} {Para una cadena de Markov finita e irreducible, todos los estados son recurrentes.}
 \begin{center}
     \bf D/p.99
 \end{center}
@@ -553,4 +558,262 @@ desde el cual le sigue que
 \end{center}
 
 \newpage
+
+\section{Descomposicion Canonica.}
+\vspace{1cm}
+{Un conjunto de estados C se dice cerrado si ningun esatado fuera de C es accesible desde cualquier estado en C. Si C es cerrado, entonces $P_{ij=0}$ para todo $i\in C$ y $j \notin C$}
+\vspace{0,5cm}
+
+{\bf Clase de comunicacion cerrada.} {Una clase de comunicacion es cerrada si consiste de todos estados recurrentes. Una clase de comunicacion finita es cerrada solo si consiste de estados recuerrentes.}
+\vspace{0,5cm}
+
+\begin{center}
+    {\bf D/101}
+\end{center}
+\vspace{0,5cm}
+
+{El espacio $S$ de una cadena de Markov finita puede ser particionada en estados de transicion y de recurrencia de la siguiente manera, $S=T\cup R_1 \cup R_2 \cup ... \cup R_m$, donde T es el conjunto de todos los estados de transicion y los $R_i$ son clases de comunicacion cerrada de estados de recurrencia. Este proceso es llamado descomposicion canonica. La computacion de muchas cantidades asociadas con cadenas de Marvos puede ser simplificada por esta descomposicion. Dada una descomposicion canonica, el espacio de estados puede ser reordenado de manera tal que la matriz de transicion de Markov tiene la siguiente forma de matriz en bloques }
+
+
+
+\[P=\bordermatrix{~ & T & R_1             & \hdots          & R_m \cr
+                T       & *      & *      & \hdots          & * \cr
+                R_1     & 0      & P_1    & \hdots          & 0 \cr
+                \vdots  & \vdots & \vdots & \ddots & \vdots\cr
+                R_m & 0 &  0     & \hdots          & P_m}\]
+
+
+
+{Cada submatriz $P_1,...,P_m$ es una matriz estocastica cuadrada que corresponde a una clase de comunicacion cerrada. Por si sola, cada una de esas matrices es una cadena de Markov irreducible con un espacio de estados reducido.}
+\vspace{0,5cm}
+
+\begin{center}
+    {\bf Ejemplo 102}
+\end{center}
+\vspace{0,5cm}
+
+{La descomposicion canonica es util para describir el comportamiento a largo plazo de una cadena de Markov. La forma de bloque de la matriz facilita obtener la potencia de las matrices. Para $n \geq 1$.}
+
+
+\[P^n=\bordermatrix{~ & T & R_1   & \hdots & R_m \cr
+                T   & * & *       & \hdots & * \cr
+                R_1 & 0 & P^n_1   & \hdots & 0 \cr
+                \vdots  & \vdots  & \vdots & \ddots & \vdots\cr
+                R_m & 0 &  0      & \hdots & P^n_m}\]
+{Tomando limites obtenemos}
+
+\[lim_{n\rightarrow\infty}P^n=
+\bordermatrix{~ & T    & R_1    & \hdots & R_m \cr
+                T      & 0      & *      & \hdots & * \cr
+                R_1    & 0      & P^n_1  & \hdots & 0 \cr
+                \vdots & \vdots & \vdots & \ddots &\vdots\cr
+                R_m    & 0 &  0    & \hdots & P^n_m}\]
+
+{Notese que las entradas de las columnas correspondientes a estados de transicion estan todas en 0, como consecuencia de lo planteado anteriormente.}
+\vspace{0,3cm}
+
+{Las clases de comunicacion recurrentes y cerradas $R_1,...,R_m$ se comportan como mini irreducibles cadenas Markov donde todos los estados se comunican entre si. Las propiedades asintocticas de las submatrices $P_1,...,P_m$ nos guian a considerar las propiedades de cadenas de Markov irreducibles.}
+\vspace{0,5cm}
+
+\section{Cadenas de Markov irreducibles}
+\vspace{1cm}
+
+{\bf Teroema del limite para cadenas de Markov irreducibles.\\}
+{Suponga que $X_0,X_1,..$ es una cadena de Markov irreducible. Para cada estado j, sea $\pi_j=E(T_j|X_0=j)$ sea el tiempo esperado para retornar a j. Entonces $\pi_j$ es finito, y existe una unica y positiva distribucion estacionaria $\pi$ tal que }
+
+\[\forall_j \pi_j = \frac{1}{\mu_j}\]
+
+{Lo que es mas, para todos los estados i,}
+
+\[\pi_j=lim_{n\rightarrow \infty} \frac{1}{n} \sum_{m=0}^{n-1} P_{ij}^m.\]
+
+{El teorema anterior caracteriza la distribucion estacionaria $\pi$ para cadenas de Markov finitas e irreducibles. Relaciona la probabilidad estacionaria $\pi_j$ a el numero esperado de pasos entre visitar j. Recordemos que $T_j= min \{n>0:X_n=j\}$ es el tiempo minimo que tarda en llegar al estado j. }
+\vspace{01cm}
+
+{\bf Observaciones}
+\begin{itemize}
+    \item [1] El hecho de que $\pi_j = \frac{1}{\mu_j}$ es intuitivo. Si hay una visita a j cada $\mu_j$ pasos, entonces la proporcion de visitas a j es $\frac{1}{\mu_j}$.
+    
+    \item [2] El teorema no afirma que $\pi$ es una distribucion limite. La convergencia en la ultima ecuacion es una forma debil de convergencia respecto a $\pi_j=lim_{n\rightarrow\infty}P^n_{ij}$. Discutiremos mas adelante que se debe hacer una suposicion adicional a $\pi$ para ser una distribucion limite.
+    
+    \item [3]  Para cadenas de Markov finitas e irreducibles, todos los estados son recurrentes y el tiempo esperado $E(T_j|X_0=j)$ es finito, para todo j. Sin embargo, para una cadena de Markov infinita si j es un estado recurrente, a pesar de que la cadena eventualmente revisitara j con probabilidad 1, el numero experado de pasos entre estas visitas no necesariamente son finitos. El teorema puede extenderse a cadenas de Markov infinitas e irreducibles para la cual el tiempo esperado de retorno $E(T_j|X_0=j)$ es finito, para todo j. Un estado recurrente j es llamado recurrente positivo si $E(T_j|X_0=j) < \infty$, y nulo recurrente si $E(T_j|X_0=j)=\infty$. Asi, el teorema se sostiene para cadenas de Markov irreducibles para la cual todos sus estados son positivos recurrentes.
+\end{itemize}
+
+{En muchas aplicaciones, el tiempo esperado entre visitas a un estado en particular es de importancia.}
+\vspace{0,5cm}
+\begin{center}
+    \bf Ejemplos. 104-105
+\end{center}
+
+{\bf Analisis del primer paso.\\}
+{El tiempo esperado de retorno $E(T_j|X_0=j)$ es obtenido apartir del reciproco de la probabilidad estacionaria $\pi_j$. Otro acercamiento es condicionar en el primero paso de la cadena y usar la ley de la expectativa total. Este es llamado {\bf analisis del primer paso}.}
+\vspace{0,5cm}
+\begin{center}
+    \bf Ejemplos. 105-106
+\end{center}
+
+\newpage
+
+\section{Periodicidad}
+\vspace{1cm}
+
+{Cadenas de Markov finitas e irreducibles tiene una unica distribucion estacionaria positiva. A pesar de que es posible que no tengan distribucion limite, ellas tienen al menos un comportamiento limite en el sentido de que para todos los estados i y j, el promedio parcial $\frac{1}{n}\sum_{m=0}^{n-1}P^n_{ij}$ converge.}
+\vspace{0,5cm}
+
+\begin{center}
+    \bf Ejemplo ilustrador 107
+\end{center}
+\vspace{0,5cm}
+
+{Recordar que el divisor comun mas grande (gcd) de un conjunto de enteros positivos es el entero mas grande qeu divide a todo los numeros del conjunto de manera tal que el resto sea 0}
+\vspace{0,1cm}
+
+{\bf Periodo.} {Para una cadena de Markov con una matriz de transicion P, el periodo del estado i, denotado como d(i), es el divisor comun mas grande del conjunto de posibles tiempos de retornos a i. Esto es,}
+
+\[d(i) = gcd \{n > 0 :P^n_{ii} > 0\}.\]
+
+{Si d(i) = 1 , el estado i es llamado {\bf a-periodico}. Si el conjunto de tiempos de retorno al nodo i es vacio, el conjunto $d(i)=\infty$.}
+\vspace{0,5cm}
+
+{\bf La periocidad es una propiedad de clase.} {Los estados en una clase de comunicacion tienen el mismo periodo.}
+\vspace{0,5cm}
+
+\begin{center}
+    \bf D/ p.108. Ejemplos p.108-109
+\end{center}
+\vspace{0,5cm}
+
+{\bf Cadenas de Markov  periodicas y aperiodicas.} {Una cadena de Markov es llamada periodica si es irreducible y todos los estados tienen un periodo mayor a 1. Una cadena de Markov es aperiodica si es irreducible y todos los estados tienen periodo igual a 1.}
+\vspace{0,3cm}
+
+{Notar que cualquier estado i con la propiedad que $P_{ii} > 0$ es necesariamente aperiodico. Asi, una condicion suficiente para una cadena de Markov irreducible para ser aperiodica es que $P_ii >0$ para algun i. Esto es, al menos una entrada diagonal de la matriz de transicion es distinta a 0.}
+\vspace{0,3cm}
+
+\section{Cadenas de Markov ergodicas.}
+
+{Una cadena de Markov es llamada ergodica si es irreducible, aperiodica y todos los estados tienen esperanza de retornar en el tiempo finitas. Lo siguiente es siempre verdadero para cadenas finitas. Asi, una cadena de Markov finita es ergodica si es irreducible y aperiodica. Precisamente la clase de cadenas de Markov ergodicas tienen distribucion limite positiva.}
+\vspace{0,5cm}
+
+{\bf Teorema fundamental del limite para cadenas de Markov ergodicas}
+
+{Sea $X_0,X_1,...,$ una cadena de Markov ergodica. Existe una unica y positiva distribucion estacionaria $\pi$, la cual es la distribucion limite de la cadena. Esto es,}
+
+\[\pi_j = lim_{n\rightarrow \infty}P^n_{ij}, \ para \ toda \ i,j\]
+
+{Este teorema afirma el mismo resultado del limite para cadenas de Markov con matrices de transicion regulares. La demostracion esta dada en la seccion 3.10, donde tambien se demuestra que una cadena de Markov es ergodica si y solo si su matriz de transicion es regular. }
+\begin{center}
+    \bf Ejemplos p.110-114
+\end{center}
+\newpage
+
+\section{Reversibilidad del tiempo}
+\vspace{1cm}
+
+{Algunas cadenas de Markov exhiben un comportamiento direccional en su evolucion. La propiedad de reversibilidad del tiempo puede ser explicada intuitivamente como sigue. Si pudieses ver un video de la cadena de Markov moviendose hacia adelante en el tiempo y luego correr el video hacia atras, no podrias decir la diferencia entre estos dos. }
+\vspace{0,3cm}
+
+{\bf Reversibilidad del tiempo.} {Una cadena de Markov irreducible con matriz de transicion P y distribucion estacionaria $\pi$ es reversible o reversible en el tiempo si}
+
+\[\pi_iP_{ij} =\pi_jP_{ji}, \ para \ toda \ i,j.\]
+
+{Las ecuaciones anteriores son llamadas ecuaciones de equilibrio detalladas. Ellas dicen que para una cadena  en estado estacionario, }
+
+    \[P(X_0=i,X_1=j) = P(X_0=j,X_1=i), \ para \ todos \ i,j.\]
+    
+
+{Esto es, la frecuencia de transiciones de i a j es igual a la frecuencia de transiciones de j a i. Mas generalmente, si una cadena de Markov estacionaria es reversible entonces}
+
+\[P(X_0=i_0,X_1=i_1,...,X_n=i_n)=P(X_0=i_n,X_1=i_{n-1},...,X_n=i_0), \ para \ toda \ i_0,i_1,...,i_n.\]
+
+
+{Si la distribucion estacionaria de una cadena de Markov es uniforme, entonces por la equacion descripta anteriormente la cadena es reversible si la matriz de transicion es simetrica.}
+\vspace{0,3cm}
+
+\begin{center}
+    \bf Ejemplos p.115-119
+\end{center}
+\vspace{1cm}
+
+\section{Cadenas absorbentes}
+\vspace{1cm}
+
+\begin{center}
+    \bf Serpientes y Escaleras. Ejemplo ilustrador.
+\end{center}
+\vspace{0,5cm}
+
+{\bf Estado absorbente, cadena absorbente.} {El estado i es un estado absorbente si $P_{ii}=1.$ Una cadena de Markov es llamada cadena absorbente si tiene al menos un estado absorbente.}
+\vspace{0,3cm}
+
+{Consideremos una cadena de Markov absorbente con k estados de los cuales t estados son de transicion y k-t son absorbentes. Estos estados pueden ser reordenados, como en la descomposicion canonica, con su matriz de transicion escrita bloques de la siguiente manera,}
+\vspace{0,5cm}
+
+\[P=\left( \begin{tabular}{r | l}
+   Q  & R \\ \hline
+    0 & I \\ 
+\end{tabular} \right)\]
+\vspace{0,5cm}
+
+{Donde Q es una matrix $t \times t$, R es una matriz $t\times(k-t)$, 0 es una matriz $(k-t) \times t$ de 0s y  I es una matriz identidad $(k-t) \times (k-t)$}.
+
+\newpage
+
+{Computar potencias de P es facilitado por la forma en bloque de la matriz. Tenemos}
+\vspace{0,3cm}
+
+\[P^2=\left( \begin{tabular}{r | l}
+   Q  & R \\ \hline
+    0 & I \\ 
+\end{tabular} \right)  \left( \begin{tabular}{r | l}
+   Q  & R \\ \hline
+    0 & I \\ 
+\end{tabular} \right) = \left( \begin{tabular}{r | l}
+   Q^2  & (I+Q) R \\ \hline
+    0 & I \\ 
+\end{tabular} \right)\]
+\vspace{0,3cm}
+
+{En general para $n\geq 1$ tenemos}
+\vspace{0,3cm}
+
+\[P^n=\left( \begin{tabular}{r | l}
+   Q^n  & (I+Q+...+Q^(n-1)) R \\ \hline
+    0 & I \\ 
+\end{tabular} \right)\]
+\vspace{0,3cm}
+
+{\bf Lema. Sea A una matriz cuadrada con la propiedad que $A^n \rightarrow 0$, cuando $n \rightarrow \infty.$ Entonces,}
+
+\[\sum_{n=0}^\infty A^n= (I-A)^{-1}.\]
+
+{\bf D/ p.122-123}.
+\vspace{0,3cm}
+
+{Ahora podremos calcular $lim_{n\rightarrow \infty}P^n$,}
+
+\[lim_{n\rightarrow \infty}P^n=
+
+= lim_{n\rightarrow \infty} \left( \begin{tabular}{r | l}
+   Q^n  & (I+Q+...+Q^(n-1)) R \\ \hline
+    0 & I \\ 
+\end{tabular} \right)  
+
+=\left( \begin{tabular}{r | l}
+  lim_{n\rightarrow \infty} Q^n  & lim_{n\rightarrow \infty}(I+Q+...+Q^(n-1)) R \\ \hline
+    0 & I \\ 
+\end{tabular} \right) 
+
+= \left( \begin{tabular}{r | l}
+   0  & (I-Q)^{-1} R \\ \hline
+    0 & I \\ 
+\end{tabular} \right)\]
+
+{Consideremos la interpretacion de $ (I-Q)^{-1} R$. Esta matriz es indexada por filas transitorias y columnas absorbentes. La ij-esima entrada es la probabilidad a largo plazo que una cadena iniciada en un estado de transicion i sea absorbida en el estado j. Si la cadena de Markov tiene solo un estado absorbente, esta submatriz sera una $(k-1)$- vector columna de 1s }
+
+\vspace{0,3cm}
+
+\begin{center}
+    \bf Ejemplos p.123-125
+\end{center}
+
 \end{document}
