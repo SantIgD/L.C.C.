@@ -815,5 +815,45 @@ desde el cual le sigue que
 \begin{center}
     \bf Ejemplos p.123-125
 \end{center}
+\vspace{0,5cm}
 
+{\bf Numero esperado de visitas a estados de transicion.} {Consideremos una cadena de Markov absorbente con t estados de transicion. Sea F una matriz $t\times t$ indexada por estados de transicion, donde $F_{ij}$ es el numero esperado de visitas a j dado que la cadena comienza en i. Entonces,}
+
+\[F =(I-Q)^{-1}\]
+
+{La matriz F es llamada matriz fundamental. \bf D/125-126}
+
+\vspace{1cm}
+\newpage
+\section{Tiempo esperado de absorcion.}
+\vspace{1cm}
+
+{Para una cadena de Markov absorbente iniciada en un estado de transicion i, sea $a_i$ el tiempo de absorcion esperado, el numero de pasos esperados para alcanzar algun estado de abosrcion. El numero de transiciones desde i hasta un estado de absorcion es simplemente la suma del numero de transiciones desde i hacia cada uno de los estados de transicion hasta que eventualmente llegue a un estado de absorcion. El numero esperado de pasos desde i hacia un estado de transicion j es $F_{ij}$. A esto le sigue que,}
+
+\[a_i=\sum_{k\in T}F_{ik}\]
+
+{En forma de vector, $a=F1$ donde 1 es el vector columna de todos 1s. Esto es, el tiempo de absorcion esperado son la suma de las filas de la matriz fundamental.}
+\vspace{0,3cm}
+
+{\bf Cadenas de Markov absorbentes.} {Para una cadena de Markov con todos los estados de transicion o absorbentes, sea $F=(I-Q)^{-1}$,}
+\begin{itemize}
+    \item [1.] (Probabilidad de absorcion) la probabilidad de que desde un estado de transicion i la cadena sea absorbida en el estado j es $(FR)_{ij}$
+    
+    \item [2.] (Tiempo de absorcion) El numero de pasos esperados desde un estado de transicion i hasta que la cadena sea absorbida en algun estado absorbente es $(F1)_i$.
+\end{itemize}
+\vspace{0,3cm}
+\begin{center}
+    \bf Ejemplos 127-128
+\end{center}
+\vspace{1cm}
+
+\section{Tiempo esperado para cadenas irreducibles}
+\vspace{1cm}
+
+{ Para una cadena de Markov irreducible, la primera vez que la cadena llega a un estado puede ser analizado como tiempos de absorcion para una cadena adecuadamente modificada. En particular, asumamos que P es la matriz de transicion de una cadena de Markov irreducible. Para encontrar el tiempo esperado hasta que el estado i sea alcanzado por primera vez, consideremos una nueva cadena en la cual i es un estado de absorcion. La matriz de transicion $\tilde{P}$ para la nueva cadena es obtenida haciendo 0 la i-esima fila de la matriz P y la i-esima columna de P. El tiempo que la cadena original P llega a i es igual a el tiempo de que la cadena modificada $\tilde{P}$ es absorbida en i.}
+\vspace{0,3cm}
+\begin{center}
+    \bf Ejemplos 129-... (sigue propiedad fuerte de Markov y demas cosas complementarias.)
+\end{center}
 \end{document}
+
