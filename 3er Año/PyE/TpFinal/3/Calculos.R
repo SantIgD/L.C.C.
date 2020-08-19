@@ -1,9 +1,9 @@
 
-plataInicial = 500
+plataInicial = 50
 limiteInferior = 0
-limiteSuperior = 1000
+limiteSuperior = 100
 plataActual = plataInicial
-ganar = 0.3
+ganar = 0.7
 perder = 1-ganar
 vectorProbabilidad = c(ganar,perder)
 trayectoria = c(plataInicial)
@@ -11,12 +11,8 @@ termino = FALSE
 
 
 while (!termino) {
-  while (is.null(lanzamiento)){
-    lanzamiento = tirada(c(ganar,perder))
-  }
-  
-  
-  if(lanzamiento == ganar){
+  if(tirada(vectorProbabilidad) == ganar){
+    
     plataActual = plataActual + 1
   }
   else{
@@ -30,9 +26,8 @@ while (!termino) {
 
 
 
-if (3 != 0){
-  ganar = 30
-}
+for(i in c(1:10))
+  print (tirada(c(0.7,0.3)) == ganar)
 
 
 
@@ -47,12 +42,13 @@ tirada<-function(probabilidades){
   posicion = 1
   
   for (i in probabilidades){
-    if(tirada <= i*100){
-      return (i) # Devuelvo la probabilidad que ocurrio
-    }
     if (posicion == length(probabilidades)){
       return (i)
     }
+    if(tirada <= i*100){
+      return (i) # Devuelvo la probabilidad que ocurrio
+    }
+    
     posicion = posicion +1
     
   }
