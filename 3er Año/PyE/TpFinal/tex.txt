@@ -1,0 +1,114 @@
+\documentclass{report}
+\usepackage{amsmath}
+\usepackage[utf8]{inputenc}
+\usepackage{vmargin}
+\usepackage{graphicx}
+
+\usepackage{etoolbox}
+
+\graphicspath{ {images/} }
+\setpapersize{A4}
+\setmargins{2.5cm}       % margen izquierdo
+{1.5cm}                        % margen superior
+{16.5cm}                      % anchura del texto
+{23.42cm}                    % altura del texto
+{10pt}                           % altura de los encabezados
+{1cm}                           % espacio entre el texto y los encabezados
+{0pt}                             % altura del pie de página
+{2cm}           
+\begin{document}
+
+\begin{titlepage}
+\centering
+{\bfseries\LARGE Universidad Nacional de Rosario \par}
+\vspace{0,5cm}
+{\scshape\Large Facultad de Ciencias Exactas, Ingeniería y Agrimensura \par}
+\vspace{2cm}
+{\scshape\Huge Probabilidad y Estadística\par}
+\vspace{3cm}
+{\itshape\Huge Tp final \par}
+\vfill
+{\Large Autor:\par}
+\vspace{1 cm}
+{\Large Demagistris, Santiago Ignacio \par}
+\vfill
+{\Large Agosto 2020 \par}
+\end{titlepage}
+\newpage
+
+\section{Ejercicio 1}
+\vspace{0,5cm}
+
+\begin{itemize}
+    \item [a)] El espacio muestral sobre el cual estamos trabajando es S=\{0,1\}, donde cara es 1 y cruz es 0
+    
+    
+    
+\end{itemize}
+\begin{figure}[htb]
+        \centering
+        \includegraphics{frecAcumulada.png}
+        \caption{Tiradas de moneda}
+        \label{fig:my_label}
+    \end{figure}
+\vspace{0,5cm}
+
+{Podemos observar que se obtuvo un total de 39 caras en este proceso.}
+\vspace{0,5cm}
+
+\begin{itemize}
+    \item [b)] 
+    \item []  ({\bf P(X=1)}).{ Por lo observado en la simulacion anterior, de 100 tiradas obtuvimos 39 caras. Por lo tanto podriamos aproximar la probabilidad de que obtengamos una cara al tirar la moneda de P(X=1) = $\frac{39}{100} = 0,39$}
+    \item [] ({\bf E(X)}). {Sabemos que $E(X)=\sum_{x\in S}xP(X=x)= 0 *  0,61+ 1 * 0,39 =0,39$}
+   
+    \item [c)] {Sea Y= numero de veces hasta que salgan 3 caras. $Y\sim Pascal$, por lo que \[P(Y=k)={{k-1}\choose{3-1}} 0.39^3 \  0.61^{k-3}={{k-1}\choose{2}} 0.39^3 \ 0.61^{k-3}\]}
+    \item [] Observemos que P(Y=50) = $5,9\times 10^{-9}$, $y\geq3$. Por lo tanto si consideramos un espacio reducido para Y, $S_y=\{3,4,...,50\}$. Si buscamos E(Y), obtenemos el valor esperado para obtener la tercer cara, es decir la cantidad de tiradas promedio que debemos realizar.
+    \item[] Por medio de R obtuve las probabilidades y calcule E(y), obtuve que el numero esperado de tiradas es de 7,69.
+\end{itemize}
+\newpage
+
+\begin{itemize}
+    \item [d)] Para sesgar la moneda, realice un experimento con espacio muestral $S_x= \{0,1,2\}$. Con una distribucion de probabilidad equitativa entre estos elementos. Luego defini una variable aleatoria Y=mod(X,2). Asi es como obtuve un espacio muestral $S_y=\{0,1\}$, donde 0 significa que el resultado fue cruz y 1 que el resultado fue cara. Al simular el proceso con n=100 obtuve que salieron en total 33 caras, por lo tanto podria aproximar $P(Y=1)\sim 0,33$. Al realizar un analisis similar que el planteado en el item b), obtengo que E(Y) = 0,39.
+\end{itemize}
+
+\section{Ejercicio 2}
+
+\begin{figure}[htb]
+        \centering
+        \includegraphics{MonedaPosicionDesplazamiento.png}
+        \includegraphics{Tabla.png}
+        \caption{Tiradas de moneda}
+        \label{fig:my_label}
+    \end{figure}
+
+
+    
+    
+\begin{center}
+    (Azul)   Sn $||$
+    (Marron) Dn $||$
+    (Verde)  In
+\end{center}
+    
+
+
+{Al simular las 10 tiradas de la moneda obtuve la variable aleatoria Dn, apartir de la cual obtuve Sn. Sn fue calculada como la frecuencia acumulada de Dn considerando como $S_0 = 0$}
+
+\newpage
+
+\section{Ejercicio 3}
+
+
+\end{document}
+
+In	Dn	Sn
+1	1	1
+1	1	2
+1	1	3
+0	-1	2
+0	-1	1
+1	1	2
+0	-1	1
+0	-1	0
+1	1	1
+0	-1	0
