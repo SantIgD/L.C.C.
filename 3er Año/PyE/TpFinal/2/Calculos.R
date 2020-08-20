@@ -28,7 +28,7 @@ ggplot(mi_df, aes(Tiradas)) +                    # basic graphical object
   geom_line(aes(y=Dn), colour="brown") + # second layer
   ggtitle("Tiradas de moneda vs Cambio de posicion vs Desplazamiento")+
 theme(plot.title = element_text(hjust = 0.5))+
-  theme(panel.background = element_rect(fill = 'grey', colour = 'pink'))+
+  theme(panel.background = element_rect(fill = 'grey', colour = 'black'))+
   ylab("In/ Dn / Sn")  + scale_fill_manual(breaks = c(1:10))
   
 
