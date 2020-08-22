@@ -258,5 +258,39 @@ Cada uno de los resultados obtenidos de acuerdo al estado desde el que se comien
     \item [b)] Simulacion
     \item [c)] Obtuve el siguiente vector de frecuencias relativas : [0.25, 0.16, 0.04, 0.06, 0.10, 0.34, 0.05]. Por lo cual con n=100 suponemos que el rango de las paginas a,b,c...,g corresponden con las posiciones desde 1 a 7 del vector obtenido por medio de la simulacion.
 \end{itemize}
+\vspace{1cm}
+
+\section{Ejercicio 7}
+\vspace{0,5cm}
+
+\begin{itemize}
+    \item [a)] Sea $X_t$ el numero de llamads que recibe Juan durante un intervalo de tiempo t. Sabemos que $X_t$ tiene una distribucion de Poisson con parametro $\lamda = 10 textos/hora$. Por lo tanto, $P()$
+\end{itemize}
+
+\newpage
+\section{Ejercicio 8}
+\vspace{1cm}
+
+\begin{itemize}
+    \item [a)] Dada la distribucion inicial $\pi_0$, y la matriz de transicion P, luego de dos semanas nos encontramos con la siguiente probabilidad de ataques a los puertos:
+    
+    \[\pi_0P^2= \left(\begin{matrix}
+0 & \frac{1}{8} & \frac{1}{2} & \frac{1}{8} & \frac{1}{4}
+\end{matrix}\right)\]
+\end{itemize}
+
+\[\pi_0=\left(\begin{matrix}
+0 & 0 & 0 & 0 & 1
+\end{matrix}\right)\]
+
+\[P=\left(\begin{matrix}
+0 & 0 & 0 & 0 & 1 \\
+0 & \frac{8}{13} & \frac{3}{13} & \frac{1}{13} & \frac{1}{13} \\
+\frac{1}{16} & \frac{3}{16} & \frac{3}{8} & \frac{1}{4} & \frac{1}{8} \\
+0 & \frac{1}{11} & \frac{4}{11} & \frac{5}{11} & \frac{1}{11} \\
+0 & \frac{1}{8} & \frac{1}{2} & \frac{1}{8} & \frac{1}{4}
+\end{matrix}\right)\]
+
+Los puertos con menos probabilidad de ser atacados son el 135 y 445, mientras que el que tiene mas probabilidad de ser atacado es el 139. Se puede observar que el puerto 80 no tiene posibilidad de ser atacado.
 \end{document}
 
