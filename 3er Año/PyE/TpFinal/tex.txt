@@ -255,7 +255,8 @@ Cada uno de los resultados obtenidos de acuerdo al estado desde el que se comien
 \frac{1}{7} & \frac{1}{7} & \frac{1}{7} & \frac{1}{7} & \frac{1}{7} & \frac{1}{7} & \frac{1}{7}
 \end{matrix}\right)
     \end{equation}
-    \item [b)] Luego de 100 pasos de este proceso
+    \item [b)] Simulacion
+    \item [c)] Obtuve el siguiente vector de frecuencias relativas : [0.25, 0.16, 0.04, 0.06, 0.10, 0.34, 0.05]. Por lo cual con n=100 suponemos que el rango de las paginas a,b,c...,g corresponden con las posiciones desde 1 a 7 del vector obtenido por medio de la simulacion.
 \end{itemize}
 \end{document}
 
