@@ -17,8 +17,8 @@ simular <- function(n){
   
 }
 
-graficar <- function(simulacion,fondo,linea,borde,nombreX,nombreY,nombreTitulo){
-  ggplot(simulacion, aes(x=vectorTiradas, y=Xn ))+  # Grafico
+graficar <- function(simulacion,fondo,linea,borde,nombreX,nombreY,nombreTitulo,ejex,ejey){
+  ggplot(simulacion, aes(x=ejex, y=ejey ))+  # Grafico
     geom_line(colour="red") +
     geom_point( size=2, shape=21, fill=linea, colour="red") +
     theme_minimal()+ ggtitle(nombreTitulo) +
@@ -36,10 +36,11 @@ graficar <- function(simulacion,fondo,linea,borde,nombreX,nombreY,nombreTitulo){
 
 # TIRADA SESGADA, si es par salio cruz.
 
-resultado_d <- sample(0:2,100,  replace =TRUE)
-resultado_d <- modulo_2(modulo_2(resultado_d))
-
+resultado_d <- tirarMonedaSesgada(n)
 fac <- cumsum(resultado_d)
+simulacion2 = data.frame(fac,c(1:n))
+graficar(simulacion2,"grey","pink","black","Número de tirada (n)","Xn","Número de caras al momento n",c(1:n),fac)
+
 
 #P(X=1) = 0,67, E(X) = 0 * 0.33 + 0,67 * 1 = 0,67 
 
@@ -71,6 +72,10 @@ E<-function(x){
 
 tirarMoneda<-function(n){ #Tirar moneda n veces
   return(sample(0:1,100,replace = TRUE))
+}
+
+tirarMonedaSesgada<- function(n){
+  return (sample(0:2,100,  replace =TRUE)%%2)
 }
 
 

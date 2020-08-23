@@ -107,27 +107,94 @@
 \newpage
 
 \section{Ejercicio 2}
+\vspace{0,5cm}
+
+{Para simular la situacion implemente lo siguiente: 
+\vspace{1cm}
+
+simular$<-$function(n)\{
+\vspace{0,5cm}
+
+  In $<-$ tirarMoneda(n) -- Tiro n veces la moneda
+  \vspace{0,5cm}
+  
+  Tiradas $<-$ c(1:n)    --  Genero el eje X
+  \vspace{0,5cm}
+  
+  Dn = variableAleatoria(In) -- Obtengo la variable aleatoria Dn apartir de In
+  \vspace{0,5cm}
+  
+  Xn = cumsum(Dn)  -- Obtengo el desplazamiento como la frecuencia relativa acumulada de Dn
+  \vspace{0,5cm}
+  
+  proceso1 $<-$ data.frame(In,Tiradas)
+  \vspace{0,5cm}
+  
+  proceso2 $<-$ data.frame(Dn,Tiradas)
+  \vspace{0,5cm}
+  
+  
+  $mi_df <- data.frame$(
+    "Proceso1" = In,
+    "Proceso2" = Xn
+  )
+  \vspace{0,5cm}
+  
+ $ return (mi_df)$
+  \vspace{0,5cm}
+  
+\}
+\vspace{1cm}
+
+tirarMoneda$<-$function(n)\{ -- Tirar moneda n veces
+\vspace{1cm}
+  
+  return(sample(0:1,n,replace = TRUE))
+  \vspace{0,5cm}
+  
+\}
+\vspace{1cm}
+
+variableAleatoria<- function(In)\{  -- Obtengo Dn
+\vspace{1cm}
+  
+  Dn $<-$ c()
+  \vspace{0,5cm}
+  
+  for (i in In)\{
+  \vspace{0,5cm}
+  
+    Dn $<-$ c(Dn,(2 * i) - 1)
+    \vspace{0,5cm}
+    
+  \}
+  \vspace{0,5cm}
+  
+  return (Dn)
+  \vspace{0,5cm}
+  
+\}
+}
 
 \begin{figure}[htb]
         \centering
-        \includegraphics{MonedaPosicionDesplazamiento.png}
-        \includegraphics{Tabla.png}
-        \caption{Tiradas de moneda}
+        \includegraphics{ej2/mpd.png}
         \label{fig:my_label}
     \end{figure}
-
-
-    
-    
+\vspace{0,5cm}
 \begin{center}
-    (Azul)   Sn $||$
-    (Marron) Dn $||$
-    (Verde)  In
+    {\bf Tabla de frencuencias}
 \end{center}
+
+\begin{figure}[htb]
+        \centering
+        \includegraphics{ej2/tabla2.png}
+        \label{fig:my_label}
+    \end{figure}
+\vspace{1cm}
     
+{La trayectoria descripta por Xn es causa del lanzamiento de la moneda (10 veces en este caso). Cada vez que salga cara en la moneda el sujeto se desplazara 1 unidad en el espacio y cuando salga cruz un 0. (Cara representado con 1 y cruz representado con 0). La decision de desplazamiento esta dada por Dn, mientras que Xn solo describe la trayectoria, es decir la frecuencia acumulada de los resultados obtenidos.}
 
-
-{Al simular las 10 tiradas de la moneda obtuve la variable aleatoria Dn, apartir de la cual obtuve Sn. Sn fue calculada como la frecuencia acumulada de Dn considerando como $S_0 = 0$}
 
 \newpage
 
