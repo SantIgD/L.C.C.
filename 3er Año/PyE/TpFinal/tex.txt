@@ -155,7 +155,7 @@ tirarMoneda$<-$function(n)\{ -- Tirar moneda n veces
 \}
 \vspace{1cm}
 
-variableAleatoria<- function(In)\{  -- Obtengo Dn
+variableAleatoria$<-$ function(In)\{  -- Obtengo Dn
 \vspace{1cm}
   
   Dn $<-$ c()
@@ -201,20 +201,163 @@ variableAleatoria<- function(In)\{  -- Obtengo Dn
 \section{Ejercicio 3}
 \vspace{1cm}
 \begin{itemize}
-    \item [a)] Para realizar usare k=50, p=0.55, S=100, perder=0. El resultado obtenido es el siguiente:
-    \item [b)]
+    \item [a)] En R implemente lo siguiente para simular el proceso:
+    \vspace{1cm}
+    
+    proceso $<-$function(plataInicial,S,p)\{
+    \vspace{1cm}
+    
+  limiteInferior = 0
+  \vspace{0,5cm}
+  
+  limiteSuperior = S
+  \vspace{0,5cm}
+  
+  plataActual = plataInicial
+  \vspace{0,5cm}
+  
+  ganar = p
+  \vspace{0,5cm}
+  
+  perder = 1-ganar
+  \vspace{0,5cm}
+  
+  vectorProbabilidad = c(ganar,perder)
+  \vspace{0,5cm}
+  
+  trayectoria = c(plataInicial)
+  \vspace{0,5cm}
+  
+  termino = FALSE
+  \vspace{0,5cm}
+  
+  
+  
+  while (!termino) \{
+  \vspace{0,5cm}
+  
+    if(tirada(vectorProbabilidad) == ganar)\{
+    \vspace{0,5cm}
+      
+      plataActual = plataActual + 1
+    \}
+    \vspace{0,5cm}
+    
+    else\{
+    \vspace{0,5cm}
+    
+      plataActual = plataActual - 1
+    \}
+    \vspace{0,5cm}
+    
+    trayectoria = c(trayectoria,plataActual)
+    \vspace{0,5cm}
+    
+    if(plataActual == limiteSuperior)\{termino = TRUE\}
+    \vspace{0,5cm}
+    
+    if(plataActual == limiteInferior)\{termino = TRUE\}
+    \vspace{0,5cm}
+    
+  \}
+  \vspace{0,3cm}
+  
+  return (trayectoria[length(trayectoria)] == S)
+ 
+\}
+\newpage
+
+\vspace{5cm}
+
+tirada$<-$function(probabilidades)\{
+\vspace{1cm}
+
+  probabilidades = sort(probabilidades)
+  \vspace{0,5cm}
+  
+  intervaloAleatorio = 1000000 -- Probabilidades de hasta 6 digitos despues del .
+  \vspace{0,5cm}
+  
+  tirada = sample(1:intervaloAleatorio,1)
+  \vspace{0,5cm}
+  
+  posicion = 1
+  \vspace{0,5cm}
+  
+  for (i in probabilidades)\{
+  \vspace{0,3cm}
+  
+    if (posicion == length(probabilidades))\{
+    \vspace{0,3cm}
+    
+      return (i)
+    \}
+    if(tirada <= i*1000000)\{
+    \vspace{0,3cm}
+    
+      return (i) # Devuelvo la probabilidad que ocurrio
+    \}
+    \vspace{0,3cm}
+    
+    posicion = posicion +1
+    \vspace{0,3cm}
+    
+  \}
+\}
 \end{itemize}
-\begin{figure}[htb]
+
+
+\begin{itemize}
+    \item [b)]Para realizar la simulacion usare k=50, p=0.55, S=100, perder=0. El resultado obtenido fue el siguiente:
+    
+    \begin{figure}[htb]
         \centering
         \includegraphics{rddj.png}
         \caption{Trayectoria. Ruina del jugador}
         \label{fig:my_label}
-    \end{figure}
-\begin{itemize}
-    \item [c)] Con k=20, S=60, p=0.5001 y 1000 trayectorias obtuve una aproximacion a la probabilidad de caer en la ruina de 0.678
+\end{figure}
 \end{itemize}
-\vspace{0,5cm}
+    
+
+\vspace{0,3cm}
+
+
+    
+\vspace{0,3cm}
+\begin{itemize}
+\vspace{0,3cm}
+    \item [c)] Para simular esto, implemente en R:
+    \vspace{0,5cm}
+    probabilidadRuina $<-$ function(plataInicial,S,p,n)\{
+  \vspace{1cm}
+
+  frecRuina = 0
+  \vspace{0,5cm}
+  
+  for (i in c(1:n))\{
+  \vspace{0,5cm}
+  
+    if(!proceso(plataInicial,S,p))\{
+    \vspace{0,5cm}
+    
+      frecRuina = frecRuina+1
+      \vspace{0,5cm}
+      
+    \}
+  \}
+  return (frecRuina/n)
+  \vspace{0,5cm}
+  
+\}
+    
+\vspace{1cm}
+    
+    
+    Con k=20, S=60, p=0.5001 y 1000 trayectorias obtuve una aproximacion a la probabilidad de caer en la ruina de 0.678
+\end{itemize}
 \newpage
+
+
 \section{Ejercicio 4}
 \vspace{0,5cm}
 

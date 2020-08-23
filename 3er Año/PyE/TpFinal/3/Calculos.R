@@ -38,6 +38,7 @@ ggplot(data = mi_df,aes(Jugadas)) +
   geom_line(aes(y=trayectoria), colour="darkgreen") +
   ylab("Plata")  # first layer
 
+
 frecRuina = 0
 for (i in c(1:100)){
   if(!proceso(100,1000,0.65)){
