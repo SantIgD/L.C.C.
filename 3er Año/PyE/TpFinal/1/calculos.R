@@ -1,17 +1,37 @@
 library(ggplot2)
-resultado <- sample(0:1,100,replace = TRUE) # 100 tiradas de una moneda
-tiradas <- c(1,100)
-frec_Acm <- cumsum(resultado) 
-proceso = data.frame(resultado,tiradas)
-ggplot(proceso, aes(x=Tiradas, y=Xn ))+  # Grafico
+
+
+n = 100 # Cantidad de tiradas
+
+simulacion = simular(n)
+graficar(simulacion,"grey","pink","black","Número de tirada (n)","Xn","Número de caras al momento n")
+write.table(simulacion,"D:\\Facultad\\LCC\\3er Año\\PyE\\TpFinal\\1\\Número de caras al momento n")
+simular <- function(n){
+  In <- tirarMoneda(n) # n tiradas de una moneda
+  
+  Xn<- cumsum(In) # numero de caras al momento n
+  
+  vectorTiradas <- c(1:n)
+  
+  return (data.frame(Xn,vectorTiradas))
+  
+}
+
+graficar <- function(simulacion,fondo,linea,borde,nombreX,nombreY,nombreTitulo){
+  ggplot(simulacion, aes(x=vectorTiradas, y=Xn ))+  # Grafico
     geom_line(colour="red") +
-    geom_point( size=2, shape=21, fill="pink", colour="red") +
-    theme_minimal()+ ggtitle("Frecuencia acumulada") +
-    theme(plot.title = element_text(hjust = 0.5)) + theme(panel.background = element_rect(fill = 'black', colour = 'pink'))
+    geom_point( size=2, shape=21, fill=linea, colour="red") +
+    theme_minimal()+ ggtitle(nombreTitulo) +
+    theme(plot.title = element_text(hjust = 0.5))+ 
+    theme(panel.background = element_rect(fill = fondo, colour = borde)) +
+    ylab(nombreY) + xlab(nombreX) 
+  
+}
+
 
 # P(X=1) = 0,43, E(X) = 1 * 0,43 + 0 * 0,57 = 0,43
 #
-#
+#X100 = 54=> P(X=1) = 0.43 , E(X) = 
 #
 
 # TIRADA SESGADA, si es par salio cruz.
@@ -49,5 +69,8 @@ E<-function(x){
   return (esperanza)
 }
 
+tirarMoneda<-function(n){ #Tirar moneda n veces
+  return(sample(0:1,100,replace = TRUE))
+}
 
 

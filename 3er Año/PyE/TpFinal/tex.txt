@@ -40,36 +40,71 @@
 \vspace{0,5cm}
 
 \begin{itemize}
-    \item [a)] El espacio muestral sobre el cual estamos trabajando es S=\{0,1\}, donde cara es 1 y cruz es 0
+    \item [a)] El espacio muestral sobre el cual estamos trabajando es S=\{0,1\}, donde cara es 1 y cruz es 0. $I_n$ y $S_n$ 
+    
+    \vspace{0,5cm}
+    {n = 100 # Cantidad de tiradas\\
+    
+    simulacion = simular(n)\\\\
+    
+    
+    simular $<-$ function(n)\{\\
+    
+      In $<-$ tirarMoneda(n) (n tiradas de una moneda)\\
+      Xn $<-$ cumsum(In) (numero de caras al momento n - Frecuencia relativa acumulada -)\\
+      vectorTiradas $<-$ c(1:n)\\
+      return (data.frame(Xn,vectorTiradas)) 
+    \}\\\\
+    
+    tirarMoneda$<-$function(n)\{ (Tirar moneda n veces)\\
+    
+      return(sample(0:1,100,replace = TRUE))  (Vector de longitud n donde cada posicion tiene 1 o 0)
+    \}
+}
     
     
     
 \end{itemize}
 \begin{figure}[htb]
         \centering
-        \includegraphics{frecAcumulada.png}
+        \includegraphics{ncmn.png}
         \caption{Tiradas de moneda}
         \label{fig:my_label}
     \end{figure}
 \vspace{0,5cm}
-
-{Podemos observar que se obtuvo un total de 39 caras en este proceso.}
+{Sea A=\{"Obtener cara al lanzar la moneda"\}. Podemos observar que se obtuvo un total de 54 caras en este proceso, por lo tanto P(A) $\simeq\frac{54}{100}=0.54=p$ }
+{}
 \vspace{0,5cm}
 
 \begin{itemize}
     \item [b)] 
-    \item []  ({\bf P(X=1)}).{ Por lo observado en la simulacion anterior, de 100 tiradas obtuvimos 39 caras. Por lo tanto podriamos aproximar la probabilidad de que obtengamos una cara al tirar la moneda de P(X=1) = $\frac{39}{100} = 0,39$}
-    \item [] ({\bf E(X)}). {Sabemos que $E(X)=\sum_{x\in S}xP(X=x)= 0 *  0,61+ 1 * 0,39 =0,39$}
-   
-    \item [c)] {Sea Y= numero de veces hasta que salgan 3 caras. $Y\sim Pascal$, por lo que \[P(Y=k)={{k-1}\choose{3-1}} 0.39^3 \  0.61^{k-3}={{k-1}\choose{2}} 0.39^3 \ 0.61^{k-3}\]}
-    \item [] Observemos que P(Y=50) = $5,9\times 10^{-9}$, $y\geq3$. Por lo tanto si consideramos un espacio reducido para Y, $S_y=\{3,4,...,50\}$. Si buscamos E(Y), obtenemos el valor esperado para obtener la tercer cara, es decir la cantidad de tiradas promedio que debemos realizar.
-    \item[] Por medio de R obtuve las probabilidades y calcule E(y), obtuve que el numero esperado de tiradas es de 7,69.
+    \item []  ({\bf P(X=1)}).{ Sabemos que X=\{"Número de veces que ocurrió el evento A "\} y que $X\sim Bi(n,0.54)$ (siendo p =0.54 observado en la simulacion). Por lo tanto $P(X=1) ={n \choose 1} (0.54)(0.46)^{n-1}$ y $E(X)=n0.54$. }
+    \vspace{0,5cm}
+    
+
+    \item [c)] {Sea Y= Número de tiradas hasta que salgan 3 caras. $Y\sim Pascal$, por lo que \[P(Y=k)={{k-1}\choose{3-1}} 0.54^3 \  0.46^{k-3}={{k-1}\choose{2}} 0.54^3 \ 0.46^{k-3}\] y E(Y) = $\frac{r}{p}= \frac{3}{0.54}\simeq 5.55$. Es decir que se espera que entre la 5ta y la 6ta tirada de la moneda obtengamos 3 caras.}
+\end{itemize}
+\begin{itemize}
+    \item [d)] La implementacion que utilice para sesgar la moneda es la siguiente:\\
+    
+    tirarMonedaSesgada $<-$ function(n)\{\\
+    
+      return (sample(0:2,100,  replace =TRUE)\%\%2)
+    \}\\
+    
+    {De esta manera trabajo sobre un espacio muestral $S_x\{0,1,2\}$, donde A=\{1\}=\{"Obtuve cara"\} y$A^c$=\{"Obtuve Cruz"\}} 
+    
+    \begin{figure}[htb]
+        \centering
+        \includegraphics{simulacionD.png}
+        \caption{Tiradas de moneda sesgada}
+        \label{fig:my_label}
+    \end{figure}
+
+    
+  {Al simular el proceso con n=100 obtuve que salieron en total 24 caras, por lo tanto podria aproximar $P(A)\simeq 0,24$. Por lo tanto $P(X=1) ={n \choose 1} (0.24)(0.76)^{n-1}$ y $E(X)=n0.24$}
 \end{itemize}
 \newpage
-
-\begin{itemize}
-    \item [d)] Para sesgar la moneda, realice un experimento con espacio muestral $S_x= \{0,1,2\}$. Con una distribucion de probabilidad equitativa entre estos elementos. Luego defini una variable aleatoria Y=mod(X,2). Asi es como obtuve un espacio muestral $S_y=\{0,1\}$, donde 0 significa que el resultado fue cruz y 1 que el resultado fue cara. Al simular el proceso con n=100 obtuve que salieron en total 33 caras, por lo tanto podria aproximar $P(Y=1)\sim 0,33$. Al realizar un analisis similar que el planteado en el item b), obtengo que E(Y) = 0,39.
-\end{itemize}
 
 \section{Ejercicio 2}
 
