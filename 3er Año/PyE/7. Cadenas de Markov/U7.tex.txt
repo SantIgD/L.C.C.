@@ -970,8 +970,35 @@ es el tiempo entre-llegada entre la (k-1)-esima y k-esima llegada, donde $S_0 =0
 \vspace{0,3cm}
 
 \begin{center}
-    \bf Grafico ilustrador y como simular p.228-229
+    \bf Grafico ilustrador p.228-229
 \end{center}
+\vspace{0,5cm}
+
+{\bf Simular}
+\vspace{0,3cm}
+
+{Un beneficio de la definicion 2 es que nos guia a un metodo directo para construir y simular un proceso de Poisson:}
+
+\begin{itemize}
+    \item [1.] Let $S_0=0.$
+    \item [2.] Generar variables aleatorias exponenciales independientes e identicamente distribuidas $X_1,X_2,...$
+    \item [3.] Sea $S_n= X_1+...+x_n$, para n = 1,2,...
+    \item [4.] Para cada k = 0,1,..., sea $N_t=k$, para $S_k \leq t  < S_{k+1}$
+\end{itemize}
+
+\vspace{0,5cm}
+
+{\bf No tiene memoria.}
+\vspace{0,3cm}
+
+{La distribucion exponencial es la unica distribucion continua que es falta de memoria. Una variable aleatoria X tiene la propiedad faltarle memoria si para toda, $s,t>0$,}
+
+\[P(X>s+t|X>s) = P(X>t)\]
+
+\begin{center}
+    \bf Ilustracion, ejemplos y el minimo de variables aleatorias exponenciales independientes p.229-232
+\end{center}
+\vspace{0,5cm}
 
 
 \end{document}
