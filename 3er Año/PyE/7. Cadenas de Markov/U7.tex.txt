@@ -239,7 +239,7 @@ Para una cadena de Markov $X_0,X_1,...,$ la distribución de $X_0$ es llamada {\
 \subsection{Comportamiento a largo plazo, la evidencia numérica}
 \vspace{1cm}
 
-{En cualquier proceso estocástico o determinista, el comportamiento a largo plazo del sistema es, muchas veces, de interés. Evidencia numérica sugiere que la potencia de una matriz converge a un límite. Lo que es más, las filas de esta matriz llevada al límite son iguales. El hecho de que las filas de una cierta matriz $p^n, n->\infty$ son iguales significa que la probabilidad de una potencia k en particular (para un k en el cual ya se puede observar esta propiedad), no depende del estado actual. Después de cierto tiempo, el estado inicial se diluye y no afecta a la distribución de la potencia de la matriz. }
+{En cualquier proceso estocástico o determinista, el comportamiento a largo plazo del sistema es, muchas veces, de interés. Evidencia numérica sugiere que la potencia de una matriz converge a un límite. Lo que es más, las filas de esta matriz llevada al límite son iguales. El hecho de que las filas de una cierta matriz $p^n, n\rightarrow \infty$ son iguales significa que la probabilidad de una potencia k en particular (para un k en el cual ya se puede observar esta propiedad), no depende del estado actual. Después de cierto tiempo, el estado inicial se diluye y no afecta a la distribución de la potencia de la matriz. }
 \vspace{0,5cm}
 
 \begin{center}
@@ -268,7 +268,7 @@ Para una cadena de Markov $X_0,X_1,...,$ la distribución de $X_0$ es llamada {\
     
         \[lim_{n\rightarrow \infty}P(X_n=j)=\lambda_j\]
         
-    \item [(ii)] Para cualquier distribucion inicial $\lambda$ 
+    \item [(ii)] Para cualquier distribucion inicial $\alpha$ 
         \[lim_{n\rightarrow \infty}\alpha P^n= \lambda\]
         
     \item [(iii)] Sea $\Lambda$ la matriz estocastica cuyas filas son iguales a $\lambda$.
@@ -381,7 +381,7 @@ Donde $\Pi$ tiene todas las filas iguales a $\pi$ y $\pi$ es el unico vector de 
 
 \[\sum_i \pi_iP_{ij}=\pi_j, \ para \ todos \ los \ estados \ j \]
 
-{Lo que nos da un sistema de ecuaciones lineales. Si P es una matriz $kxk$, el sistema tiene k ecuaciones y k incógnitas. Ya que las filas de P suman 1, el sistema $k xk $ contendrá una ecuación redundante.\\}
+{Lo que nos da un sistema de ecuaciones lineales. Si P es una matriz $k \times k $, el sistema tiene k ecuaciones y k incógnitas. Ya que las filas de P suman 1, el sistema $k \times k $ contendrá una ecuación redundante.\\}
 
 {Para la cadena de dos estados general, con}
 
@@ -409,7 +409,7 @@ Donde $\Pi$ tiene todas las filas iguales a $\pi$ y $\pi$ es el unico vector de 
 
 {Una técnica útil para encontrar distribuciones estacionarias, la cual reduce el número de ecuaciones a resolver en uno. Esta técnica usa el hecho de que si x es una vector, no necesariamente un vector de probabilidad, que satisfaga xP=x, entonces (cx)P=cx para todas las constasntes c. Si uno puede encontrar un vector x no negativo, que satisfaga xP=x, entonces un único vector de probabilidad $\pi=cx$ puede ser obtenido a partir de una decisión apropiada de c de tal forma que las filas de cx sumen 1. En particular, sea c=$\frac{1}{\sum_jx_j}$, el recíproco de la suma de los componentes de x\\}
 
-{El sistema lineal $\sum_i \pi_iP_{ij}=\pi_j$ sin la restricción $\sum_i \pi_i=1$, tiene una ecuación redundante. Nuestro método de solución consiste en (i) eliminar la ecuación redundante y (ii) resolver el sistema resultante para $x=(1,x_2,x_3,...)$, donde la primer componente (o cualquier otra) es reemplazada por 1. Para una cadena de Markov con k estados, este metodo reduce el problema a resolver un sistema lineal $(k-1)x(k-1)$.\\
+{El sistema lineal $\sum_i \pi_iP_{ij}=\pi_j$ sin la restricción $\sum_i \pi_i=1$, tiene una ecuación redundante. Nuestro método de solución consiste en (i) eliminar la ecuación redundante y (ii) resolver el sistema resultante para $x=(1,x_2,x_3,...)$, donde la primer componente (o cualquier otra) es reemplazada por 1. Para una cadena de Markov con k estados, este metodo reduce el problema a resolver un sistema lineal $(k-1)\times (k-1)$.\\
 
 Si la cadena original tenia una única distribucion estacionaria, entonces el sistema lineal reducido tendrá una única solución, pero una la cual no es necesariamente un vector de probabilidad. Para hacerla vector de probabilidad cuyos componentes sumen 1, hay que dividir por la suma de los componentes. En otras palabras, la única distribución estacionaria es }
 
@@ -430,7 +430,7 @@ Si la cadena original tenia una única distribucion estacionaria, entonces el si
 
 
 
-{Digamos que el estado j es {\bf accesible} desde el estado i si  $P^n_{ij}>0$, para algún $ngeq0$. Esto es, hay una probabilidad positiva de alcanzar j desde i en una cantidad finita de pasos. Los estados i y j se {\bf comunican} si i ees accesible desde j y j es accesible desde i.  La {\bf comunicación} es una relación de equivalencia, lo que significa que satisface las siguientes tres propiedades:}
+{Digamos que el estado j es {\bf accesible} desde el estado i si  $P^n_{ij}>0$, para algún $n\geq0$. Esto es, hay una probabilidad positiva de alcanzar j desde i en una cantidad finita de pasos. Los estados i y j se {\bf comunican} si i ees accesible desde j y j es accesible desde i.  La {\bf comunicación} es una relación de equivalencia, lo que significa que satisface las siguientes tres propiedades:}
 
 \begin{itemize}
     \item [a)] {\bf Reflexiva.} Todos los estados se comunican con si mismos
@@ -794,12 +794,12 @@ desde el cual le sigue que
 \[lim_{n\rightarrow \infty}P^n=
 
 = lim_{n\rightarrow \infty} \left( \begin{tabular}{r | l}
-   Q^n  & (I+Q+...+Q^(n-1)) R \\ \hline
+   Q^n  & (I+Q+...+Q^{(n-1)}) R \\ \hline
     0 & I \\ 
 \end{tabular} \right)  
 
 =\left( \begin{tabular}{r | l}
-  lim_{n\rightarrow \infty} Q^n  & lim_{n\rightarrow \infty}(I+Q+...+Q^(n-1)) R \\ \hline
+  lim_{n\rightarrow \infty} Q^n  & lim_{n\rightarrow \infty}(I+Q+...+Q^{(n-1)}) R \\ \hline
     0 & I \\ 
 \end{tabular} \right) 
 
@@ -855,5 +855,124 @@ desde el cual le sigue que
 \begin{center}
     \bf Ejemplos 129-... (sigue propiedad fuerte de Markov y demas cosas complementarias.)
 \end{center}
+\newpage
+
+\section{Procesos de Poisson}
+\vspace{1cm}
+
+{\bf Introduccion}
+\vspace{0,5cm}
+
+{Mensajes de textos arrivando a tu celular a tiempos irregulares durante el dia. Accidentes que ocurren en una avenida en tiempos y lugares aparentemente aleatoriamente distribuidos. Bebes nacidos en momentos fortruitos en un centro de maternidad. Todos estos fenomenos son modelados por el proceso de Poisson, un proceso estocastico usado para modelar la ocurrencia, o llegada, de eventos en un intervalo continuo. Tipicamente, el intervalo representa tiempo. Un proceso de Poisson es un tipo especial de proceso de conteo.\\
+Dado una corriente de eventos que arrivan en tiempos aleatorios empezando en t=0, sea $N_t$ el numero de llegadas que ocurren para el tiempo t, esto es, el numero de eventos en [0,t]. Por ejemplo, $N_t$ podria ser el numero de mensajes de textos recibidos hasta el tiempo t. }
+\vspace{0,3cm}
+
+{Para cada $t\geq0,N_t$ es una variable aleatoria. La coleccion de variables aleatorias $(N_t)t\geq 0$, es un proceso estocastico en tiempo continuo de valor entero, llamado proceso de conteo. Ya que $N_t$ cuenta eventos en [0,t], a medida que t aumenta, los numeros de eventos $N_t$ tambien lo hacen.}
+\vspace{0,5cm}
+
+{\bf Proceso de conteo.} {Un proceso de conteo $(N_t)t\geq0$ es una coleccion de variables aleatorias enteras y no negativas tal que si $ 0 \leq s \leq t,$ entonces $N_s\leq N_t$.}
+\vspace{0,5cm}
+
+{A diferencia de una cadena de Markov, la cual es una secuencia de variables aleatorias, un proceso de conteo conforma una coleccion incontable, ya que esta indexada sobre un intervalo de tiempo continuo.}
+\vspace{0,5cm}
+
+{El trayecto de un proceso de conteo es una funcion escalonada continua por derecha. Si $0 \leq s < t$, entonces $N_t - N_s$ es el numero de eventos en el intervalo (s,t].}
+\vspace{0,3cm}
+
+\begin{center}
+    \bf Grafico ilustrativo p.224
+\end{center}
+\vspace{0,3cm}
+
+{Hay varias maneras para caracterizar el proceso de Poisson. Una puede centrarse en (i) el numero de eventos que occurren en intervalos fijos, (ii) cuando un evento ocurre, y el tiempo entre esos eventos, o (iii) el comportamiento probabilistico de eventos individuales en intervalos infinitesimales. Lo cual nos guia a tres definiciones de un proceso de Poisson, donde cada una ofrece puntos de vistas iluminadores para el modelo estocastico. }
+\vspace{1cm}
+
+{\bf Proceso de Poisson, definicion 1.}
+\vspace{0,3cm}
+
+{Un proceso de Poisson con parametro $\lambda$ es un proceso de conteo $(N_t)t\geq 0$ con las siguientes propiedades:}
+
+\begin{itemize}
+    \item [1.] $N_0 = 0$
+    \item [2.] Para todo $t>0$, $N_t$ tiene una distribucion de Poisson con parametro $\lambda t$.
+    \item [3.] {\bf Incrementos estacionarios.} Para toda s,t $>0, \ N_{t+s} - N_s $ tiene la misma distribucion que $N_t$. Esto es, 
+    
+    \[P(N_{t+s}-N_s=k)= P(N_t=k)=\frac{e^{-\lambda t}(\lambda t)^k}{k!}, \ para \ k=0,1,2...\]
+    
+    \item [4.] {\bf Incrementos independientes.} Para $0 \leq q < r \leq s < t, \ N_t-N_s$ y $N_r-N_q$ son variables aleatorias independientes.
+\end{itemize}
+\newpage
+
+{La propiedad del incremento estacionario dice que la distribucion del numero de llegadas a un intervalo depende solamente de la longitud del mismo.
+\vspace{0,3cm}
+
+La propiedad del incremento independiente dice que el numero de llegadas en intervalos de tiempo disjuntos son variables aleatorias independientes.}
+\vspace{0,3cm}
+
+{Ya que $N_t$ tiene una distribucion de Poisson, $E(N_t)=\lambda t$. Esto es, esperamos alrededor de $\lambda t$ llegadas en t unidades de tiempo. Por esto, la proporcion de llegadas es $E(N_t)/t=\lambda$.}
+
+\begin{center}
+    \bf Ejemplos p.225-226
+\end{center}
+\vspace{0,5cm}
+
+{\bf Proceso de Poisson transladado.}
+\vspace{0,5cm}
+
+{Sea $(N_t) t\geq 0$ un proceso de Poisson con parametro $\lambda$. Para un tiempo fijo $s>0$, consideren el proceso transladado $(N_{t+s} - N_s)t\geq0$. El proceso transladado es probabilisticamente equivalente al del proceso original.}
+\vspace{0,5cm}
+
+{\bf El proceso de poisson transladado es un proceso de Poisson.}
+\vspace{0,3cm}
+
+{Sea $(N_t)t\geq 0$ un proceso de Poisson con parametro $\lambda$. Para $s > 0,$ sea
+
+\[N'_t = N_{t+s}, para t \geq 0\]
+
+Luego, $(N'_t)t\geq 0$ es un proceso de Poisson con parametro $\lambda$.
+}
+\vspace{0,3cm}
+
+{Tenemos que $(N')t\geq0$ es un proceso de conteo con $N'_0 = N_s - N_s = 0.$ Con aumentos estacionarios, $N'_t$ tiene la misma distribucion que $N_t$. Y el nuevo proceso hereda incrementos estacionarios e independientes del original. A esto le sigue que si $N_s = k$, la distribucion $N_{t+s}$ es igual a la distribucion de $N_t$}
+\vspace{0,5cm}
+
+\begin{center}
+    \bf Ejemplo p.227
+\end{center}
+\vspace{0,5cm}
+\subsection{ La llegada, los tiempos entre-llegadas.}
+\vspace{1cm}
+
+{Para un proceso de Poisson con parametro $\lambda$, sea X el tiempo de la primer llegada. Entonces, $ X > t$ si y solo si no hay llegadas en [0,t]. Ademas, }
+
+            \[P(X > t) = P(N_t = 0) = e^{-\lambda t}, \ para \ t>0.\]
+         
+{Por lo tanto, X tiene una distribucion exponencial con parametro $\lambda$. La distribucion exponencial juega un rol central en el proceso de Poisson. Lo que es verdadero para el tiempo de la primer llegada lo es tambien para el tiempo entre la primer y segunda llegada, y para todos los tiempos entre-llegadas. Un proceso de Poisson es un proceso de conteo para el cual los tiempos entre-llegadas son independientes e identicamente distribuidas variables aleatorias exponenciales.}   
+\vspace{0,5cm}
+\newpage
+
+{\bf Proceso de Poisson, definicion 2.}
+\vspace{0,3cm}
+
+{Sean $X_1,X_2,...,$ una secuencia de variables aleatorias exponenciales idependientes e identicamente distribuidas con parametro $\lambda$. Para $t>0$, sea}
+
+    \[N_t = max \{n:X_1+...+X_n \leq t\}\],
+    
+{con $N_0 = 0$. Then, $(N_t)_{t\geq0}$ define un proceso de Poisson con parametro $\lambda$. Sea}
+
+\[S_n = X_1+...+X_n, \ para \ n =1,2,...\]
+ 
+Llamaremos a $S_1,S_2,...$ los tiempos de llegada del proceso, donde $S_k$ es el tiempo de la k-esima llegada. Lo que es mas,
+
+\[X_k = Sk-S_{k-1}, \ para \ k=1,2,...\]
+
+es el tiempo entre-llegada entre la (k-1)-esima y k-esima llegada, donde $S_0 =0$.
+\vspace{0,3cm}
+
+\begin{center}
+    \bf Grafico ilustrador y como simular p.228-229
+\end{center}
+
+
 \end{document}
 
