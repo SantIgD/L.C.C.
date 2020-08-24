@@ -7,29 +7,24 @@ n = 100000
 
 
 
-
-
-
-
-
-
 decision <- function(x){
   
   if (x==izquierda){
     return (caminoIzquierdo(salidaRetorno()))
   }
   else{
-    return (3 + decision(elegirCamino()))
+    return (5 + decision(elegirCamino()))
   }
   
 }
 
+
 caminoIzquierdo <- function(x){
   if (x==izquierda){
-    return (2)
+    return (4)
   }
   else{
-    return (5 + decision(elegirCamino()))
+    return (9 + decision(elegirCamino()))
   }
   
 }

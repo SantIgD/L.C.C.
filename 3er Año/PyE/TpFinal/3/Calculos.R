@@ -1,7 +1,5 @@
 
-plataInicial = 50
-limiteInferior = 0
-limiteSuperior = 100
+
 plataActual = plataInicial
 ganar = 0.55
 perder = 1-ganar
@@ -39,13 +37,7 @@ ggplot(data = mi_df,aes(Jugadas)) +
   ylab("Plata")  # first layer
 
 
-frecRuina = 0
-for (i in c(1:100)){
-  if(!proceso(100,1000,0.65)){
-    frecRuina = frecRuina+1
-  }
-}
-probRuina = frecRuina/100
+
 
 
 
@@ -72,26 +64,11 @@ while (!termino) {
 
 
 
-tirada<-function(probabilidades){
-  probabilidades = sort(probabilidades)
-  
-  intervaloAleatorio = 1000000 # Probabilidades de hasta 2 digitos despues del .
-  
-  tirada = sample(1:intervaloAleatorio,1)
-  posicion = 1
-  
-  for (i in probabilidades){
-    if (posicion == length(probabilidades)){
-      return (i)
-    }
-    if(tirada <= i*1000000){
-      return (i) # Devuelvo la probabilidad que ocurrio
-    }
-    
-    posicion = posicion +1
-    
-  }
-}
+
+
+plataInicial = 50
+limiteInferior = 0
+limiteSuperior = 100
 
 proceso <-function(plataInicial,S,p){
   limiteInferior = 0
@@ -122,4 +99,25 @@ proceso <-function(plataInicial,S,p){
   
   
 }
+tirada<-function(probabilidades){
+  probabilidades = sort(probabilidades)
+  
+  intervaloAleatorio = 1000000 # Probabilidades de hasta 2 digitos despues del .
+  
+  tirada = sample(1:intervaloAleatorio,1)
+  posicion = 1
+  
+  for (i in probabilidades){
+    if (posicion == length(probabilidades)){
+      return (i)
+    }
+    if(tirada <= i*1000000){
+      return (i) # Devuelvo la probabilidad que ocurrio
+    }
+    
+    posicion = posicion +1
+    
+  }
+}
+
 

@@ -362,7 +362,81 @@ tirada$<-$function(probabilidades)\{
 \vspace{0,5cm}
 
 \begin{itemize}
-    \item [a)] Al realizar la simulacion observe 50000 repeticiones del experimento y obtuve un promedio de 21.08484 minutos.
+    \item [a)] Para simular la situacion implemente en R lo siguiente:
+    \vspace{1cm}
+    
+    decision $<-$ function(x)\{
+  \vspace{0,3cm}
+  
+  if (x==izquierda)\{
+  \vspace{0,3cm}
+  
+    return (caminoIzquierdo(salidaRetorno()))
+    \vspace{0,3cm}
+    
+  \}
+  else\{
+  \vspace{0,3cm}
+  
+    return (3 + decision(elegirCamino()))
+    \vspace{0,3cm}
+  \}
+  
+\}
+\vspace{1cm}
+
+caminoIzquierdo $<-$ function(x)\{
+\vspace{0,3cm}
+
+  if (x==izquierda)\{
+  \vspace{0,3cm}
+  
+    return (2)
+    \vspace{0,3cm}
+    
+  \}
+  else\{
+  \vspace{0,3cm}
+  
+    return (5 + decision(elegirCamino()))
+    \vspace{0,1cm}
+    
+ \}
+\}
+\vspace{1cm}
+
+elegirCamino $<-$ function()\{
+\vspace{0,5cm}
+  return (sample(0:1,1))
+\}
+
+salidaRetorno $<-$ function()\{
+\vspace{0,5cm}
+
+  return (sample(0:2,1))
+\}
+\vspace{1cm}
+
+esperanza$<-$function()\{
+\vspace{0,5cm}
+
+  acumulador=0
+  \vspace{0,5cm}
+  
+    for(i in (c(1:n)))\{
+    \vspace{0,5cm}
+    
+      acumulador = acumulador + decision(elegirCamino())
+      \vspace{0,5cm}
+      
+    \}
+  return (acumulador / n)
+  \vspace{0,5cm}
+  
+\}
+    
+    
+    Al realizar la simulacion observe 50000 repeticiones del experimento y obtuve un promedio de 21.08484 minutos.
     \item [b)] Sea S=\{ii,id,d\} el espacio muestral de un experimento $\epsilon$ que consiste en observar las decisiones del raton. Estas corresponden corresponden a elegir izquierda-izquierda, elegir izquierda-derecha y elegir derecha respectivamente. Si definimos una variable aleatoria X tal que:
     
     \[X(s)= \left\{ \begin{array}{lcc}
@@ -465,7 +539,7 @@ Y por lo tanto,
 0 & 0 & \frac{500}{41}
 \end{matrix}\right)    
 \end{equation}
-Donde F es la matriz fundamental, en la cual $F_ij$
+Donde F es la matriz fundamental, en la cual $F_{ij}$
 es el numero esperado de visitas a j dado que la cadena comienza en i. Por lo tanto, si iniciamos en el estado
 
 \begin{itemize}
@@ -479,7 +553,57 @@ es el numero esperado de visitas a j dado que la cadena comienza en i. Por lo ta
 Cada uno de los resultados obtenidos de acuerdo al estado desde el que se comienza a contabilizar, es el promedio de unidades de observacion para que la persona llegue al estado de muerte.
 
 \begin{itemize}
-    \item [d)] COMPLETAR LO TENGO EN CUADERNILLO
+    \item [d)] Para la busqueda de la distribucion estacionaria utilizare la tecnica vista en clase. Busco un vector x=(x1,x2,x3,1) tal que
+    
+    \[xP=x\]
+    \vspace{0,5cm}
+    
+    Por lo cual obtenemos el siguiente sistema de ecuaciones lineales:
+    \vspace{0,5cm}
+    \begin{itemize}
+        \item [(1)] $x_1 0.999 + x_2 0 + x_3 0 + 0 = x_1$
+        \item [(2)] $x_1 0.001 + x_2 0.994 + x_3 0 + 0 = x_2$
+        \item [(3)] $ x_1 0 + x_2 0.006 + x_3 0.918 + 0 = x_3$
+        \item [(4)] $x_1 0 + x_2 0 + x_3 0.082 + 1 = 1$
+    \end{itemize}
+    \begin{itemize}
+        \item [(4)] $\Rightarrow X_3 = 0$
+        \item [(4)(3)] $\Rightarrow X_2 = 0$
+        \item [(4)(3)(2)] $\Rightarrow X_1 = 0$
+    \end{itemize}
+    \vspace{0,5cm}
+    Se puede observar que las componentes en x suman 1 por lo tanto $ x=\pi$ es la distribucion estacionaria de esta cadena de Markov.
+    
+    \item [e)] Al ser una cadena absorbente tenemos que:
+    
+    \item [] \hspace{2cm} R=$ \left(\begin{matrix}
+0 \\
+0 \\
+0.082 
+\end{matrix}\right)$ \hspace{1cm} $F =(I-Q)^{-1}= \left(\begin{matrix}
+1000 & \frac{500}{3} & \frac{500}{41} \\
+0 & \frac{500}{3} & \frac{500}{41} \\
+0 & 0 & \frac{500}{41}
+\end{matrix}\right)   $ \hspace{1cm} $FR=\left(\begin{matrix}
+                                            1 \\
+                                            1 \\
+                                            1
+                                         \end{matrix}\right)$
+\vspace{0,3cm}
+
+
+\[lim_{n\rightarrow\infty}P^n = 
+                                        \left( \begin{tabular}{r | l}
+                                       0  & (I-Q)^{-1} R \\ \hline
+                                        0 & I \\ 
+                                    \end{tabular} \right) = \left(\begin{matrix}
+0 & 0 & 0 & 1 \\
+0 & 0 & 0 & 1 \\
+0 & 0 & 0 & 1 \\
+0 & 0 & 0 & 1
+\end{matrix}\right)\]
+\vspace{0,2cm}
+    Por lo tanto esta cadena tiene distribucion limite.
 \end{itemize}
 
 \newpage
@@ -488,7 +612,7 @@ Cada uno de los resultados obtenidos de acuerdo al estado desde el que se comien
 \vspace{1cm}
 
 \begin{itemize}
-    \item [a)] 
+    \item [a)] El modelado de este PageRank como cadena de Markov produce la siguiente matriz de transicion:
     \begin{equation}
         P=\left(\begin{matrix}
 0 & 0 & 0 & 0 & \frac{1}{2} & \frac{1}{2} & 0 \\
@@ -500,7 +624,283 @@ Cada uno de los resultados obtenidos de acuerdo al estado desde el que se comien
 \frac{1}{7} & \frac{1}{7} & \frac{1}{7} & \frac{1}{7} & \frac{1}{7} & \frac{1}{7} & \frac{1}{7}
 \end{matrix}\right)
     \end{equation}
-    \item [b)] Simulacion
+    \item [b)] Para simular esta situacion en R, implemente lo siguiente:
+    \vspace{1cm}
+    
+    P = matrix(nrow=7,ncol=7)
+    \vspace{0,3cm}
+
+Xa = c(1/2,5,6)
+\vspace{0,3cm}
+
+Xb = c(1/3, 1, 3,6)
+\vspace{0,3cm}
+
+Xc = c(1/2,4,6)
+\vspace{0,3cm}
+
+Xd = c(1,6)
+\vspace{0,3cm}
+
+Xe = c(1/4,1,4,6,7)
+\vspace{0,3cm}
+
+Xf = c(1/2,1,2)
+\vspace{0,3cm}
+
+Xg = c(1/7,1,2,3,4,5,6,7)
+\vspace{0,3cm}
+
+
+
+
+P = cargarMatriz(P)
+\vspace{0,3cm}
+
+
+
+contadorPaginas = c(1:7)
+\vspace{0,3cm}
+
+
+probabilidad= simular(100)
+\vspace{0,3cm}
+
+
+
+simular$<-$ function(n)\{
+\vspace{1cm}
+
+  contadorPaginas= cerarVector(contadorPaginas)
+  \vspace{0,3cm}
+  
+  paginaInicial = sample(1:7,1) # Inicio de manera aleatoria
+  \vspace{0,3cm}
+  
+  print("La pagina inicial es")
+  \vspace{0,3cm}
+  
+  print(paginaInicial)
+  \vspace{0,3cm}
+  
+  paginaActual = paginaInicial
+  \vspace{0,3cm}
+  
+  for (i in (1:n))\{
+  \vspace{0,3cm}
+  
+    paginaActual = surfear(paginaActual)
+    \vspace{0,3cm}
+    
+    contadorPaginas[paginaActual] = contadorPaginas[paginaActual] + 1 
+    \vspace{0,3cm}
+    
+    print("La pagina actual es")
+    \vspace{0,3cm}
+    
+    print(paginaActual)
+    \vspace{0,3cm}
+    
+    print("Contador")
+    \vspace{0,3cm}
+    
+    print(contadorPaginas)
+    \vspace{0,3cm}
+  \}
+  return (contadorPaginas/n)
+  \vspace{0,3cm}
+  
+\}
+\vspace{1cm}
+
+surfear $<-$ function (x)\{
+\vspace{1cm}
+
+  paginaActual = obtenerFila(x)
+  \vspace{0,3cm}
+  
+  proximaPagina = paginaActual[elegirProximaPagina(paginaActual)]
+  \vspace{0,3cm}
+  
+  return (proximaPagina)
+  \vspace{0,3cm}
+\}
+\vspace{1cm}
+
+
+elegirProximaPagina $<-$function(x)\{
+\vspace{1cm}
+
+  unoEntre = length(x)-1
+  \vspace{0,3cm}
+  
+  return (sample(1:unoEntre,1)+1)
+  \vspace{0,3cm}
+\}
+\vspace{1cm}
+
+
+
+cargarMatriz $<-$ function(P)\{
+\vspace{1cm}
+
+  P = cerarMatriz(P)
+  \vspace{0,3cm}
+  
+  indiceFilas = 0
+  \vspace{0,3cm}
+
+  P = cargarFila(P,Xa,1)
+  \vspace{0,3cm}
+  
+  P = cargarFila(P,Xb,2)
+  \vspace{0,3cm}
+  
+  P = cargarFila(P,Xc,3)
+  \vspace{0,3cm}
+  
+  P = cargarFila(P,Xd,4)
+  \vspace{0,3cm}
+  
+  P = cargarFila(P,Xe,5)
+  \vspace{0,3cm}
+  
+  P = cargarFila(P,Xf,6)
+  \vspace{0,3cm}
+  
+  P = cargarFila(P,Xg,7)
+  \vspace{0,3cm}
+  
+  
+  return (P)
+  \vspace{0,3cm}
+\}
+\vspace{1cm}
+
+cerarVector $<-$ function(v)\{
+\vspace{1cm}
+
+  for (i in (1:7))\{
+  \vspace{0,3cm}
+  
+    v[i] = 0
+    \vspace{0,3cm}
+  \}
+  \vspace{0,3cm}
+  
+  return (v)
+  \vspace{0,3cm}
+\}
+\vspace{1cm}
+
+cerarMatriz $<-$ function(P)\{
+\vspace{1cm}
+
+  for (i in (1:7))\{
+  \vspace{0,3cm}
+  
+    for (j in (1:7))\{
+    \vspace{0,3cm}
+    
+      P[i,j] =0
+      \vspace{0,3cm}
+    \}
+  \}
+  \vspace{0,3cm}
+  
+  return (P)
+  \vspace{0,3cm}
+\}
+\vspace{1cm}
+
+obtenerFila $<-$ function(x)\{
+\vspace{1cm}
+
+  if (x == 1)\{
+  \vspace{0,3cm}
+  
+    return (Xa)
+    \vspace{0,3cm}
+  \}
+  \vspace{0,3cm}
+  
+  if (x == 2)\{
+  \vspace{0,3cm}
+  
+    return (Xb)
+  \}
+  \vspace{0,3cm}
+  
+  if (x == 3)\{
+  \vspace{0,3cm}
+  
+    return (Xc)
+  \}
+  \vspace{0,3cm}
+  
+  if (x == 4)\{
+  \vspace{0,3cm}
+  
+    return (Xd)
+  \}
+  \vspace{0,3cm}
+  
+  if (x == 5)\{
+  \vspace{0,3cm}
+  
+    return (Xe)
+  \}
+  \vspace{0,3cm}
+  
+  if (x == 6)\{
+  \vspace{0,3cm}
+  
+    return (Xf)
+  \}
+  \vspace{0,3cm}
+  
+  if (x == 7)\{
+  \vspace{0,3cm}
+  
+    return (Xg)
+  \}
+  \vspace{0,3cm}
+  
+\}
+\vspace{1cm}
+
+cargarFila $<-$ function(P,x,fila)\{
+\vspace{1cm}
+
+  indiceFila = 0
+  \vspace{0,3cm}
+  
+  for (i in x)\{
+  \vspace{0,3cm}
+  
+    indiceFila = indiceFila + 1
+    \vspace{0,3cm}
+    
+    if (indiceFila != 1)\{
+    \vspace{0,3cm}
+    
+      P[fila,i] = x[1]
+      \vspace{0,3cm}
+      
+    \}
+  \}
+  \vspace{0,3cm}
+  
+  return (P)
+  \vspace{0,3cm}
+  
+\}
+
+    
+    \vspace{2cm}
+    
+    
+    
     \item [c)] Obtuve el siguiente vector de frecuencias relativas : [0.25, 0.16, 0.04, 0.06, 0.10, 0.34, 0.05]. Por lo cual con n=100 suponemos que el rango de las paginas a,b,c...,g corresponden con las posiciones desde 1 a 7 del vector obtenido por medio de la simulacion.
 \end{itemize}
 \vspace{1cm}
@@ -519,12 +919,7 @@ Cada uno de los resultados obtenidos de acuerdo al estado desde el que se comien
 \begin{itemize}
     \item [a)] Dada la distribucion inicial $\pi_0$, y la matriz de transicion P, luego de dos semanas nos encontramos con la siguiente probabilidad de ataques a los puertos:
     
-    \[\pi_0P^2= \left(\begin{matrix}
-0 & \frac{1}{8} & \frac{1}{2} & \frac{1}{8} & \frac{1}{4}
-\end{matrix}\right)\]
-\end{itemize}
-
-\[\pi_0=\left(\begin{matrix}
+    \[\pi_0=\left(\begin{matrix}
 0 & 0 & 0 & 0 & 1
 \end{matrix}\right)\]
 
@@ -535,7 +930,62 @@ Cada uno de los resultados obtenidos de acuerdo al estado desde el que se comien
 0 & \frac{1}{11} & \frac{4}{11} & \frac{5}{11} & \frac{1}{11} \\
 0 & \frac{1}{8} & \frac{1}{2} & \frac{1}{8} & \frac{1}{4}
 \end{matrix}\right)\]
+    
+    \[\pi_0P^2= \left(\begin{matrix}
+0 & \frac{1}{8} & \frac{1}{2} & \frac{1}{8} & \frac{1}{4}
+\end{matrix}\right)\]
+\end{itemize}
+
+
 
 Los puertos con menos probabilidad de ser atacados son el 135 y 445, mientras que el que tiene mas probabilidad de ser atacado es el 139. Se puede observar que el puerto 80 no tiene posibilidad de ser atacado.
+
+\vspace{2cm}
+
+\begin{itemize}
+    \item [b)] Esta cadena presenta una matriz de transicion regular ya que:
+    \vspace{0,5cm}
+    \[P^3=\left(\begin{matrix}
+\frac{1}{32} & \frac{61}{286} & \frac{885}{2288} & \frac{1019}{4576} & \frac{167}{1144} \\
+\frac{4387}{237952} & \frac{11964081}{34027136} & \frac{5400719}{17013568} & \frac{3203451}{17013568} & \frac{2113687}{17013568} \\
+\frac{3087}{146432} & \frac{5128733}{20939776} & \frac{3700267}{10469888} & \frac{2425947}{10469888} & \frac{1558587}{10469888} \\
+\frac{579}{25168} & \frac{1591501}{7198048} & \frac{633335}{1799512} & \frac{1898595}{7198048} & \frac{504509}{3599024} \\
+\frac{885}{36608} & \frac{1268269}{5234944} & \frac{911497}{2617472} & \frac{152189}{654368} & \frac{399807}{2617472}
+\end{matrix}\right)\]
+\vspace{0,5cm}
+
+presenta todas sus entradas mayores a 0. Por lo visto en la teoria si una matriz de transicion de una cadena de Markov es regular, entonces la cadena tiene una distribucion limite, la cual es la unica distribucion estacionaria de la cadena. Por lo tanto aplicando la tecnica para obtener distribucion estacionaria:
+\vspace{1cm}
+
+\item[] Buscamos un x=(1,x2,x3,x4,x5) tal que xP=x. Lo que nos determina el siguiente sistema de ecuaciones:
+
+\vspace{0,5cm}
+
+        \item [(1)] $ 0 + x_2 0    + x_3 1/6  + x_4 0    + X_5 0 = 1$
+        \item [(2)] $ 0 + x_2 8/13 + x_3 3/16 + x_4 1/11 + X_5 1/8 = x_2$
+        \item [(3)] $ 0 + x_2 3/13 + x_3 3/8  + x_4 4/11 + X_5 1/2 = x_3$
+        \item [(4)] $ 0 + x_2 1/13 + x_3 1/4  + x_4 5/11 + X_5 1/8 = x_4$
+        \item [(5)] $ 1 + x_2 1/13 + x_3 1/8  + x_4 1/11 + X_5 1/4 = x_5$
+        \vspace{0,5cm}
+        \item [(1)] $\Rightarrow x_3 = 6$
+        \item [(1)(2)] $\Rightarrow x_2 8/13 +  18/16 + x_4 1/11 + X_5 1/8 = x_2 \Rightarrow x_2 = 13/5 (18/16 + x_4 1/11 + X_5 1/8)$
+        \item [(1)(2)(3)] $\Rightarrow  x_2 3/13 + x_3 3/8  + x_4 4/11 + X_5 1/2 = x_3 \\ 
+        \Rightarrow 13/5 (18/16 + x_4 1/11 + X_5 1/8) 3/13 + 18/8 + x_4 4/11 + X_5 1/2 = 6 \\ 
+        \Rightarrow (3/55+4/11) x_4 + 3/5 (18/16+ X_5 1/8) = 15/14 \\  
+        \Rightarrow x_4 = 55/23(15/14 - 3/5 (18/16+ X_5 1/8)) \\
+        \Rightarrow x_2 = 13/5 (18/16 + 1/11 (55/23(15/14 - 3/5 (18/16+ X_5 1/8))) + X_5 1/8)$
+        
+        \item [(1)(2)(3)(5)] $\Rightarrow 1 + 1/13(13/5 (18/16 + 1/11 (55/23(15/14 - 3/5 (18/16+ X_5 1/8)))) + 6/8  + (55/23(15/14 - 3/5 (18/16+ X_5 1/8))) 1/11 + X_5 1/4 = x_5 \\
+        \Rightarrow 1 + 1/5 (18/16 + 1/11 (825/322 - 297/184 - 33/184 x_5))
+        $ \\
+        ...
+        
+        
+    $x = (1,\frac{429}{92},6,\frac{275}{92},\frac{73}{23}) \Rightarrow  \pi = (0.05609756,0.26158537,0.33658537,0.16768293,0.17804878)$   
+    
+    Donde $\pi$ es la distribucion limite.
+        
+
+\end{itemize}
 \end{document}
 
