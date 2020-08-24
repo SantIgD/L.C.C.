@@ -437,16 +437,46 @@ esperanza$<-$function()\{
     
     
     Al realizar la simulacion observe 50000 repeticiones del experimento y obtuve un promedio de 21.08484 minutos.
-    \item [b)] Sea S=\{ii,id,d\} el espacio muestral de un experimento $\epsilon$ que consiste en observar las decisiones del raton. Estas corresponden corresponden a elegir izquierda-izquierda, elegir izquierda-derecha y elegir derecha respectivamente. Si definimos una variable aleatoria X tal que:
+    \vspace{1cm}
     
-    \[X(s)= \left\{ \begin{array}{lcc}
-             2 &   si  & x \ = \  "ii" \\
-             \\ 5 &  si & x \ = \ "id" \\
-             \\ 3 &  si  & x \ = \ "d"
+    \item [b)] Sea X=\{"Tiempo en que tarda el raton en salir del laberinto"\}, donde X va a depender de las decisiones del raton, estas pueden ser "ii", "id", "d1". Las elecciones se desarrollan en dos etapas, en la primer etapa nos encontramos con que
+    
+        \[P(\{"d1"\})= 1/2\] 
+        
+    En el caso de elegir el camino hacia la izquierda (con una probabilidad de 1/2) nos encontramos en la segunda etapa en la cual:
+    
+    \[P(\{"i2"\}|\{"i1"\})= 1/3\]
+    
+    \[y\]
+    
+     \[P(\{"d2"\}|\{"i1"\})= 2/3\]
+     
+     De donde obtenemos que 
+     
+     \[P(\{"ii"\}) = P(\{"i2"\}\cap\{"i1"\}) =P(\{"i2"\}|\{"i1"\}) P(\{"i1"\})= 1/3 1/2 = 1/6\]
+    
+      \[y\]
+      
+    \[P(\{"id"\}) = P(\{"d"\}\cap\{"i1"\}) =P(\{"d"\}|\{"i1"\}) P(\{"i1"\})= 2/3 1/2 = 2/6 = 1/3\]
+    
+    Podemos observar que las posibles elecciones del raton son "ii", "id" y "d". Por lo cual $E(X) = P(\{"ii"\}) E(X|"ii") + P(\{"id"\}) E(X|"id") +P(\{"d1"\}) E(X|"d1") $ donde
+    
+    \[\left\{ \begin{array}{lcc}
+             E(X|"ii")    &  = & 2 \\
+             \\ E(X|"id") &  = & E(X) + 5  \\
+             \\ E(X|"d1")  & =  & E(X) + 3
              \end{array}
    \right.\]
    
-   Ahora definimos una variable aleatoria Y = \{numero de repeticiones hasta que el evento \{2\} ocurra\} y observamos que Y se puede aproximar con la distribucion geometrica. Sabemos que $P(\{2\})=P(ii \cap i)=P(ii | i) P(i)= \frac{1}{3} \frac{1}{2} = \frac{1}{6}$, por lo que E(Y) = $\frac{2}{\frac{1}{6}} = 12$. Luego definimos una variable aleatoria Z = \{numero de repeticiones hasta que el evento \{3\} ocurra\} y observamos que Z se puede aproximar con la distribucion geometrica. Sabemos que $P(\{3\})= \frac{1}{2}$, por lo que E(Y) = $\frac{3}{\frac{1}{2}} = 6$. Luego definimos una variable aleatoria W = \{numero de repeticiones hasta que el evento \{5\} ocurra\} y observamos que W se puede aproximar con la distribucion geometrica. Sabemos que $P(\{5\})=P(id \cap i)=P(id | i) P(i)= \frac{2}{3} \frac{1}{2} = \frac{2}{6}$, por lo que E(Y) = $\frac{5}{\frac{1}{3}} = 15$. Por lo tanto p(\{Salga\}) tiene un peso en minutos de E(Y) = 12, mientras que 1-p tiene un peso en minutos de E(Z+W) = E(Z) + E(W) = 21. Por lo que el tiempo esperado para que la rata salga del laberinto es de $12 1/3 1/2 + 21 5/6 = 19,5$ minutos.
+  Por lo tanto 
+  \vspace{1cm}
+  
+  \item [E(X)] = 1/6 2 + 2/6 (E(X) + 5) + 1/2 (E(X) + 3)
+  \item [] = 5/6 E(X) + 7/2
+  \item [$\Rightarrow$] E(X) = 21
+  \vspace{1cm}
+  
+ Este resultado concuerda con el de la simulacion.
 \end{itemize}
 
 \vspace{1cm}
@@ -910,7 +940,7 @@ cargarFila $<-$ function(P,x,fila)\{
 \vspace{1cm}
 
 \begin{itemize}
-    \item [a)] Sabemos que Juan recibe 10 mensajes por hora, por lo tanto $\lambda = 10$ y que nos situamos dentro del modelo de proceso de Poisson. Sea $N_t$ el numero de mensajes que Juan recibe al tiempo t, como el analisis comienza desde las 10am t=0 equivale a las 10 am. Deseamos hallar la probabilidad $P(N_{2}=18 \ \cap \ N_{7} = 70)=P(N_{2}=18 \ \cap \ N_{7}-N_2 = 52)$,  ya que 12 - 10 =2, 17 - 10 = 7 y 70 - 18 = 52. Como estos intervalos de tiempo son disjuntos entonces $N_{2} y N_{5}$ son variables aleatorias independientes. Por lo tanto, $P(N_{2}=18 y N_{5} = 52) = P(N_{2}=18)  P(N_{5} = 52) = \frac{e^{-20}(20)^{18}}{18!} \frac{e^{-50}(50)^{52}}{52!}= 0.004481022 $
+    \item [a)] Sabemos que Juan recibe 10 mensajes por hora, por lo tanto $\lambda = 10$ y que nos situamos dentro del modelo de proceso de Poisson. Sea $N_t$ el numero de mensajes que Juan recibe al tiempo t, como el analisis comienza desde las 10am t=0 equivale a las 10 am. Deseamos hallar la probabilidad $P(N_{2}=18, N_{7} = 70)=P(N_{2}=18, N_{7}-N_2 = 52)$,  ya que 12 - 10 =2, 17 - 10 = 7 y 70 - 18 = 52. Como estos intervalos de tiempo son disjuntos ((0,2],(2,5]) entonces $N_{2} y N_{5}$ son variables aleatorias independientes. Por lo tanto, $P(N_{2}=18, N_{7}-N_2 = 52) = P(N_{2}=18)  P(N_{7}-N_2 = 52) = P(N_{2}=18)  P(N_{5} = 52) = \frac{e^{-20}(20)^{18}}{18!} \frac{e^{-50}(50)^{52}}{52!}= 0.004481022 $
 \end{itemize}
 
 \newpage
@@ -955,37 +985,12 @@ Los puertos con menos probabilidad de ser atacados son el 135 y 445, mientras qu
 \end{matrix}\right)\]
 \vspace{0,5cm}
 
-presenta todas sus entradas mayores a 0. Por lo visto en la teoria si una matriz de transicion de una cadena de Markov es regular, entonces la cadena tiene una distribucion limite, la cual es la unica distribucion estacionaria de la cadena. Por lo tanto aplicando la tecnica para obtener distribucion estacionaria:
-\vspace{1cm}
+presenta todas sus entradas mayores a 0. Por lo visto en la teoria si una matriz de transicion de una cadena de Markov es regular, entonces la cadena tiene una distribucion limite, la cual es la unica distribucion estacionaria de la cadena. Por lo tanto si buscamos c y x de forma tal que $cxP=cx$ y $\sum_{i \in cx} {cx}_i=1$, entonces obtendremos $\pi = cx$ (la distribucion estacionaria). Gracias a la ayuda de un software puedo concluir que:
+\[\pi = \]
+\[\pi =(0,02146667, 0,2669333, 0,3434667, 0,2273333, 0,1408)\]
 
-\item[] Buscamos un x=(1,x2,x3,x4,x5) tal que xP=x. Lo que nos determina el siguiente sistema de ecuaciones:
+Es la distribucion limite de la matriz P.
 
-\vspace{0,5cm}
-
-        \item [(1)] $ 0 + x_2 0    + x_3 1/6  + x_4 0    + X_5 0 = 1$
-        \item [(2)] $ 0 + x_2 8/13 + x_3 3/16 + x_4 1/11 + X_5 1/8 = x_2$
-        \item [(3)] $ 0 + x_2 3/13 + x_3 3/8  + x_4 4/11 + X_5 1/2 = x_3$
-        \item [(4)] $ 0 + x_2 1/13 + x_3 1/4  + x_4 5/11 + X_5 1/8 = x_4$
-        \item [(5)] $ 1 + x_2 1/13 + x_3 1/8  + x_4 1/11 + X_5 1/4 = x_5$
-        \vspace{0,5cm}
-        \item [(1)] $\Rightarrow x_3 = 6$
-        \item [(1)(2)] $\Rightarrow x_2 8/13 +  18/16 + x_4 1/11 + X_5 1/8 = x_2 \Rightarrow x_2 = 13/5 (18/16 + x_4 1/11 + X_5 1/8)$
-        \item [(1)(2)(3)] $\Rightarrow  x_2 3/13 + x_3 3/8  + x_4 4/11 + X_5 1/2 = x_3 \\ 
-        \Rightarrow 13/5 (18/16 + x_4 1/11 + X_5 1/8) 3/13 + 18/8 + x_4 4/11 + X_5 1/2 = 6 \\ 
-        \Rightarrow (3/55+4/11) x_4 + 3/5 (18/16+ X_5 1/8) = 15/14 \\  
-        \Rightarrow x_4 = 55/23(15/14 - 3/5 (18/16+ X_5 1/8)) \\
-        \Rightarrow x_2 = 13/5 (18/16 + 1/11 (55/23(15/14 - 3/5 (18/16+ X_5 1/8))) + X_5 1/8)$
-        
-        \item [(1)(2)(3)(5)] $\Rightarrow 1 + 1/13(13/5 (18/16 + 1/11 (55/23(15/14 - 3/5 (18/16+ X_5 1/8)))) + 6/8  + (55/23(15/14 - 3/5 (18/16+ X_5 1/8))) 1/11 + X_5 1/4 = x_5 \\
-        \Rightarrow 1 + 1/5 (18/16 + 1/11 (825/322 - 297/184 - 33/184 x_5))
-        $ \\
-        ...
-        
-        
-    $x = (1,\frac{429}{92},6,\frac{275}{92},\frac{73}{23}) \Rightarrow  \pi = (0.05609756,0.26158537,0.33658537,0.16768293,0.17804878)$   
-    
-    Donde $\pi$ es la distribucion limite.
-        
 
 \end{itemize}
 \end{document}
