@@ -4,6 +4,10 @@
 \usepackage{vmargin}
 \usepackage{graphicx}
 
+\usepackage{titlesec}
+
+\titleformat{\chapter}[display]
+  {\normalfont\bfseries}{}{0pt}{\Huge}
 \usepackage{etoolbox}
 
 \graphicspath{ {images/} }
@@ -35,34 +39,13 @@
 {\Large Agosto 2020 \par}
 \end{titlepage}
 \newpage
-
-\section{Ejercicio 1}
+\renewcommand*\contentsname{Indice}
+ \tableofcontents
+\chapter{Ejercicio 1}
 \vspace{0,5cm}
 
 \begin{itemize}
-    \item [a)] El espacio muestral sobre el cual estamos trabajando es S=\{0,1\}, donde cara es 1 y cruz es 0. $I_n$ y $S_n$ 
-    
-    \vspace{0,5cm}
-    {n = 100 # Cantidad de tiradas\\
-    
-    simulacion = simular(n)\\\\
-    
-    
-    simular $<-$ function(n)\{\\
-    
-      In $<-$ tirarMoneda(n) (n tiradas de una moneda)\\
-      Xn $<-$ cumsum(In) (numero de caras al momento n - Frecuencia relativa acumulada -)\\
-      vectorTiradas $<-$ c(1:n)\\
-      return (data.frame(Xn,vectorTiradas)) 
-    \}\\\\
-    
-    tirarMoneda$<-$function(n)\{ (Tirar moneda n veces)\\
-    
-      return(sample(0:1,100,replace = TRUE))  (Vector de longitud n donde cada posicion tiene 1 o 0)
-    \}
-}
-    
-    
+    \item [a)] El espacio muestral sobre el cual estamos trabajando es S=\{0,1\}, donde cara es 1 y cruz es 0.
     
 \end{itemize}
 \begin{figure}[htb]
@@ -78,21 +61,15 @@
 
 \begin{itemize}
     \item [b)] 
-    \item []  ({\bf P(X=1)}).{ Sabemos que X=\{"Número de veces que ocurrió el evento A "\} y que $X\sim Bi(n,0.54)$ (siendo p =0.54 observado en la simulacion). Por lo tanto $P(X=1) ={n \choose 1} (0.54)(0.46)^{n-1}$ y $E(X)=n0.54$. }
+    \item []  ({\bf P(X=1)}).{ Sabemos que X=\{"Número de veces que ocurrió el evento A "\} y que $X\sim Bi(n,0.54)$ (siendo p =0.54 observado en la simulación). Por lo tanto $P(X=1) ={n \choose 1} (0.54)(0.46)^{n-1}$ y $E(X)=n0.54 = 54 $. }
     \vspace{0,5cm}
     
 
     \item [c)] {Sea Y= Número de tiradas hasta que salgan 3 caras. $Y\sim Pascal$, por lo que \[P(Y=k)={{k-1}\choose{3-1}} 0.54^3 \  0.46^{k-3}={{k-1}\choose{2}} 0.54^3 \ 0.46^{k-3}\] y E(Y) = $\frac{r}{p}= \frac{3}{0.54}\simeq 5.55$. Es decir que se espera que entre la 5ta y la 6ta tirada de la moneda obtengamos 3 caras.}
 \end{itemize}
 \begin{itemize}
-    \item [d)] La implementacion que utilice para sesgar la moneda es la siguiente:\\
+    \item [d)] Simulacion moneda sesgada:\\
     
-    tirarMonedaSesgada $<-$ function(n)\{\\
-    
-      return (sample(0:2,100,  replace =TRUE)\%\%2)
-    \}\\
-    
-    {De esta manera trabajo sobre un espacio muestral $S_x\{0,1,2\}$, donde A=\{1\}=\{"Obtuve cara"\} y$A^c$=\{"Obtuve Cruz"\}} 
     
     \begin{figure}[htb]
         \centering
@@ -106,13 +83,423 @@
 \end{itemize}
 \newpage
 
-\section{Ejercicio 2}
-\vspace{0,5cm}
+\chapter{Ejercicio 2}
+\vspace{0,3cm}
 
-{Para simular la situacion implemente lo siguiente: 
+Simulacion.
+\vspace{0,3cm}
+
+{La trayectoria descripta por Xn es causa del lanzamiento de la moneda (10 veces en este caso). Cada vez que salga cara en la moneda el sujeto se desplazara 1 unidad en el espacio y cuando salga cruz un 0. (Cara representado con 1 y cruz representado con 0). La decision de desplazamiento esta dada por Dn, mientras que Xn solo describe la trayectoria, es decir la frecuencia acumulada de los resultados obtenidos.}
 \vspace{1cm}
 
-simular$<-$function(n)\{
+
+
+
+\begin{figure}[htb]
+
+
+
+        \centering
+           {\bf Tabla de frencuencias}
+           \vspace{0,2cm}
+           
+        \includegraphics[scale=.7]{ej2/tabla2.png}
+        \label{fig:my_label}
+    \vspace{.7cm}
+    
+        \centering
+        \includegraphics[scale=.8]{ej2/mpd.png}
+\vspace{1cm}
+
+ 
+    \end{figure}
+
+
+
+
+\newpage
+
+\chapter{Ejercicio 3}
+\vspace{1cm}
+
+
+\begin{itemize}
+    \item [b)]Para realizar la simulacion usare k=50, p=0.55, S=100, perder=0. El resultado obtenido fue el siguiente:
+    
+    \begin{figure}[htb]
+        \centering
+        \includegraphics{rddj.png}
+        \caption{Trayectoria. Ruina del jugador}
+        \label{fig:my_label}
+\end{figure}
+\end{itemize}
+    
+
+\vspace{0,3cm}
+
+
+    
+\vspace{0,3cm}
+\begin{itemize}
+\vspace{0,3cm}
+    \item 
+    
+    
+    Con k=20, S=60, p=0.5001 y 1000 trayectorias obtuve una aproximacion a la probabilidad de caer en la ruina de 0.678
+\end{itemize}
+\newpage
+
+
+\chapter{Ejercicio 4}
+
+
+\begin{itemize}
+    \item [a)] Simulacion.
+    
+    Al realizar la simulacion observe 50000 repeticiones del experimento y obtuve un promedio de 21.08484 minutos.
+
+    
+    \item [b)] Sea X=\{"Tiempo en que tarda el raton en salir del laberinto"\}, donde X va a depender de las decisiones del raton, estas pueden ser "ii", "id", "d1". Las elecciones se desarrollan en dos etapas, en la primer etapa nos encontramos con que
+    
+        \[P(\{"d1"\})= 1/2\] 
+        
+    En el caso de elegir el camino hacia la izquierda (con una probabilidad de 1/2) nos encontramos en la segunda etapa en la cual:
+    
+    \[P(\{"i2"\}|\{"i1"\})= 1/3\]
+    
+     \[P(\{"d2"\}|\{"i1"\})= 2/3\]
+     
+     De donde obtenemos que 
+     
+     \[P(\{"ii"\}) = P(\{"i2"\}\cap\{"i1"\}) =P(\{"i2"\}|\{"i1"\}) P(\{"i1"\})= 1/3 1/2 = 1/6\]
+    
+
+      
+    \[P(\{"id"\}) = P(\{"d"\}\cap\{"i1"\}) =P(\{"d"\}|\{"i1"\}) P(\{"i1"\})= 2/3 1/2 = 2/6 = 1/3\]
+    
+\vspace{0,5cm}
+
+    Podemos observar que las posibles elecciones del raton son "ii", "id" y "d". Por lo cual $E(X) = P(\{"ii"\}) E(X|"ii") + P(\{"id"\}) E(X|"id") +P(\{"d1"\}) E(X|"d1") $ donde
+    
+    \[\left\{ \begin{array}{lcc}
+             E(X|"ii")    &  = & 2 \\
+             \\ E(X|"id") &  = & E(X) + 5  \\
+             \\ E(X|"d1")  & =  & E(X) + 3
+             \end{array}
+   \right.\]
+   
+  Por lo tanto 
+  
+  \item [E(X)] = 1/6 2 + 2/6 (E(X) + 5) + 1/2 (E(X) + 3)
+  \item [] = 5/6 E(X) + 7/2
+  \item [$\Rightarrow$] E(X) = 21
+  \vspace{0.5cm}
+  
+ Este resultado concuerda con el de la simulacion.
+\end{itemize}
+
+\vspace{1cm}
+\newpage
+\chapter{Ejercicio 5}
+\vspace{0,5cm}
+
+\begin{itemize}
+    \item [a)] La matriz de transicion P es no-regular. Esta cadena de Markov presenta 4 clases de comunicacion (una por cada estado). El estado M es absorbente, por lo cual la cadena de Markov es absorbente, los demas estados son de transicion.
+    
+    \item [b)] Para n=10 pasos obtenemos la matriz $P^n$, donde $P^n_{ij}$ representa la probabilidad de llegar a j desde i en n pasos.
+    
+        \begin{equation}
+            P^{10}\simeq\left(\begin{matrix}
+                        0.99004 & 0.00969 & 0.000214 & 0.00005069 \\
+                        0 & 0.94159 & 0.04078 & 0.0176248 \\
+                        0 & 0 & 0.425037 & 0.5749629 \\
+                        0 & 0 & 0 & 1
+                        \end{matrix}\right)
+        \end{equation}
+        
+        Partiendo desde un estado luego de 10 unidades de observacion en la evolucion de esta persona podemos observar:
+        
+\end{itemize}
+\begin{itemize}
+      \item ["Suceptible".] 
+      
+            \subitem  {\bf Suceptible.}  Partiendo desde suceptible hay una probabilidad de que el sujeto siga en su estado de suceptibilidad de 0.99004, luego de 10 unidades de observacion.
+        
+            \subitem  {\bf VIH.}  Partiendo desde suceptible hay una probabilidad de que el sujeto contraiga VIH de 0.00969, luego de 10 unidades de observacion.
+            
+            \subitem  {\bf SIDA.}  Partiendo desde suceptible hay una probabilidad de que el sujeto contraiga SIDA de 0.000214, luego de 10 unidades de observacion.
+            
+            \subitem  {\bf Muerto.}  Partiendo desde suceptible hay una probabilidad de que el sujeto muera a causa de la enfermedad de 0.00005069, luego de 10 unidades de observacion.
+\end{itemize}
+
+Por lo tanto si el sujeto es suceptible, en 10 unidades de observacion, es altamente probable que se mantenga en esta condicion.
+
+\begin{itemize}
+      \item ["VIH".] 
+      
+            \subitem  {\bf Suceptible.}  Partiendo desde VIH no hay una probabilidad de que el sujeto vuelva al estado "suceptible" , luego de 10 unidades de observacion.
+        
+            \subitem  {\bf VIH.}  Partiendo desde VIH hay una probabilidad de que el sujeto se mantenga en su condicion de 0.94159, luego de 10 unidades de observacion.
+            
+            \subitem  {\bf SIDA.}  Partiendo desde VIH hay una probabilidad de que el sujeto contraiga SIDA de 0.04078, luego de 10 unidades de observacion.
+            
+            \subitem  {\bf Muerto.}  Partiendo desde VIH hay una probabilidad de que el sujeto muera a causa de la enfermedad de 0.0176248, luego de 10 unidades de observacion.
+\end{itemize}
+
+Por lo tanto si el sujeto esta diagnosticado con VIH, tiene altas probabilidades de mantener su condicion y no puede librarse de su enfermedad.
+
+\begin{itemize}
+      \item ["SIDA".] 
+      
+            \subitem  {\bf Suceptible.}  Partiendo desde SIDA no hay una probabilidad de que el sujeto vuelva al estado de "suceptibilidad" , luego de 10 unidades de observacion.
+        
+            \subitem  {\bf Suceptible.}  Partiendo desde SIDA no hay una probabilidad de que el sujeto vuelva al estado de "VIH" , luego de 10 unidades de observacion.
+            
+            \subitem  {\bf SIDA.}  Partiendo desde SIDA hay una probabilidad de que el sujeto se mantenga en su condicion de 0.425037, luego de 10 unidades de observacion.
+            
+            \subitem  {\bf Muerto.}  Partiendo desde SIDA hay una probabilidad de que el sujeto muera a causa de la enfermedad de 0.5749629, luego de 10 unidades de observacion.
+\end{itemize}
+Por lo tanto si el sujeto esta diagnosticado con SIDA, tiene un $57\%$ de morir luego de 10 unidades de observacion. No puede volver a la condicion de VIH, ni a la de suceptible, mientras que se puede mantener con SIDA con una probabilidad de $0.425037\%$ .
+\vspace{0,5cm}
+
+Por otro lado si esta muerto... bueno, digamos que es el estado absorbente por excelencia.
+
+
+\begin{itemize}
+    \item [c)] Sabemos que
+\end{itemize}  
+
+\begin{equation}
+            Q=\left(\begin{matrix}
+                        0.999 & 0.001 & 0\\
+                        0 & 0.994 & 0.006 \\
+                        0 & 0 & 0.918 \\
+                        
+                        \end{matrix}\right)
+        \end{equation}
+
+Y por lo tanto,
+\begin{equation}
+    F = (I - Q)^{-1}= \left(\begin{matrix}
+1000 & \frac{500}{3} & \frac{500}{41} \\
+0 & \frac{500}{3} & \frac{500}{41} \\
+0 & 0 & \frac{500}{41}
+\end{matrix}\right)    
+\end{equation}
+Donde F es la matriz fundamental, en la cual $F_{ij}$
+es el numero esperado de visitas a j dado que la cadena comienza en i. Por lo tanto, si iniciamos en el estado
+
+\begin{itemize}
+    \item ["Suceptible"] el numero esperado de pasos para llegar al estado de muerte a causa de la enfermedad es de 1178.862
+    
+    \item ["VIH"] el numero esperado de pasos para llegar al estado de muerte a causa de la enfermedad es de 178.862
+    
+    \item ["SIDA"] el numero esperado de pasos para llegar al estado de muerte a causa de la enfermedad es de 12.19
+\end{itemize}
+
+Cada uno de los resultados obtenidos de acuerdo al estado desde el que se comienza a contabilizar, es el promedio de unidades de observacion para que la persona llegue al estado de muerte.
+
+\begin{itemize}
+    \item [d)] Para la busqueda de la distribucion estacionaria utilizare la tecnica vista en clase. Busco un vector x=(x1,x2,x3,1) tal que
+    
+    \[xP=x\]
+    \vspace{0,5cm}
+    
+    Por lo cual obtenemos el siguiente sistema de ecuaciones lineales:
+    \vspace{0,5cm}
+    \begin{itemize}
+        \item [(1)] $x_1 0.999 + x_2 0 + x_3 0 + 0 = x_1$
+        \item [(2)] $x_1 0.001 + x_2 0.994 + x_3 0 + 0 = x_2$
+        \item [(3)] $ x_1 0 + x_2 0.006 + x_3 0.918 + 0 = x_3$
+        \item [(4)] $x_1 0 + x_2 0 + x_3 0.082 + 1 = 1$
+    \end{itemize}
+    \begin{itemize}
+        \item [(4)] $\Rightarrow X_3 = 0$
+        \item [(4)(3)] $\Rightarrow X_2 = 0$
+        \item [(4)(3)(2)] $\Rightarrow X_1 = 0$
+    \end{itemize}
+    \vspace{0,5cm}
+    Se puede observar que las componentes en x suman 1 por lo tanto $ x=\pi$ es la distribucion estacionaria de esta cadena de Markov.
+    
+    \item [e)] Al ser una cadena absorbente tenemos que:
+    
+    \item [] \hspace{2cm} R=$ \left(\begin{matrix}
+0 \\
+0 \\
+0.082 
+\end{matrix}\right)$ \hspace{1cm} $F =(I-Q)^{-1}= \left(\begin{matrix}
+1000 & \frac{500}{3} & \frac{500}{41} \\
+0 & \frac{500}{3} & \frac{500}{41} \\
+0 & 0 & \frac{500}{41}
+\end{matrix}\right)   $ \hspace{1cm} $FR=\left(\begin{matrix}
+                                            1 \\
+                                            1 \\
+                                            1
+                                         \end{matrix}\right)$
+\vspace{0,3cm}
+
+
+\[lim_{n\rightarrow\infty}P^n = 
+                                        \left( \begin{tabular}{r | l}
+                                       0  & (I-Q)^{-1} R \\ \hline
+                                        0 & I \\ 
+                                    \end{tabular} \right) = \left(\begin{matrix}
+0 & 0 & 0 & 1 \\
+0 & 0 & 0 & 1 \\
+0 & 0 & 0 & 1 \\
+0 & 0 & 0 & 1
+\end{matrix}\right)\]
+\vspace{0,2cm}
+    Por lo tanto esta cadena tiene distribucion limite.
+\end{itemize}
+
+\chapter{Ejercicio 6}
+\vspace{1cm}
+
+\begin{itemize}
+    \item [a)] El modelado de este PageRank como cadena de Markov produce la siguiente matriz de transicion:
+    \begin{equation}
+        P=\left(\begin{matrix}
+0 & 0 & 0 & 0 & \frac{1}{2} & \frac{1}{2} & 0 \\
+\frac{1}{3} & 0 & \frac{1}{3} & 0 & 0 & \frac{1}{3} & 0 \\
+0 & 0 & 0 & \frac{1}{2} & 0 & \frac{1}{2} & 0 \\
+0 & 0 & 0 & 0 & 0 & 1 & 0 \\
+\frac{1}{4} & 0 & 0 & \frac{1}{4} & 0 & \frac{1}{4} & \frac{1}{4} \\
+\frac{1}{2} & \frac{1}{2} & 0 & 0 & 0 & 0 & 0 \\
+\frac{1}{7} & \frac{1}{7} & \frac{1}{7} & \frac{1}{7} & \frac{1}{7} & \frac{1}{7} & \frac{1}{7}
+\end{matrix}\right)
+    \end{equation}
+    \item [b)] Simulacion.
+    \vspace{1cm}
+    
+   
+    \vspace{2cm}
+    
+    
+    
+    \item [c)] Obtuve el siguiente vector de frecuencias relativas : [0.25, 0.16, 0.04, 0.06, 0.10, 0.34, 0.05]. Por lo cual con n=100 suponemos que el rango de las paginas a,b,c...,g corresponden con las posiciones desde 1 a 7 del vector obtenido por medio de la simulacion.
+\end{itemize}
+\vspace{1cm}
+\newpage
+
+\chapter{Ejercicio 7}
+\vspace{1cm}
+
+\begin{itemize}
+    \item [a)] Sabemos que Juan recibe 10 mensajes por hora, por lo tanto $\lambda = 10$ y que nos situamos dentro del modelo de proceso de Poisson. Sea $N_t$ el numero de mensajes que Juan recibe al tiempo t, como el analisis comienza desde las 10am t=0 equivale a las 10 am. Deseamos hallar la probabilidad $P(N_{2}=18, N_{7} = 70)=P(N_{2}=18, N_{7}-N_2 = 52)$,  ya que 12 - 10 =2, 17 - 10 = 7 y 70 - 18 = 52. Como estos intervalos de tiempo son disjuntos ((0,2],(2,5]) entonces $N_{2} y N_{5}$ son variables aleatorias independientes. Por lo tanto, $P(N_{2}=18, N_{7}-N_2 = 52) = P(N_{2}=18)  P(N_{7}-N_2 = 52) = P(N_{2}=18)  P(N_{5} = 52) = \frac{e^{-20}(20)^{18}}{18!} \frac{e^{-50}(50)^{52}}{52!}= 0.004481022 $
+
+    \item [b)]
+\end{itemize}
+
+\newpage
+\chapter{Ejercicio 8}
+\vspace{1cm}
+
+\begin{itemize}
+    \item [a)] Dada la distribucion inicial $\pi_0$, y la matriz de transicion P, luego de dos semanas nos encontramos con la siguiente probabilidad de ataques a los puertos:
+    
+    \[\pi_0=\left(\begin{matrix}
+0 & 0 & 0 & 0 & 1
+\end{matrix}\right)\]
+
+\[P=\left(\begin{matrix}
+0 & 0 & 0 & 0 & 1 \\
+0 & \frac{8}{13} & \frac{3}{13} & \frac{1}{13} & \frac{1}{13} \\
+\frac{1}{16} & \frac{3}{16} & \frac{3}{8} & \frac{1}{4} & \frac{1}{8} \\
+0 & \frac{1}{11} & \frac{4}{11} & \frac{5}{11} & \frac{1}{11} \\
+0 & \frac{1}{8} & \frac{1}{2} & \frac{1}{8} & \frac{1}{4}
+\end{matrix}\right)\]
+    
+    \[\pi_0P^2= \left(\begin{matrix}
+0 & \frac{1}{8} & \frac{1}{2} & \frac{1}{8} & \frac{1}{4}
+\end{matrix}\right)\]
+\end{itemize}
+
+
+
+Los puertos con menos probabilidad de ser atacados son el 135 y 445, mientras que el que tiene mas probabilidad de ser atacado es el 139. Se puede observar que el puerto 80 no tiene posibilidad de ser atacado.
+
+\vspace{2cm}
+
+\begin{itemize}
+    \item [b)] Esta cadena presenta una matriz de transicion regular ya que:
+    \vspace{0,5cm}
+    \[P^3=\left(\begin{matrix}
+\frac{1}{32} & \frac{61}{286} & \frac{885}{2288} & \frac{1019}{4576} & \frac{167}{1144} \\
+\frac{4387}{237952} & \frac{11964081}{34027136} & \frac{5400719}{17013568} & \frac{3203451}{17013568} & \frac{2113687}{17013568} \\
+\frac{3087}{146432} & \frac{5128733}{20939776} & \frac{3700267}{10469888} & \frac{2425947}{10469888} & \frac{1558587}{10469888} \\
+\frac{579}{25168} & \frac{1591501}{7198048} & \frac{633335}{1799512} & \frac{1898595}{7198048} & \frac{504509}{3599024} \\
+\frac{885}{36608} & \frac{1268269}{5234944} & \frac{911497}{2617472} & \frac{152189}{654368} & \frac{399807}{2617472}
+\end{matrix}\right)\]
+\vspace{0,5cm}
+
+presenta todas sus entradas mayores a 0. Por lo visto en la teoria si una matriz de transicion de una cadena de Markov es regular, entonces la cadena tiene una distribucion limite, la cual es la unica distribucion estacionaria de la cadena. Por lo tanto si buscamos c y x de forma tal que $cxP=cx$ y $\sum_{i \in cx} {cx}_i=1$, entonces obtendremos $\pi = cx$ (la distribucion estacionaria). Gracias a la ayuda de un software puedo concluir que:
+\[\pi = \]
+\[\pi =(0,02146667, 0,2669333, 0,3434667, 0,2273333, 0,1408)\]
+
+Es la distribucion limite de la matriz P.
+
+
+\end{itemize}
+
+\newpage
+\chapter{ Simulaciones}
+
+\section{Ejercicio 1}
+
+\vspace{2cm}
+    {n = 100 # Cantidad de tiradas
+    \vspace{0,5cm}
+    
+    simulacion = simular(n)
+    \vspace{0,5cm}
+    
+    
+    simular $<-$ function(n)\{
+    \vspace{1cm}
+    
+      In $<-$ tirarMoneda(n) (n tiradas de una moneda)
+      \vspace{0,5cm}
+      
+      Xn $<-$ cumsum(In) (numero de caras al momento n - Frecuencia relativa acumulada -)
+      \vspace{0,5cm}
+      
+      vectorTiradas $<-$ c(1:n)
+      \vspace{0,5cm}
+      
+      return (data.frame(Xn,vectorTiradas)) 
+      \vspace{0,5cm
+      
+    \}
+    \vspace{1cm}
+    
+    tirarMoneda$<-$function(n)\{ (Tirar moneda n veces)
+    \vspace{0,cm}
+    
+      return(sample(0:1,100,replace = TRUE))  (Vector de longitud n donde cada posicion tiene 1 o 0)
+      \vspace{0,5cm}
+      
+    \}
+}
+\vspace{0,5cm}
+
+d)
+\vspace{0,5cm }
+
+tirarMonedaSesgada $<-$ function(n)\{
+\vspace{0,5cm}
+    
+      return (sample(0:2,100,  replace =TRUE)\%\%2)
+    \}\\
+    
+    {De esta manera trabajo sobre un espacio muestral $S_x\{0,1,2\}$, donde A=\{1\}=\{"Obtuve cara"\} y$A^c$=\{"Obtuve Cruz"\}}
+    
+\newpage
+
+\section{Ejercicio 2}
+\vspace{1cm}
+
+ simular$<-$function(n)\{
 \vspace{0,5cm}
 
   In $<-$ tirarMoneda(n) -- Tiro n veces la moneda
@@ -147,7 +534,7 @@ simular$<-$function(n)\{
 \vspace{1cm}
 
 tirarMoneda$<-$function(n)\{ -- Tirar moneda n veces
-\vspace{1cm}
+\vspace{0,5cm}
   
   return(sample(0:1,n,replace = TRUE))
   \vspace{0,5cm}
@@ -176,33 +563,13 @@ variableAleatoria$<-$ function(In)\{  -- Obtengo Dn
 \}
 }
 
-\begin{figure}[htb]
-        \centering
-        \includegraphics{ej2/mpd.png}
-        \label{fig:my_label}
-    \end{figure}
-\vspace{0,5cm}
-\begin{center}
-    {\bf Tabla de frencuencias}
-\end{center}
-
-\begin{figure}[htb]
-        \centering
-        \includegraphics{ej2/tabla2.png}
-        \label{fig:my_label}
-    \end{figure}
-\vspace{1cm}
-    
-{La trayectoria descripta por Xn es causa del lanzamiento de la moneda (10 veces en este caso). Cada vez que salga cara en la moneda el sujeto se desplazara 1 unidad en el espacio y cuando salga cruz un 0. (Cara representado con 1 y cruz representado con 0). La decision de desplazamiento esta dada por Dn, mientras que Xn solo describe la trayectoria, es decir la frecuencia acumulada de los resultados obtenidos.}
-
-
 \newpage
 
 \section{Ejercicio 3}
 \vspace{1cm}
+
 \begin{itemize}
-    \item [a)] En R implemente lo siguiente para simular el proceso:
-    \vspace{1cm}
+    \item [a)]
     
     proceso $<-$function(plataInicial,S,p)\{
     \vspace{1cm}
@@ -305,29 +672,11 @@ tirada$<-$function(probabilidades)\{
   \}
 \}
 \end{itemize}
+\vspace{0,5cm}
 
-
-\begin{itemize}
-    \item [b)]Para realizar la simulacion usare k=50, p=0.55, S=100, perder=0. El resultado obtenido fue el siguiente:
-    
-    \begin{figure}[htb]
-        \centering
-        \includegraphics{rddj.png}
-        \caption{Trayectoria. Ruina del jugador}
-        \label{fig:my_label}
-\end{figure}
-\end{itemize}
-    
-
-\vspace{0,3cm}
-
-
-    
-\vspace{0,3cm}
-\begin{itemize}
-\vspace{0,3cm}
-    \item [c)] Para simular esto, implemente en R:
+c)
     \vspace{0,5cm}
+    
     probabilidadRuina $<-$ function(plataInicial,S,p,n)\{
   \vspace{1cm}
 
@@ -351,21 +700,10 @@ tirada$<-$function(probabilidades)\{
 \}
     
 \vspace{1cm}
-    
-    
-    Con k=20, S=60, p=0.5001 y 1000 trayectorias obtuve una aproximacion a la probabilidad de caer en la ruina de 0.678
-\end{itemize}
-\newpage
-
 
 \section{Ejercicio 4}
-\vspace{0,5cm}
 
-\begin{itemize}
-    \item [a)] Para simular la situacion implemente en R lo siguiente:
-    \vspace{1cm}
-    
-    decision $<-$ function(x)\{
+ decision $<-$ function(x)\{
   \vspace{0,3cm}
   
   if (x==izquierda)\{
@@ -434,230 +772,8 @@ esperanza$<-$function()\{
   \vspace{0,5cm}
   
 \}
-    
-    
-    Al realizar la simulacion observe 50000 repeticiones del experimento y obtuve un promedio de 21.08484 minutos.
-    \vspace{1cm}
-    
-    \item [b)] Sea X=\{"Tiempo en que tarda el raton en salir del laberinto"\}, donde X va a depender de las decisiones del raton, estas pueden ser "ii", "id", "d1". Las elecciones se desarrollan en dos etapas, en la primer etapa nos encontramos con que
-    
-        \[P(\{"d1"\})= 1/2\] 
-        
-    En el caso de elegir el camino hacia la izquierda (con una probabilidad de 1/2) nos encontramos en la segunda etapa en la cual:
-    
-    \[P(\{"i2"\}|\{"i1"\})= 1/3\]
-    
-    \[y\]
-    
-     \[P(\{"d2"\}|\{"i1"\})= 2/3\]
-     
-     De donde obtenemos que 
-     
-     \[P(\{"ii"\}) = P(\{"i2"\}\cap\{"i1"\}) =P(\{"i2"\}|\{"i1"\}) P(\{"i1"\})= 1/3 1/2 = 1/6\]
-    
-      \[y\]
-      
-    \[P(\{"id"\}) = P(\{"d"\}\cap\{"i1"\}) =P(\{"d"\}|\{"i1"\}) P(\{"i1"\})= 2/3 1/2 = 2/6 = 1/3\]
-    
-    Podemos observar que las posibles elecciones del raton son "ii", "id" y "d". Por lo cual $E(X) = P(\{"ii"\}) E(X|"ii") + P(\{"id"\}) E(X|"id") +P(\{"d1"\}) E(X|"d1") $ donde
-    
-    \[\left\{ \begin{array}{lcc}
-             E(X|"ii")    &  = & 2 \\
-             \\ E(X|"id") &  = & E(X) + 5  \\
-             \\ E(X|"d1")  & =  & E(X) + 3
-             \end{array}
-   \right.\]
-   
-  Por lo tanto 
-  \vspace{1cm}
-  
-  \item [E(X)] = 1/6 2 + 2/6 (E(X) + 5) + 1/2 (E(X) + 3)
-  \item [] = 5/6 E(X) + 7/2
-  \item [$\Rightarrow$] E(X) = 21
-  \vspace{1cm}
-  
- Este resultado concuerda con el de la simulacion.
-\end{itemize}
-
-\vspace{1cm}
-\newpage
-\section{Ejercicio 5}
-\vspace{0,5cm}
-
-\begin{itemize}
-    \item [a)] La matriz de transicion P es no-regular. Esta cadena de Markov presenta 4 clases de comunicacion (una por cada estado). El estado M es absorbente, por lo cual la cadena de Markov es absorbente, los demas estados son de transicion.
-    
-    \item [b)] Para n=10 pasos obtenemos la matriz $P^n$, donde $P^n_{ij}$ representa la probabilidad de llegar a j desde i en n pasos.
-    
-        \begin{equation}
-            P^{10}\simeq\left(\begin{matrix}
-                        0.99004 & 0.00969 & 0.000214 & 0.00005069 \\
-                        0 & 0.94159 & 0.04078 & 0.0176248 \\
-                        0 & 0 & 0.425037 & 0.5749629 \\
-                        0 & 0 & 0 & 1
-                        \end{matrix}\right)
-        \end{equation}
-        
-        Partiendo desde un estado luego de 10 unidades de observacion en la evolucion de esta persona podemos observar:
-        
-\end{itemize}
-\begin{itemize}
-      \item ["Suceptible".] 
-      
-            \subitem  {\bf Suceptible.}  Partiendo desde suceptible hay una probabilidad de que el sujeto siga en su estado de suceptibilidad de 0.99004, luego de 10 unidades de observacion.
-        
-            \subitem  {\bf VIH.}  Partiendo desde suceptible hay una probabilidad de que el sujeto contraiga VIH de 0.00969, luego de 10 unidades de observacion.
-            
-            \subitem  {\bf SIDA.}  Partiendo desde suceptible hay una probabilidad de que el sujeto contraiga SIDA de 0.000214, luego de 10 unidades de observacion.
-            
-            \subitem  {\bf Muerto.}  Partiendo desde suceptible hay una probabilidad de que el sujeto muera a causa de la enfermedad de 0.00005069, luego de 10 unidades de observacion.
-\end{itemize}
-
-Por lo tanto si el sujeto es suceptible, en 10 unidades de observacion, es altamente probable que se mantenga en esta condicion.
-
-\begin{itemize}
-      \item ["VIH".] 
-      
-            \subitem  {\bf Suceptible.}  Partiendo desde VIH no hay una probabilidad de que el sujeto vuelva al estado "suceptible" , luego de 10 unidades de observacion.
-        
-            \subitem  {\bf VIH.}  Partiendo desde VIH hay una probabilidad de que el sujeto se mantenga en su condicion de 0.94159, luego de 10 unidades de observacion.
-            
-            \subitem  {\bf SIDA.}  Partiendo desde VIH hay una probabilidad de que el sujeto contraiga SIDA de 0.04078, luego de 10 unidades de observacion.
-            
-            \subitem  {\bf Muerto.}  Partiendo desde VIH hay una probabilidad de que el sujeto muera a causa de la enfermedad de 0.0176248, luego de 10 unidades de observacion.
-\end{itemize}
-
-Por lo tanto si el sujeto esta diagnosticado con VIH, tiene altas probabilidades de mantener su condicion y no puede librarse de su enfermedad.
-
-\begin{itemize}
-      \item ["SIDA".] 
-      
-            \subitem  {\bf Suceptible.}  Partiendo desde SIDA no hay una probabilidad de que el sujeto vuelva al estado de "suceptibilidad" , luego de 10 unidades de observacion.
-        
-            \subitem  {\bf Suceptible.}  Partiendo desde SIDA no hay una probabilidad de que el sujeto vuelva al estado de "VIH" , luego de 10 unidades de observacion.
-            
-            \subitem  {\bf SIDA.}  Partiendo desde SIDA hay una probabilidad de que el sujeto se mantenga en su condicion de 0.425037, luego de 10 unidades de observacion.
-            
-            \subitem  {\bf Muerto.}  Partiendo desde SIDA hay una probabilidad de que el sujeto muera a causa de la enfermedad de 0.5749629, luego de 10 unidades de observacion.
-\end{itemize}
-Por lo tanto si el sujeto esta diagnosticado con SIDA, tiene un $57\%$ de morir luego de 10 unidades de observacion. No puede volver a la condicion de VIH, ni a la de suceptible, mientras que se puede mantener con SIDA con una probabilidad de $0.425037\%$ .
-\vspace{0,5cm}
-
-Por otro lado si esta muerto... bueno, digamos que es el estado absorbente por excelencia.
-
-
-\newpage
-
-\begin{itemize}
-    \item [c)] Sabemos que
-\end{itemize}  
-
-\begin{equation}
-            Q=\left(\begin{matrix}
-                        0.999 & 0.001 & 0\\
-                        0 & 0.994 & 0.006 \\
-                        0 & 0 & 0.918 \\
-                        
-                        \end{matrix}\right)
-        \end{equation}
-
-Y por lo tanto,
-\begin{equation}
-    F = (I - Q)^{-1}= \left(\begin{matrix}
-1000 & \frac{500}{3} & \frac{500}{41} \\
-0 & \frac{500}{3} & \frac{500}{41} \\
-0 & 0 & \frac{500}{41}
-\end{matrix}\right)    
-\end{equation}
-Donde F es la matriz fundamental, en la cual $F_{ij}$
-es el numero esperado de visitas a j dado que la cadena comienza en i. Por lo tanto, si iniciamos en el estado
-
-\begin{itemize}
-    \item ["Suceptible"] el numero esperado de pasos para llegar al estado de muerte a causa de la enfermedad es de 1178.862
-    
-    \item ["VIH"] el numero esperado de pasos para llegar al estado de muerte a causa de la enfermedad es de 178.862
-    
-    \item ["SIDA"] el numero esperado de pasos para llegar al estado de muerte a causa de la enfermedad es de 12.19
-\end{itemize}
-
-Cada uno de los resultados obtenidos de acuerdo al estado desde el que se comienza a contabilizar, es el promedio de unidades de observacion para que la persona llegue al estado de muerte.
-
-\begin{itemize}
-    \item [d)] Para la busqueda de la distribucion estacionaria utilizare la tecnica vista en clase. Busco un vector x=(x1,x2,x3,1) tal que
-    
-    \[xP=x\]
-    \vspace{0,5cm}
-    
-    Por lo cual obtenemos el siguiente sistema de ecuaciones lineales:
-    \vspace{0,5cm}
-    \begin{itemize}
-        \item [(1)] $x_1 0.999 + x_2 0 + x_3 0 + 0 = x_1$
-        \item [(2)] $x_1 0.001 + x_2 0.994 + x_3 0 + 0 = x_2$
-        \item [(3)] $ x_1 0 + x_2 0.006 + x_3 0.918 + 0 = x_3$
-        \item [(4)] $x_1 0 + x_2 0 + x_3 0.082 + 1 = 1$
-    \end{itemize}
-    \begin{itemize}
-        \item [(4)] $\Rightarrow X_3 = 0$
-        \item [(4)(3)] $\Rightarrow X_2 = 0$
-        \item [(4)(3)(2)] $\Rightarrow X_1 = 0$
-    \end{itemize}
-    \vspace{0,5cm}
-    Se puede observar que las componentes en x suman 1 por lo tanto $ x=\pi$ es la distribucion estacionaria de esta cadena de Markov.
-    
-    \item [e)] Al ser una cadena absorbente tenemos que:
-    
-    \item [] \hspace{2cm} R=$ \left(\begin{matrix}
-0 \\
-0 \\
-0.082 
-\end{matrix}\right)$ \hspace{1cm} $F =(I-Q)^{-1}= \left(\begin{matrix}
-1000 & \frac{500}{3} & \frac{500}{41} \\
-0 & \frac{500}{3} & \frac{500}{41} \\
-0 & 0 & \frac{500}{41}
-\end{matrix}\right)   $ \hspace{1cm} $FR=\left(\begin{matrix}
-                                            1 \\
-                                            1 \\
-                                            1
-                                         \end{matrix}\right)$
-\vspace{0,3cm}
-
-
-\[lim_{n\rightarrow\infty}P^n = 
-                                        \left( \begin{tabular}{r | l}
-                                       0  & (I-Q)^{-1} R \\ \hline
-                                        0 & I \\ 
-                                    \end{tabular} \right) = \left(\begin{matrix}
-0 & 0 & 0 & 1 \\
-0 & 0 & 0 & 1 \\
-0 & 0 & 0 & 1 \\
-0 & 0 & 0 & 1
-\end{matrix}\right)\]
-\vspace{0,2cm}
-    Por lo tanto esta cadena tiene distribucion limite.
-\end{itemize}
-
-\newpage
-
 \section{Ejercicio 6}
-\vspace{1cm}
-
-\begin{itemize}
-    \item [a)] El modelado de este PageRank como cadena de Markov produce la siguiente matriz de transicion:
-    \begin{equation}
-        P=\left(\begin{matrix}
-0 & 0 & 0 & 0 & \frac{1}{2} & \frac{1}{2} & 0 \\
-\frac{1}{3} & 0 & \frac{1}{3} & 0 & 0 & \frac{1}{3} & 0 \\
-0 & 0 & 0 & \frac{1}{2} & 0 & \frac{1}{2} & 0 \\
-0 & 0 & 0 & 0 & 0 & 1 & 0 \\
-\frac{1}{4} & 0 & 0 & \frac{1}{4} & 0 & \frac{1}{4} & \frac{1}{4} \\
-\frac{1}{2} & \frac{1}{2} & 0 & 0 & 0 & 0 & 0 \\
-\frac{1}{7} & \frac{1}{7} & \frac{1}{7} & \frac{1}{7} & \frac{1}{7} & \frac{1}{7} & \frac{1}{7}
-\end{matrix}\right)
-    \end{equation}
-    \item [b)] Para simular esta situacion en R, implemente lo siguiente:
-    \vspace{1cm}
-    
-    P = matrix(nrow=7,ncol=7)
+ P = matrix(nrow=7,ncol=7)
     \vspace{0,3cm}
 
 Xa = c(1/2,5,6)
@@ -926,72 +1042,8 @@ cargarFila $<-$ function(P,x,fila)\{
   
 \}
 
-    
-    \vspace{2cm}
-    
-    
-    
-    \item [c)] Obtuve el siguiente vector de frecuencias relativas : [0.25, 0.16, 0.04, 0.06, 0.10, 0.34, 0.05]. Por lo cual con n=100 suponemos que el rango de las paginas a,b,c...,g corresponden con las posiciones desde 1 a 7 del vector obtenido por medio de la simulacion.
-\end{itemize}
-\vspace{1cm}
-\newpage
-
 \section{Ejercicio 7}
-\vspace{1cm}
 
-\begin{itemize}
-    \item [a)] Sabemos que Juan recibe 10 mensajes por hora, por lo tanto $\lambda = 10$ y que nos situamos dentro del modelo de proceso de Poisson. Sea $N_t$ el numero de mensajes que Juan recibe al tiempo t, como el analisis comienza desde las 10am t=0 equivale a las 10 am. Deseamos hallar la probabilidad $P(N_{2}=18, N_{7} = 70)=P(N_{2}=18, N_{7}-N_2 = 52)$,  ya que 12 - 10 =2, 17 - 10 = 7 y 70 - 18 = 52. Como estos intervalos de tiempo son disjuntos ((0,2],(2,5]) entonces $N_{2} y N_{5}$ son variables aleatorias independientes. Por lo tanto, $P(N_{2}=18, N_{7}-N_2 = 52) = P(N_{2}=18)  P(N_{7}-N_2 = 52) = P(N_{2}=18)  P(N_{5} = 52) = \frac{e^{-20}(20)^{18}}{18!} \frac{e^{-50}(50)^{52}}{52!}= 0.004481022 $
-\end{itemize}
-
-\newpage
-\section{Ejercicio 8}
-\vspace{1cm}
-
-\begin{itemize}
-    \item [a)] Dada la distribucion inicial $\pi_0$, y la matriz de transicion P, luego de dos semanas nos encontramos con la siguiente probabilidad de ataques a los puertos:
     
-    \[\pi_0=\left(\begin{matrix}
-0 & 0 & 0 & 0 & 1
-\end{matrix}\right)\]
-
-\[P=\left(\begin{matrix}
-0 & 0 & 0 & 0 & 1 \\
-0 & \frac{8}{13} & \frac{3}{13} & \frac{1}{13} & \frac{1}{13} \\
-\frac{1}{16} & \frac{3}{16} & \frac{3}{8} & \frac{1}{4} & \frac{1}{8} \\
-0 & \frac{1}{11} & \frac{4}{11} & \frac{5}{11} & \frac{1}{11} \\
-0 & \frac{1}{8} & \frac{1}{2} & \frac{1}{8} & \frac{1}{4}
-\end{matrix}\right)\]
-    
-    \[\pi_0P^2= \left(\begin{matrix}
-0 & \frac{1}{8} & \frac{1}{2} & \frac{1}{8} & \frac{1}{4}
-\end{matrix}\right)\]
-\end{itemize}
-
-
-
-Los puertos con menos probabilidad de ser atacados son el 135 y 445, mientras que el que tiene mas probabilidad de ser atacado es el 139. Se puede observar que el puerto 80 no tiene posibilidad de ser atacado.
-
-\vspace{2cm}
-
-\begin{itemize}
-    \item [b)] Esta cadena presenta una matriz de transicion regular ya que:
-    \vspace{0,5cm}
-    \[P^3=\left(\begin{matrix}
-\frac{1}{32} & \frac{61}{286} & \frac{885}{2288} & \frac{1019}{4576} & \frac{167}{1144} \\
-\frac{4387}{237952} & \frac{11964081}{34027136} & \frac{5400719}{17013568} & \frac{3203451}{17013568} & \frac{2113687}{17013568} \\
-\frac{3087}{146432} & \frac{5128733}{20939776} & \frac{3700267}{10469888} & \frac{2425947}{10469888} & \frac{1558587}{10469888} \\
-\frac{579}{25168} & \frac{1591501}{7198048} & \frac{633335}{1799512} & \frac{1898595}{7198048} & \frac{504509}{3599024} \\
-\frac{885}{36608} & \frac{1268269}{5234944} & \frac{911497}{2617472} & \frac{152189}{654368} & \frac{399807}{2617472}
-\end{matrix}\right)\]
-\vspace{0,5cm}
-
-presenta todas sus entradas mayores a 0. Por lo visto en la teoria si una matriz de transicion de una cadena de Markov es regular, entonces la cadena tiene una distribucion limite, la cual es la unica distribucion estacionaria de la cadena. Por lo tanto si buscamos c y x de forma tal que $cxP=cx$ y $\sum_{i \in cx} {cx}_i=1$, entonces obtendremos $\pi = cx$ (la distribucion estacionaria). Gracias a la ayuda de un software puedo concluir que:
-\[\pi = \]
-\[\pi =(0,02146667, 0,2669333, 0,3434667, 0,2273333, 0,1408)\]
-
-Es la distribucion limite de la matriz P.
-
-
-\end{itemize}
 \end{document}
 
