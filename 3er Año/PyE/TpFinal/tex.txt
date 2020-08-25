@@ -387,8 +387,18 @@ Cada uno de los resultados obtenidos de acuerdo al estado desde el que se comien
 
 \begin{itemize}
     \item [a)] Sabemos que Juan recibe 10 mensajes por hora, por lo tanto $\lambda = 10$ y que nos situamos dentro del modelo de proceso de Poisson. Sea $N_t$ el número de mensajes que Juan recibe al tiempo t, como el análisis comienza desde las 10am t=0 equivale a las 10 am. Deseamos hallar la probabilidad $P(N_{2}=18, N_{7} = 70)=P(N_{2}=18, N_{7}-N_2 = 52)$,  ya que 12 - 10 =2, 17 - 10 = 7 y 70 - 18 = 52. Como estos intervalos de tiempo son disjuntos ((0,2],(2,5]) entonces $N_{2} y N_{5}$ son variables aleatorias independientes. Por lo tanto, $P(N_{2}=18, N_{7}-N_2 = 52) = P(N_{2}=18)  P(N_{7}-N_2 = 52) = P(N_{2}=18)  P(N_{5} = 52) = \frac{e^{-20}(20)^{18}}{18!} \frac{e^{-50}(50)^{52}}{52!}= 0.004481022 $
-
-    \item [b)]
+    \vspace{2cm}
+    
+    \item [b)] Con un $\lambda=10$ y T=1000 obtuve el siguiente histograma, el cual se asemeja mucho en comportamiento a la ley teorica.
+    \vspace{2cm}
+    
+    \begin{figure}[htb]
+        \centering
+        \includegraphics[scale=0.7]{hists.png}
+        \includegraphics[scale=0.7]{fteor.png}
+        \caption{}
+        \label{fig:my_label}
+\end{figure}
 \end{itemize}
 
 \newpage
@@ -1044,6 +1054,33 @@ cargarFila $<-$ function(P,x,fila)\{
 
 \section{Ejercicio 7}
 
+lambda = 10
+\vspace{0,3cm}
+
+intervaloTiempo=1000
+\vspace{0,3cm}
+
+Tiempo = c(1:intervaloTiempo)
+\vspace{0,3cm}
+
+Xn = c()
+\vspace{0,3cm}
+
+tActual = 0
+\vspace{0.7cm}
+
+while (tActual $<=$ intervaloTiempo){
+\vspace{0,3cm}
+
+  tiempoLLegada =rexp(1,lambda)
+  \vspace{0,2cm}
+  
+  tActual = tActual + tiempoLLegada
+  \vspace{0,2cm}
+  
+  Xn = c(Xn,tiempoLLegada )
+
+}
     
 \end{document}
 
