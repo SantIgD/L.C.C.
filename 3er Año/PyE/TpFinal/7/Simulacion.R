@@ -1,34 +1,34 @@
 library(ggplot2)
 lambda = 10
-intervaloTiempo=10000
+intervaloTiempo=1000
 Tiempo = c(1:intervaloTiempo)
-tiempo = c("a","b","c")
 
-
-trayectoriaMuestral= c()
 Xn = c()
 tActual = 0
-for(i in Tiempo){
-  tiempoLLegada =rexp(1,10)
+trayectoria = c()
+while (tActual <= intervaloTiempo){
+  tiempoLLegada =rexp(1,lambda)/lambda
+  trayectoria = c(trayectoria,tiempoLLegada)
   tActual = tActual + tiempoLLegada
-  trayectoriaMuestral= c(trayectoriaMuestral, tActual)
   Xn = c(Xn,tiempoLLegada )
 }
-midf = data.frame(trayectoriaMuestral,Tiempo)
 
-ex = c()
-for (i in (0:1000)){
-  ex = c(ex,exp((-10)* i))
-}
-hist(Xn,freq=FALSE,breaks = c(0,0.005,0.020,0.030,0.040,0.05,0.06,0.08,0.1,0.12,0.15,0.2,0.25,0.3,0.4,0.5,0.7,1.322325),xlim=c(0,1.5),ylim=c(0,12),xlab="Tiempos entre llegadas",prob=T,ylab="Densidad de mensajes",main="Histograma de tiempo entre llegadas")
-lines(density(Xn))
+#c(0,0.01,0.02,0.03,0.04,0.05,0.65,0.07,0.08,0.1,0.12,0.15,0.2,0.3,0.4,0.948246)
+# c(0,0.3,5,39.1022)
+#par(mfrow=c(1,2))
+hist(Xn,freq=FALSE,breaks = 50,xlim=c(0,0.1),ylim=c(0,100),xlab="Tiempos entre llegadas",prob=T,ylab="Densidad de mensajes",main="Histograma")
+lines(density(Xn),col="red")
+lines(curve(exp(-10*x),ylab = "Y",xlab = "X",main="Exp(-10*t)"))
+
+midf= data.frame(trayectoria,Xn)
 ggplot(data = midf)+
-  geom_point(mapping = aes(x = Tiempo, y = trayectoriaMuestral)) +
+  geom_point(mapping = aes(x = Xn, y = trayectoria)) +
   theme(panel.background = element_rect(fill = 'grey', colour = 'black'))
 
-ej = c(1,1,2,3,1,4,3,2,1)
 
 
 
-hist(ej,breaks = c(1,3,4))
+axis(1, labels=TRUE)
+
+
 
